@@ -1,5 +1,5 @@
 gh   = require('./gh.coffee')
-repo = '/repos/felixhageloh/uebersicht/git'
+repo = '/repos/felixhageloh/uebersicht-widgets/git'
 
 getLastCommit = (callback) ->
   gh.get "#{repo}/refs/heads/master", (data) ->
@@ -7,7 +7,6 @@ getLastCommit = (callback) ->
 
 getTree = (sha, callback) ->
   gh.get "#{repo}/trees/#{sha}?recursive=1", (data) ->
-    console.debug data
     callback data.tree
 
 renderTree = (tree) ->

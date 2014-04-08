@@ -29,7 +29,7 @@ var getLastCommit, getTree, gh, renderTree, repo;
 
 gh = require('./gh.coffee');
 
-repo = '/repos/felixhageloh/uebersicht/git';
+repo = '/repos/felixhageloh/uebersicht-widgets/git';
 
 getLastCommit = function(callback) {
   return gh.get("" + repo + "/refs/heads/master", function(data) {
@@ -39,7 +39,6 @@ getLastCommit = function(callback) {
 
 getTree = function(sha, callback) {
   return gh.get("" + repo + "/trees/" + sha + "?recursive=1", function(data) {
-    console.debug(data);
     return callback(data.tree);
   });
 };
