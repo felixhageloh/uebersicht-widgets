@@ -12,10 +12,10 @@ h1 a:hover,h1 a:link:hover,h1 a:visited:hover{color:#fff;background:#86585a}
 cite{font-style:italic}
 a,a:link,a:visited{color:#86585a;}
 a:hover,a:link:hover,a:visited:hover{color:#852a2f}
-#widget_list{font-size:0;font-style:normal;margin-top:20px}
+#widget_list{font-size:0;font-style:normal;margin:20px 0}
 .widget{display:inline-block;vertical-align:top;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;width:292px;font-size:14px;border:1px solid #ddd;padding:16px;}
 .widget:nth-child(odd){margin-right:16px}
 .widget .screenshot{height:160px;position:relative;background:#fafafa;}
-.widget .screenshot .image{position:absolute;top:0;left:0;right:0;bottom:0;background-repeat:no-repeat;background-position:left center}
+.widget .screenshot .image{position:absolute;top:0;left:0;right:0;bottom:0;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;background-repeat:no-repeat;background-position:left center}
 .widget h1{font-size:18px;font-style:italic;margin:8px 0}
 .widget p{margin:8px 0}
