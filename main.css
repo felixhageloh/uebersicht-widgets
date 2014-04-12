@@ -1,0 +1,21 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-family:inherit;font-size:100%;vertical-align:baseline}
+body{line-height:1;color:#000;background:#fff}
+ol,ul{list-style:none}
+table{border-collapse:separate;border-spacing:0;vertical-align:middle}
+caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}
+a img{border:none}
+body,html{background:#fff;color:#152033;font-family:Ubuntu,Helvetica Neue,Arial,Sans;font-weight:200;line-height:1.5}
+.wrapper{width:600px;margin:0 auto}
+h1{font-size:28px;margin:20px 0;font-style:italic;position:relative;}
+h1 a,h1 a:link,h1 a:visited{position:absolute;right:0;top:6px;padding:4px 16px;border:2px solid #86585a;font-size:12px;text-decoration:none;-webkit-border-radius:2px;border-radius:2px;}
+h1 a:hover,h1 a:link:hover,h1 a:visited:hover{color:#fff;background:#86585a}
+cite{font-style:italic}
+a,a:link,a:visited{color:#86585a;}
+a:hover,a:link:hover,a:visited:hover{color:#852a2f}
+#widget_list{font-size:0;font-style:normal;margin-top:20px}
+.widget{display:inline-block;vertical-align:top;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;width:292px;font-size:14px;border:1px solid #ddd;padding:16px;}
+.widget:nth-child(odd){margin-right:16px}
+.widget .screenshot{height:160px;position:relative;background:#fafafa;}
+.widget .screenshot .image{position:absolute;top:0;left:0;right:0;bottom:0;background-repeat:no-repeat;background-position:left center}
+.widget h1{font-size:18px;font-style:italic;margin:8px 0}
+.widget p{margin:8px 0}

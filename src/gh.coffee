@@ -1,22 +1,23 @@
 b64     = require './base64.js'
 baseUrl = 'https://api.github.com'
-reqId   = 0
+http    = require 'https'
 
 module.exports = (user, repo) ->
   api = {}
 
   makeRequest = (url, callback) ->
-    callbackName = "ghCallback#{reqId++}"
-    script       = document.createElement('script')
-    sep          = if url.indexOf('?') > -1 then '&' else '?'
-    script.src   = "#{baseUrl}#{url}#{sep}callback=#{callbackName}"
+    options =
+      hostname: 'api.github.com'
+      path    : url
+      headers : { 'User-Agent': 'Übersicht-App'}
 
-    window[callbackName] = (data) ->
-      callback(data.data)
-      script.parentNode.removeChild(script)
-      delete window[callbackName]
-
-    document.body.appendChild(script)
+    http.get options, (res) ->
+      str = ''
+      res.setEncoding('utf8')
+      res.on 'data', (chunk) -> str += chunk
+      res.on 'end',  (chunk) ->
+        str += chunk if chunk
+        callback JSON.parse(str)
 
   api.get = (url, callback) ->
     makeRequest url, callback
