@@ -14,7 +14,7 @@ WidgetTemplate = require('./widget-template.coffee');
 $(function() {
   var list, req;
   list = $('#widget_list');
-  req = $.getJSON('/widgets.json', function(data) {
+  req = $.getJSON('widgets.json', function(data) {
     var widget, widgets, _i, _len, _results;
     widgets = data.widgets;
     _results = [];
