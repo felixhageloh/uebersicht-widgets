@@ -92,7 +92,8 @@ style: """
 
   .summary
     font-size: 14px
-    white-space: nowrap
+    text-align: center
+    line-height: 1.5
     color: #fff
     margin-top: 20px
 
