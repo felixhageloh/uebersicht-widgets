@@ -3,7 +3,7 @@ location = '52.3833,-4.9000'  # enter your coordinates as LATITUDE,LONGITUDE her
 
 exclude  = "minutely,hourly,alerts,flags"
 
-command: "curl 'https://api.forecast.io/forecast/#{apiKey}/#{location}?units=auto&exclude=#{exclude}'"
+command: "curl -s 'https://api.forecast.io/forecast/#{apiKey}/#{location}?units=auto&exclude=#{exclude}'"
 
 refreshFrequency: 600000
 
