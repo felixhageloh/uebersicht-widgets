@@ -57,7 +57,7 @@ style: """
 
   @font-face
     font-family Weather
-    src url(weather/icons.svg) format('svg')
+    src url(weather.widget/icons.svg) format('svg')
 
   .today
     display: inline-block
