@@ -1,0 +1,5 @@
+{
+  "name": "Pretty Weather",
+  "description": "A prettier and simpler weather forcast widget. NOTE: You will need your own forecast.io api key. Please check the README for details.",
+  "author": "Felix Hageloh"
+}
