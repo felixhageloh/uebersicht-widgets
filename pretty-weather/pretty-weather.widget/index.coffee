@@ -68,7 +68,7 @@ style: """
 
   @font-face
     font-family Weather
-    src url(weather.widget/icons.svg) format('svg')
+    src url(pretty-weather.widget/icons.svg) format('svg')
 
   .icon
     font-family: Weather
