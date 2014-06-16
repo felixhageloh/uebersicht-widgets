@@ -71,7 +71,7 @@ style: """
     src url(weather.widget/icons.svg) format('svg')
 
   .icon
-    font-family: Weather Icons
+    font-family: Weather
     font-size: 40px
     text-anchor: middle
     alignment-baseline: middle
