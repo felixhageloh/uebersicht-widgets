@@ -1,6 +1,6 @@
 command: 'cal && date'
 
-refreshFrequency: 10000
+refreshFrequency: 3600000
 
 style: """
   bottom: 10px
