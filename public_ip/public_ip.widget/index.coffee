@@ -1,4 +1,4 @@
-command: "curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
+command: "curl -s icanhazip.com|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
 
 refreshFrequency: 43200000
 
