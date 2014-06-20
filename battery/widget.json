@@ -1,6 +1,6 @@
 {
   "name": "battery",
-  "description": "Display current battery percentage",
+  "description": "Display current battery percentage and status",
   "author": "Johan Bleuzen",
   "email": "johan@bleuzen.fr"
 }
