@@ -146,8 +146,10 @@ iconMapping:
   "partly-cloudy-day"   :"&#xf002;"
   "clear-night"         :"&#xf02e;"
   "partly-cloudy-night" :"&#xf031;"
+  "unknown"             :"&#xfo3e;"
 
 getIcon: (data) ->
+  return @iconMapping['unknown'] if not data
   if data.icon.indexOf('cloudy') > -1
     if data.cloudCover < 0.25
       @iconMapping["clear-day"]
