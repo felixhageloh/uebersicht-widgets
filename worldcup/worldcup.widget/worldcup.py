@@ -30,7 +30,7 @@ totime = fromtime + datetime.timedelta(days=1)
 ## Get Match-List
 try:
     matches =  client.service.GetMatchdataByLeagueDateTime(fromtime, totime, LEAGUE_NAME).Matchdata
-except AttributeError:
+except Exception:
     print "n/A"
     sys.exit(1)
 
