@@ -22,14 +22,14 @@ getAndWriteWidgets = (tree, callback) ->
       continue
 
     getWidget entry.sha, entry.path, (w) ->
-      process.stdout.write(".")
+      console.log "  * ", w.id
       writeWidget w, (if written > 0 then ',' else ''), ->
         done++
         written++
         callback() if done == tree.length
 
 getWidget = (sha, path, callback) ->
-  widget = {}
+  widget = { id: path }
 
   parseEntry = (entry) ->
     if entry.path.indexOf('screenshot') > -1

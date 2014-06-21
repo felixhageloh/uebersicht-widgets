@@ -26,15 +26,20 @@ $(function() {
     }
     return _results;
   });
-  return req.fail(function(req, _, err) {
+  req.fail(function(req, _, err) {
     return console.log(err.message);
+  });
+  return list.on("click", '.download', function(e) {
+    var id;
+    id = $(e.currentTarget).data('id');
+    return ga('send', 'event', 'download-link', 'click', id);
   });
 });
 
 
 },{"../lib/jquery":1,"./widget-template.coffee":3}],3:[function(require,module,exports){
 module.exports = function(widget) {
-  return "<div class='widget'>\n  <div class='screenshot'>\n    <div class='image'\n         style='background-image: url(" + widget.screenshotUrl + ")'>\n    </div>\n  </div>\n\n  <h1>" + widget.name + "</h1>\n  <p>" + widget.description + "</p>\n\n  <a href='" + widget.downloadUrl + "'>download</a>\n\n  <div class='author'>\n    by <em>" + widget.author + "</em>\n  </div>\n</div>";
+  return "<div id='" + widget.id + "' class='widget'>\n  <div class='screenshot'>\n    <div class='image'\n         style='background-image: url(" + widget.screenshotUrl + ")'>\n    </div>\n  </div>\n\n  <h1>" + widget.name + "</h1>\n  <p>" + widget.description + "</p>\n\n  <a class='download' data-id=\"" + widget.id + "\" href='" + widget.downloadUrl + "'>\n    download\n  </a>\n\n  <div class='author'>\n    by <em>" + widget.author + "</em>\n  </div>\n</div>";
 };
 
 

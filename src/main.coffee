@@ -10,3 +10,7 @@ $ ->
     list.append(WidgetTemplate(widget) + '\n') for widget in widgets when widget
 
   req.fail (req, _, err) -> console.log err.message
+
+  list.on "click", '.download', (e) ->
+    id = $(e.currentTarget).data('id')
+    ga('send', 'event', 'download-link', 'click', id)
