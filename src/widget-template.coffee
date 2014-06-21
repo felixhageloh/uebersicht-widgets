@@ -10,5 +10,9 @@ module.exports = (widget) -> """
     <p>#{widget.description}</p>
 
     <a href='#{widget.downloadUrl}'>download</a>
+
+    <div class='author'>
+      by <em>#{widget.author}</em>
+    </div>
   </div>
 """
