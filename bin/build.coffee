@@ -9,6 +9,7 @@ gh   = GitHubApi(user, repo)
 
 getLastCommit = (callback) ->
   gh.get "/repos/#{user}/#{repo}/git/refs/heads/master", (data) ->
+    return console.log "no object in", data unless data.object
     callback data.object.sha
 
 getAndWriteWidgets = (tree, callback) ->
