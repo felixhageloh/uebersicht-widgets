@@ -21,7 +21,7 @@ $(function() {
     for (_i = 0, _len = widgets.length; _i < _len; _i++) {
       widget = widgets[_i];
       if (widget) {
-        _results.push(list.append(WidgetTemplate(widget)));
+        _results.push(list.append(WidgetTemplate(widget) + '\n'));
       }
     }
     return _results;

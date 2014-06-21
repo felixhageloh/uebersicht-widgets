@@ -6,6 +6,7 @@ $ ->
 
   req = $.getJSON 'widgets.json', (data) ->
     widgets = data.widgets
-    list.append(WidgetTemplate(widget)) for widget in widgets when widget
+    # newline or space is needed for correct layout
+    list.append(WidgetTemplate(widget) + '\n') for widget in widgets when widget
 
   req.fail (req, _, err) -> console.log err.message

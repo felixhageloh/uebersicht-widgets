@@ -13,11 +13,20 @@ body, html
   width: 600px
   margin: 0 auto
 
+  @media screen and (min-width: 920px)
+    width: 900px
+
+  @media screen and (min-width: 1220px)
+    width: 1202px
+
 h1
   font-size: 28px
   margin: 20px 0
   font-style: italic
   position: relative
+
+  @media screen and (max-width:320px)
+    font-size: 20px
 
   a, a:link, a:visited
     position: absolute
@@ -28,6 +37,8 @@ h1
     font-size: 12px
     text-decoration: none
     border-radius: 2px
+
+
 
     &:hover
       color: #fff
@@ -46,7 +57,8 @@ a, a:link, a:visited
     text-decoration: underline
 
 #widget_list
-  font-size: 0
+  font-size: 1px
+  word-spacing: 11px
   font-style: normal
   margin: 20px 0
 
@@ -61,9 +73,7 @@ a, a:link, a:visited
   position: relative
   vertical-align: top
   width: 292px
-
-  &:nth-child(odd)
-    margin-right: 16px
+  word-spacing: normal
 
   .screenshot
     height: 160px
