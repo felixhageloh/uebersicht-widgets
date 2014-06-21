@@ -1,0 +1,6 @@
+{
+  "name": "Network Throughput",
+  "description": "Shows incoming and outgoing throughput on a user-specified network interface",
+  "author": "Adam Courtemanche",
+  "email": "adam.courtemanche@gmail.com"
+}
