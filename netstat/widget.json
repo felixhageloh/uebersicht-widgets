@@ -1,0 +1,5 @@
+{
+  "name": "Netstat",
+  "description": "Displays total In/Out network traffic for specific network interface (defaults to en0 - usually wifi)",
+  "author": "George Irwin, mfam, Aliceljm"
+}
