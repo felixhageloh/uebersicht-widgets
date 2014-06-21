@@ -1,14 +1,14 @@
 #!/usr/bin/env coffee
 
-GitHubApi = require '../src/gh.coffee'
-fs        = require 'fs'
+GitHubApi   = require '../src/gh.coffee'
+fs          = require 'fs'
+credentials = require '../secrets.json'
 
-user = 'felixhageloh'
 repo = 'uebersicht-widgets'
-gh   = GitHubApi(user, repo)
+gh   = GitHubApi(credentials, repo)
 
 getLastCommit = (callback) ->
-  gh.get "/repos/#{user}/#{repo}/git/refs/heads/master", (data) ->
+  gh.get "/repos/#{credentials.user}/#{repo}/git/refs/heads/master", (data) ->
     return console.log "no object in", data unless data.object
     callback data.object.sha
 
@@ -45,6 +45,7 @@ getWidget = (sha, path, callback) ->
     gh.getContent path, (manifest) ->
       manifest           = JSON.parse(manifest)
       widget.name        = manifest.name
+      widget.author      = manifest.author
       widget.description = manifest.description
       callback widget
 

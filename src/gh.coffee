@@ -2,14 +2,17 @@ b64     = require './base64.js'
 baseUrl = 'https://api.github.com'
 http    = require 'https'
 
-module.exports = (user, repo) ->
+module.exports = (credentials, repo) ->
   api = {}
+
+  user = credentials.user
+  auth = 'Basic ' + new Buffer("#{user}:#{credentials.password}").toString('base64');
 
   makeRequest = (url, callback) ->
     options =
       hostname: 'api.github.com'
       path    : url
-      headers : { 'User-Agent': 'Übersicht-App'}
+      headers : { 'User-Agent': 'Übersicht-App', 'Authorization': auth}
 
     http.get options, (res) ->
       str = ''
@@ -24,6 +27,7 @@ module.exports = (user, repo) ->
 
   api.getTree = (sha, callback) ->
     makeRequest "/repos/#{user}/#{repo}/git/trees/#{sha}", (data) ->
+      return console.log "couldn't get tree, got", data unless data?.tree
       callback data.tree
 
   api.getContent = (path, callback) ->
