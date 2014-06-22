@@ -1,11 +1,13 @@
 command: """
+read -r running <<<"$(ps -ef | grep \"MacOS/Spotify\" | grep -v \"grep\" | wc -l)" &&
+test $running != 0 &&
 IFS='|' read -r theArtist theName <<<"$(osascript <<<'tell application "Spotify"
         set theTrack to current track
         set theArtist to artist of theTrack
         set theName to name of theTrack
         return theArtist & "|" & theName
-    end tell')"
-echo "$theArtist - $theName"
+    end tell')" &&
+echo "$theArtist - $theName" || echo "Not Connected To Spotify"
 """
 
 refreshFrequency: 2000
@@ -15,7 +17,7 @@ style: """
   left: 10px
   color: #fff
 
-  .some-class
+  .output
     font-family: Helvetica Neue
     font-size: 30px
     font-weight: 100
@@ -23,5 +25,5 @@ style: """
 """
 
 render: (output) -> """
-	<div class="some-class">#{output}</div>
+	<div class="output">#{output}</div>
 """
