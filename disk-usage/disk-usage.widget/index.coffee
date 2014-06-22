@@ -14,9 +14,9 @@ style: """
   color: #fff
   font-family: Helvetica Neue
 
-  .output
+  .result
     &:after
-      content: 'disk info'
+      content: 'disk usage'
       position: absolute
       left: 0
       top: -14px
@@ -61,12 +61,12 @@ style: """
 
 
 render: -> """
-  <div class="output"></div>
+  <div class="result"></div>
 """
 
 update: (output, domEl) ->
   disks = output.split('\n')
-  output = $(domEl).find('.output')
+  result = $(domEl).find('.result')
 
   renderInfo = (total, used, free, pctg, mountpoint) ->
     "<div class='wrapper'>" +
@@ -79,7 +79,7 @@ update: (output, domEl) ->
       "</div>" +
     "</div>"
 
-  output.html ''
+  result.html ''
 
   for disk, i in disks
     args = disk.split(' ')
@@ -88,4 +88,4 @@ update: (output, domEl) ->
         args[4] = "Macintosh HD"
       else
         args[4] = args[4].replace /\/Volumes\//, ""
-      output.append renderInfo(args...)
+      result.append renderInfo(args...)
