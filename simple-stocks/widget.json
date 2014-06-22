@@ -1,0 +1,6 @@
+{
+  "name": "Simple Stocks",
+  "description": "Shows stock information with minimal configuration required (simply specify the symbols)",
+  "author": "Adam Courtemanche",
+  "email": "adam.courtemanche@gmail.com"
+}
