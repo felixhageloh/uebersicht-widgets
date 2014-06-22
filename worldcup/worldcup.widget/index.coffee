@@ -11,15 +11,13 @@ style: """
   text-align: right
 
   h1
-  	font-size: 12pt
-  	background-image: url(worldcup.widget/football.ico)
-  	background-repeat:no-repeat
-  	background-position: 20%
-
+    font-size: 12pt
+  .img
+    margin-right: 10px
 """
 
 render: (_) -> """
-  <h1>World Cup 2014</h1>
+  <h1><img class='img' src='worldcup.widget/football.ico' />World Cup 2014</h1>
   <hr />
   <div class='output'></div>
 """
