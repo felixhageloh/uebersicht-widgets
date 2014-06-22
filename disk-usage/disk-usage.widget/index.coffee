@@ -3,6 +3,9 @@
 # Set as something obscure to show all drives (strange, but easier than editing the command)
 exclude = 'NONE'
 
+# You may optionally limit the number of disk to show
+maxDisks: 10
+
 command: "df -h | grep '/dev/' | while read -r line; do fs=$(echo $line | awk '{print $1}'); name=$(diskutil info $fs | grep 'Volume Name' | awk '{print substr($0, index($0,$3))}'); echo $(echo $line | awk '{print $2, $3, $4, $5}') $(echo $name | awk '{print substr($0, index($0,$1))}'); done | grep -vE '#{exclude}'"
 
 refreshFrequency: 60000
@@ -80,7 +83,7 @@ update: (output, domEl) ->
 
   result.html ''
 
-  for disk, i in disks
+  for disk, i in disks[..(@maxDisks - 1)]
     args = disk.split(' ')
     if (args[4])
       args[4] = args[4..].join(' ')
