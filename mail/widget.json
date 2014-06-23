@@ -1,0 +1,6 @@
+{
+  "name": "Unread mail count",
+  "description": "Shows the number of unread mails in Mail.app",
+  "author": "Martin Ziel",
+  "email": "martin.ziel@gmail.com"
+}
