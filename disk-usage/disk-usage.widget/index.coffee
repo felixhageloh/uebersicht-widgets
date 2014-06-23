@@ -1,10 +1,12 @@
-# Drives that aren't connected will be ignored
+# You may exclude certain drives (separate with a pipe)
+# Example: exclude = 'MyBook' or exclude = 'MyBook|WD Passport'
+# Set as something obscure to show all drives (strange, but easier than editing the command)
+exclude = 'NONE'
 
-# Run 'df -h' to see valid mountpoints, add the ones you want, separated by spaces
-# e.g. '/ /Volumes/MyBook /Volumes/Seagate1TB'
-mount_points = '/'
+# You may optionally limit the number of disk to show
+maxDisks: 10
 
-command: "df -h #{mount_points} | awk 'NR>1 {print $2,$3,$4,$5,$9}'"
+command: "df -h | grep '/dev/' | while read -r line; do fs=$(echo $line | awk '{print $1}'); name=$(diskutil info $fs | grep 'Volume Name' | awk '{print substr($0, index($0,$3))}'); echo $(echo $line | awk '{print $2, $3, $4, $5}') $(echo $name | awk '{print substr($0, index($0,$1))}'); done | grep -vE '#{exclude}'"
 
 refreshFrequency: 60000
 
@@ -14,9 +16,9 @@ style: """
   color: #fff
   font-family: Helvetica Neue
 
-  .output
+  .result
     &:after
-      content: 'disk info'
+      content: 'disk usage'
       position: absolute
       left: 0
       top: -14px
@@ -61,17 +63,17 @@ style: """
 
 
 render: -> """
-  <div class="output"></div>
+  <div class="result"></div>
 """
 
 update: (output, domEl) ->
   disks = output.split('\n')
-  output = $(domEl).find('.output')
+  result = $(domEl).find('.result')
 
-  renderInfo = (total, used, free, pctg, mountpoint) ->
+  renderInfo = (total, used, free, pctg, name) ->
     "<div class='wrapper'>" +
       "<div class='bar' style='width: #{pctg}'></div>" +
-      "<div class='label'>#{mountpoint}</div>" +
+      "<div class='label'>#{name}</div>" +
       "<div class='stats'>" +
         "<span class='stat'>#{total} total</span>" +
         "<span class='stat'>#{used} used</span>" +
@@ -79,13 +81,10 @@ update: (output, domEl) ->
       "</div>" +
     "</div>"
 
-  output.html ''
+  result.html ''
 
-  for disk, i in disks
+  for disk, i in disks[..(@maxDisks - 1)]
     args = disk.split(' ')
     if (args[4])
-      if (args[4] == '/')
-        args[4] = "Macintosh HD"
-      else
-        args[4] = args[4].replace /\/Volumes\//, ""
-      output.append renderInfo(args...)
+      args[4] = args[4..].join(' ')
+      result.append renderInfo(args...)
