@@ -21,17 +21,18 @@ update: (output, domEl) ->
   data  = JSON.parse(output)
   today = data.daily.data[0]
   date  = @getDate today.time
+  $domEl = $(domEl)
 
-  $(domEl).find('.date').text @dayMapping[date.getDay()]
-  $(domEl).find('.temp').html """
+  $domEl.find('.date').text @dayMapping[date.getDay()]
+  $domEl.find('.temp').html """
     <span class='hi'>#{Math.round(today.temperatureMax)}°</span> /
     <span class='lo'>#{Math.round(today.temperatureMin)}°</span>
   """
 
-  $(domEl).find('.summary').text today.summary
-  $(domEl).find('.icon')[0].innerHTML = @getIcon(today)
+  $domEl.find('.summary').text today.summary
+  $domEl.find('.icon')[0].innerHTML = @getIcon(today)
 
-  forecastEl = $(domEl).find('.forecast').html('')
+  forecastEl = $domEl.find('.forecast').html('')
   for day in data.daily.data[1..5]
     forecastEl.append @renderForecast(day)
 
