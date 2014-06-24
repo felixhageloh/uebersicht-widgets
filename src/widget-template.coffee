@@ -15,6 +15,7 @@ module.exports = (widget) -> """
 
     <div class='author'>
       by <em>#{widget.author}</em>
+      <div class='download-count'></div>
     </div>
   </div>
 """
