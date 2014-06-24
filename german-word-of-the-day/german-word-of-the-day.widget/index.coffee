@@ -34,15 +34,17 @@ update: (output, domEl) ->
   # Define constants, and extract the juicy html.
   dom = $(domEl)
   xml = jQuery.parseXML(output)
-  description = jQuery.parseHTML($(xml).find('description').eq(1).text())
+  $xml = $(xml)
+  description = jQuery.parseHTML($xml.find('description').eq(1).text())
+  $description = $(description)
 
   # Find the info we need, and inject it into the DOM.
-  dom.find('.word').html $(xml).find('title').eq(1)
-  part = $(description).find('td').eq(0).text()
+  dom.find('.word').html $xml.find('title').eq(1)
+  part = $description.find('td').eq(0).text()
   dom.find('.part').html "Part of speech: #{part}"
-  example = $(description).find('td').eq(1).text()
+  example = $description.find('td').eq(1).text()
   dom.find('.example').html "Example sentence: #{example}"
-  exampleMeaning = $(description).find('td').eq(2).text()
+  exampleMeaning = $description.find('td').eq(2).text()
   dom.find('.example-meaning').html "Sentence meaning: #{exampleMeaning}"
 
   # Position the DOM in the middle of our screen.
