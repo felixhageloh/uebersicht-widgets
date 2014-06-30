@@ -1,4 +1,4 @@
-command: "curl -s https://api.bitcoinaverage.com/ticker/global/EUR/last"
+command: "curl -s https://api.bitcoinaverage.com/ticker/global/EUR/last"  
 
 refreshFrequency: 50000 #ms
 
