@@ -3,7 +3,7 @@ command: "sysctl -n vm.swapusage | awk '{printf \"%s,%s\\n%s,%s\\n%s,%s\", $1,$3
 refreshFrequency: 5000
 
 style: """
-  top: 270px
+  top: 280px
   left: 50px
   color: #fff
   font-family: Helvetica Neue
@@ -29,7 +29,7 @@ style: """
     overflow: hidden
     text-shadow: 0 0 1px rgba(#000, 0.5)
 
-  .wrapper
+  .value
     padding: 4px 6px 4px 6px
     position: relative
 
@@ -47,13 +47,6 @@ style: """
     max-width: 100%
     color: #ddd
     text-overflow: ellipsis
-
-  .pid
-    position: absolute
-    top: 2px
-    right: 2px
-    font-size: 10px
-    font-weight: normal
 
 """
 
@@ -74,7 +67,7 @@ update: (output, domEl) ->
   table     = $(domEl).find('table')
 
   renderProcess = (name, value) ->
-    "<div class='wrapper'>" +
+    "<div class='value'>" +
       "#{value}<p>#{name}</p>" +
     "</div>"
 
