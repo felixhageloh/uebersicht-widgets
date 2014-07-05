@@ -3,7 +3,7 @@ command: "sysctl -n vm.loadavg | awk '{printf \"%s,%s,%s\",$2,$3,$4}'"
 refreshFrequency: 5000
 
 style: """
-    top: 210px
+    top: 70px
     left: 50px
     color: #fff
     font-family: Helvetica Neue
@@ -28,7 +28,7 @@ style: """
       overflow: hidden
       text-shadow: 0 0 1px rgba(#000, 0.5)
 
-    .wrapper
+    .value
       padding: 4px 6px 4px 6px
       position: relative
 
@@ -47,13 +47,6 @@ style: """
       color: #ddd
       text-overflow: ellipsis
       text-shadow: none
-
-    .pid
-      position: absolute
-      top: 2px
-      right: 2px
-      font-size: 10px
-      font-weight: normal
 """
 
 render: -> """
@@ -70,11 +63,18 @@ update: (output, domEl) ->
   values = output.split(',')
   table     = $(domEl).find('table')
 
-  renderValue = (load_avg) ->
-    "<div class='wrapper'>" +
+  renderValue = (load_avg, index, label) ->
+    "<div class='value'>" +
       "#{load_avg}" +
+      "<p class=label> #{label}</p>" +
     "</div>"
 
   for value, i in values
-    args = value.split(',')
-    table.find(".col#{i+1}").html renderValue(args...)
+    if i == 0
+      label = '1 Minute'
+    else if i == 1
+      label = '5 Minute'
+    else if i == 2
+      label = '15 Minute'
+
+    table.find(".col#{i+1}").html renderValue(value,i, label)
