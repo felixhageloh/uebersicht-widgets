@@ -1,0 +1,6 @@
+{
+  "name": "Swap Usage",
+  "description": "Display swap file metrics for your system. Style based on Top CPU and Top MEM widgets by Felix Hageloh.",
+  "author": "Eric Miller",
+  "email": "emiller42@gmail.com"
+}

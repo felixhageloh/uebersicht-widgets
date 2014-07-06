@@ -1,0 +1,6 @@
+{
+  "name": "I/O Stats",
+  "description": "Show current throughput statistics for the specified disk.  Style based on Top CPU and Top MEM widgets by Felix Hageloh.",
+  "author": "Eric Miller",
+  "email": "emiller42@gmail.com"
+}

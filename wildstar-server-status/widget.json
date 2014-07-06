@@ -1,0 +1,6 @@
+{
+  "name": "Wildstar Server Status",
+  "description": "Display server status for the specified Wildstar (MMO) server.  This uses http://wsstatus.com for status",
+  "author": "Eric Miller",
+  "email": "emiller42@gmail.com"
+}

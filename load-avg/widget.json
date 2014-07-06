@@ -1,0 +1,6 @@
+{
+  "name": "Load Average",
+  "description": "Display the 1, 5, and 15-minute load averages of your system. Style based on Top CPU and Top MEM widgets by Felix Hageloh.",
+  "author": "Eric Miller",
+  "email": "emiller42@gmail.com"
+}
