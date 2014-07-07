@@ -34,7 +34,7 @@ getTree = (treeish, args...) ->
     callback entries
 
 
-getAndWriteWidgets = (tree, callback) ->
+getAndWriteWidgets = (file, tree, callback) ->
   written = 0
 
   parseEntry = (idx) ->
@@ -43,8 +43,8 @@ getAndWriteWidgets = (tree, callback) ->
     getWidget entry.sha, entry.path, (w) ->
       return parseEntry(idx+1) unless w
 
-      writeWidget w, (if written > 0 then ',' else ''), ->
-        console.log "  * ", entry.path, w
+      writeWidget file, w, (if written > 0 then ',' else ''), ->
+        console.log "  * ", entry.path
         written++
         parseEntry(idx+1)
 
@@ -98,15 +98,25 @@ getModDate = (path, callback) ->
 
     callback new Date(stdout).getTime()
 
-writeWidget = (widget, sep, callback) ->
+writeWidget = (file, widget, sep, callback) ->
   file.write(sep+JSON.stringify(widget), callback)
 
 
-file = fs.createWriteStream('widgets.json')
-file.write "{\"widgets\":["
+pullChanges = (callback) ->
+  exec "git checkout master && git pull && git checkout gh-pages", (err, stdout, stderr) ->
+    if err
+      console.log 'ERROR:', err
+    else
+      console.log stdout or stderr
+      callback()
 
 console.log 'getting widgets'
-getTree 'master', '-d', (tree) ->
-  getAndWriteWidgets tree, ->
-    file.end "]}"
-    console.log 'done'
+pullChanges ->
+
+  getTree 'master', '-d', (tree) ->
+    file = fs.createWriteStream('widgets.json')
+    file.write "{\"widgets\":["
+
+    getAndWriteWidgets file, tree, ->
+      file.end "]}"
+      console.log 'done'
