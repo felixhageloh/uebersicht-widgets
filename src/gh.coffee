@@ -34,6 +34,10 @@ module.exports = (credentials, repo) ->
     makeRequest "/repos/#{user}/#{repo}/contents/#{path}", (data) ->
       callback b64.decode(data.content)
 
+  api.getCommit = (sha, callback) ->
+    makeRequest "/repos/#{user}/#{repo}/git/commits/#{sha}", (data) ->
+      callback data
+
   api.rawUrl = (path) ->
     "https://raw.githubusercontent.com/#{user}/#{repo}/master/#{path}"
 
