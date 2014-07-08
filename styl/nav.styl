@@ -1,0 +1,32 @@
+nav
+  margin: 16px 0
+  font-size: 0
+  position: relative
+
+  a, a:link, a:visited
+    @extend .button
+
+  .sort
+    li
+      display: inline-block
+      margin-left: -2px
+
+      a
+        border-radius: 0
+
+      &:first-child
+        margin-left: 0
+
+        a
+          border-radius: 2px 0 0 2px
+
+      &:last-child
+        a
+          border-radius: 0 2px 2px 0
+
+  .submit
+    position: absolute
+    right: 8px
+    top: 0
+
+

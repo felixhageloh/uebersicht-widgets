@@ -207,7 +207,7 @@ exports.increment = function(id, callback) {
 
 
 },{"cookies-js":2}],4:[function(require,module,exports){
-var $, WidgetTemplate, downloads, showDownloadCount;
+var $, WidgetTemplate, allWidgets, downloads, fetchWidgets, init, installationEl, listEl, mainNav, registerEvents, renderWidget, showDownloadCount, sortWidgets;
 
 $ = require('../lib/jquery');
 
@@ -215,46 +215,112 @@ WidgetTemplate = require('./widget-template.coffee');
 
 downloads = require('./download-counts.coffee');
 
-showDownloadCount = function(id) {
-  return downloads.get(id, function(count) {
-    if (count == null) {
-      return;
+listEl = $('#widget_list');
+
+mainNav = $('header nav');
+
+installationEl = $('#installation');
+
+allWidgets = {};
+
+init = function(widgets) {
+  var widget, _i, _len;
+  for (_i = 0, _len = widgets.length; _i < _len; _i++) {
+    widget = widgets[_i];
+    if (widget) {
+      (function(widget) {
+        widget.numDownloads = 0;
+        allWidgets[widget.id] = widget;
+        renderWidget(widget);
+        return downloads.get(widget.id, function(count) {
+          widget.numDownloads = count != null ? count : 0;
+          return setTimeout(function() {
+            return showDownloadCount(widget);
+          });
+        });
+      })(widget);
     }
-    return $("#" + id + ".widget").find('.download-count').html("<span class='icon'>⬇</span> " + count + "︎");
-  });
+  }
+  return registerEvents();
 };
 
-$(function() {
-  var list, req;
-  list = $('#widget_list');
-  req = $.getJSON('widgets.json', function(data) {
-    var widget, widgets, _i, _len, _results;
-    widgets = data.widgets;
-    _results = [];
-    for (_i = 0, _len = widgets.length; _i < _len; _i++) {
-      widget = widgets[_i];
-      if (widget) {
-        _results.push((function(widget) {
-          list.append(WidgetTemplate(widget) + '\n');
-          return setTimeout(function() {
-            return showDownloadCount(widget.id);
-          });
-        })(widget));
-      }
-    }
-    return _results;
-  });
-  req.fail(function(req, _, err) {
-    return console.log(err.message);
-  });
-  return list.on("click", '.download', function(e) {
+registerEvents = function() {
+  listEl.on("click", '.download', function(e) {
     var id;
     id = $(e.currentTarget).data('id');
     return downloads.increment(id, function() {
-      return showDownloadCount(id);
+      return showDownloadCount(allWidgets[id]);
     });
   });
-});
+  mainNav.on('click', '.sort a', function(e) {
+    var link;
+    mainNav.find('.active').removeClass('active');
+    link = $(e.currentTarget);
+    link.addClass('active');
+    return sortWidgets(link.data('sort-by'));
+  });
+  $('[href=#installation]').on('click', function(e) {
+    e.preventDefault();
+    return installationEl.addClass('visible');
+  });
+  return installationEl.on('click', '[data-action=close]', function(e) {
+    e.preventDefault();
+    return installationEl.removeClass('visible');
+  });
+};
+
+renderWidget = function(widget) {
+  return listEl.append(WidgetTemplate(widget));
+};
+
+fetchWidgets = function(callback) {
+  var req;
+  req = $.getJSON('widgets.json', function(data) {
+    return callback(data.widgets);
+  });
+  return req.fail(function(req, _, err) {
+    return console.log(err.message);
+  });
+};
+
+showDownloadCount = function(widget) {
+  if (!widget.numDownloads) {
+    return;
+  }
+  return $("#" + widget.id + ".widget").find('.download-count').html("<span class='icon'>⬇</span> " + widget.numDownloads + "︎");
+};
+
+sortWidgets = function(property) {
+  var compare, i, sorted, w, widget, widgetEl, widgetEls, _, _i, _len, _results;
+  if (property === 'name') {
+    compare = function(a, b) {
+      return a[property].localeCompare(b[property]);
+    };
+  } else {
+    compare = function(a, b) {
+      return b[property] - a[property];
+    };
+  }
+  sorted = ((function() {
+    var _results;
+    _results = [];
+    for (_ in allWidgets) {
+      w = allWidgets[_];
+      _results.push(w);
+    }
+    return _results;
+  })()).sort(compare);
+  widgetEls = listEl.children();
+  _results = [];
+  for (i = _i = 0, _len = sorted.length; _i < _len; i = ++_i) {
+    widget = sorted[i];
+    widgetEl = document.getElementById(widget.id);
+    _results.push(listEl[0].insertBefore(widgetEl, listEl.children()[i]));
+  }
+  return _results;
+};
+
+fetchWidgets(init);
 
 
 },{"../lib/jquery":1,"./download-counts.coffee":3,"./widget-template.coffee":5}],5:[function(require,module,exports){
