@@ -1,0 +1,6 @@
+{
+  "name": "NetworkInfo",
+  "description" : "Displays current Ethernet and Wi-Fi status (connected / not connected / IP Address / Mac Address.",
+  "author" : "Chris Johnson",
+  "email" : "Chris.1@nosnhoj.com"
+}
