@@ -254,6 +254,7 @@ registerEvents = function() {
   });
   mainNav.on('click', '.sort a', function(e) {
     var link;
+    e.preventDefault();
     mainNav.find('.active').removeClass('active');
     link = $(e.currentTarget);
     link.addClass('active');

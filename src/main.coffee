@@ -27,6 +27,7 @@ registerEvents = ->
     downloads.increment id, -> showDownloadCount(allWidgets[id])
 
   mainNav.on 'click', '.sort a', (e) ->
+    e.preventDefault()
     mainNav.find('.active').removeClass('active')
     link = $(e.currentTarget)
     link.addClass('active')
