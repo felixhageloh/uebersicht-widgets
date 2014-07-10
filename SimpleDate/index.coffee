@@ -5,7 +5,7 @@ refreshFrequency: 50000
 style: """
   /* Modify Colors and Size Here:*/
   
-  size = 400px                //This is just a base for the overall size so everything stays centered
+  size = 800px                //This is just a base for the overall size so everything stays centered
 
   width: size 
   margin-left: -.5 * size     //Set left edge of widget to be center so it can be easily centered on the page
