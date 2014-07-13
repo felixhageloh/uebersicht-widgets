@@ -1,0 +1,6 @@
+{
+  "name": "Simple Analog Clock",
+  "description" : "A simplified version of my Analog Clock). It's not as configurable as the Analog Clock widget, but all settings can be changed via CSS rather than code.",
+  "author" : "Chris Johnson",
+  "email" : "Chris.1@nosnhoj.com"
+}
