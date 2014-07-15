@@ -8,22 +8,16 @@ credentials = require '../secrets.json'
 repo = 'uebersicht-widgets'
 gh   = GitHubApi(credentials, repo)
 
-getLastCommit = (callback) ->
-
-
 getTree = (treeish, args...) ->
   if args.length == 1 or typeof args[0] == 'function'
     callback = args[0]
-    options  = ''
+    options  = {}
   else
     callback = args[1]
-    options  = args[0]
+    options  = args[0] ? {}
 
-  exec "git ls-tree #{options} #{treeish}", (err, output, stderr) ->
-    if err or stderr
-      console.log(err ? stderr)
-      return callback()
-
+  saveExec "git ls-tree #{treeish}", options, (output) ->
+    callback() unless output
     lines = output.split '\n'
 
     entries = (for line in lines when line
@@ -33,39 +27,49 @@ getTree = (treeish, args...) ->
 
     callback entries
 
-
 getAndWriteWidgets = (file, tree, callback) ->
   written = 0
+
+  doWrite = (w, cb) ->
+    writeWidget file, w, (if written > 0 then ',' else ''), ->
+      console.log "  * ", w.id
+      written++
+      cb()
 
   parseEntry = (idx) ->
     return callback() unless (entry = tree[idx])?
 
-    getWidget entry.sha, entry.path, (w) ->
-      return parseEntry(idx+1) unless w
-
-      writeWidget file, w, (if written > 0 then ',' else ''), ->
-        console.log "  * ", entry.path
-        written++
-        parseEntry(idx+1)
+    if entry.mask == '160000'
+      getWidget 'master', '.', cwd: entry.path, (w) ->
+        return parseEntry(idx+1) unless w
+        doWrite w, -> parseEntry(idx+1)
+    else if entry.type == 'tree'
+      getWidget entry.sha, entry.path, {}, (w) ->
+        return parseEntry(idx+1) unless w
+        doWrite w, -> parseEntry(idx+1)
+    else
+      parseEntry(idx+1)
 
   parseEntry(0)
 
-getWidget = (sha, path, callback) ->
-  getTree sha, (tree) ->
-    #return callback() unless tree
+getWidget = (sha, path, options, callback) ->
+  getTree sha, options, (tree) ->
+    return callback() unless tree
     data = parseWidgetDir tree, path
 
-    getManifest data.manifest, (manifest) ->
-      #return callback() unless manifest
-      getModDate path+'/'+data.zipPath, (date) ->
-        callback
-          id            : path
-          name          : manifest.name
-          author        : manifest.author
-          description   : manifest.description
-          screenshotUrl : data.screenshotUrl
-          downloadUrl   : data.downloadUrl
-          modifiedAt    : date
+    getUserRepo options, (user, repo) ->
+      console.debug user, repo
+      getManifest data.manifest, options, (manifest) ->
+        return callback() unless manifest
+        getModDate path+'/'+data.zipPath, (date) ->
+          callback
+            id            : path
+            name          : manifest.name
+            author        : manifest.author
+            description   : manifest.description
+            screenshotUrl : data.screenshotUrl
+            downloadUrl   : data.downloadUrl
+            modifiedAt    : date
 
 
 parseWidgetDir = (dirTree, dirPath) ->
@@ -82,38 +86,51 @@ parseWidgetDir = (dirTree, dirPath) ->
 
   data
 
-getManifest = (path, callback) ->
-
-  exec "git show master:#{path}", (err, contents, stderr) ->
-    if err or stderr
-      callback()
-    else
-      callback JSON.parse(contents)
+getManifest = (path, options, callback) ->
+  saveExec "git show master:#{path}", options, (contents) ->
+    callback JSON.parse(contents ? 'null')
 
 getModDate = (path, callback) ->
-  exec "git log -1 --format=\"%ad\" master -- #{path}", (err, stdout, stderr) ->
-    if err or stderr
-      console.log err or stderr
-      return callback()
-
+  saveExec "git log -1 --format=\"%ad\" master -- #{path}", {}, (stdout) ->
+    return callback() unless stdout
     callback new Date(stdout).getTime()
+
+getUserRepo = (options, callback) ->
+  saveExec "git remote -v | tail -n 1", (stdout) ->
+    return callback() unless stdout
+
+    [junk, userAndRepo] = stdout.split('github.com:')
+    [user, repo]        = userAndRepo.split('/')
+    callback user, repo.replace(/\.git.*/, '')
 
 writeWidget = (file, widget, sep, callback) ->
   file.write(sep+JSON.stringify(widget), callback)
 
-
 pullChanges = (callback) ->
-  exec "git checkout master && git pull && git checkout gh-pages", (err, stdout, stderr) ->
+  cmd = "git checkout master && \
+         git pull --recurse-submodules && \
+         git submodule update --recursive && \
+         git checkout gh-pages"
+
+  exec cmd, (err, stdout, stderr) ->
     if err
       console.log 'ERROR:', err
     else
       console.log stdout or stderr
       callback()
 
+saveExec = (cmd, options, callback) ->
+  exec cmd, options, (err, output, stderr) ->
+    if err or stderr
+      console.log(err ? stderr)
+      callback()
+    else
+      callback(output)
+
+
 console.log 'getting widgets'
 pullChanges ->
-
-  getTree 'master', '-d', (tree) ->
+  getTree 'master', (tree) ->
     file = fs.createWriteStream('widgets.json')
     file.write "{\"widgets\":["
 
