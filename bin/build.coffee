@@ -22,7 +22,7 @@ getAndWriteWidgets = (dirTree, outfile, callback) ->
     return next(idx+1) unless w
 
     writeWidget outfile, w, (if written > 0 then ',' else ''), ->
-      console.log chalk.green "   ✓"
+      console.log chalk.green "ok"
       written++
       next idx+1
 
@@ -45,11 +45,11 @@ buildWidget = (sha, path, options, callback) ->
 
   widgetId = options.cwd ? path
 
-  console.log chalk.blue(" *"), widgetId
+  process.stdout.write chalk.blue(" » ") + widgetId + ' .. '
 
   bail = (reason) ->
-    console.log "   " + reason
-    console.log chalk.red "   ✗"
+    console.log chalk.red "fail"
+    console.log chalk.red "   " + reason
     callback()
 
   combineData = ->
