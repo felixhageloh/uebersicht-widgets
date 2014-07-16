@@ -1,12 +1,138 @@
 #!/usr/bin/env coffee
 
-GitHubApi   = require '../src/gh.coffee'
-fs          = require 'fs'
-exec        = require('child_process').exec
-credentials = require '../secrets.json'
+fs    = require 'fs'
+exec  = require('child_process').exec
+chalk = require('chalk')
 
-repo = 'uebersicht-widgets'
-gh   = GitHubApi(credentials, repo)
+build = ->
+  console.log 'getting widgets'
+  pullChanges ->
+    getTree 'master', (tree) ->
+      file = fs.createWriteStream('widgets.json')
+      file.write "{\"widgets\":["
+
+      getAndWriteWidgets tree, file, ->
+        file.end "]}"
+        console.log chalk.green 'done'
+
+getAndWriteWidgets = (dirTree, outfile, callback) ->
+  written = 0
+
+  writeAndNext = (idx, next) -> (w) ->
+    return next(idx+1) unless w
+
+    writeWidget outfile, w, (if written > 0 then ',' else ''), ->
+      console.log chalk.green "   ✓"
+      written++
+      next idx+1
+
+  parseDirEntry = (idx) ->
+    return callback() unless (entry = dirTree[idx])?
+
+    if entry.mask == '160000'
+      buildWidget 'master', '.', cwd: entry.path, writeAndNext(idx, parseDirEntry)
+    else if entry.type == 'tree'
+      buildWidget entry.sha, entry.path, {}, writeAndNext(idx, parseDirEntry)
+    else
+      parseDirEntry(idx+1)
+
+  parseDirEntry(0)
+
+buildWidget = (sha, path, options, callback) ->
+  manifest = null
+  modDate  = null
+  urls     = null
+
+  widgetId = options.cwd ? path
+
+  console.log chalk.blue(" *"), widgetId
+
+  bail = (reason) ->
+    console.log "   " + reason
+    console.log chalk.red "   ✗"
+    callback()
+
+  combineData = ->
+    return unless manifest and modDate and urls
+    callback
+      id            : widgetId
+      name          : manifest.name
+      author        : manifest.author
+      description   : manifest.description
+      screenshotUrl : urls.screenshotUrl
+      downloadUrl   : urls.downloadUrl
+      modifiedAt    : modDate
+
+  getTree sha, options, (widgetDir) ->
+    return bail "could not read widget dir" unless widgetDir
+    paths = parseWidgetDir widgetDir
+
+    return bail "could not find screenshot" unless paths.screenshotPath
+    return bail "could not find manifest"   unless paths.manifestPath
+    return bail "could not find zip file"   unless paths.zipPath
+
+    getUserRepo options, (user, repo) ->
+      return bail "could not retrieve repo info" unless user and repo
+      urls =
+        downloadUrl:   ghRawUrl user, repo, "#{path}/#{paths.zipPath}"
+        screenshotUrl: ghRawUrl user, repo, "#{path}/#{paths.screenshotPath}"
+      combineData()
+
+    getModDate "#{path}/#{paths.zipPath}", options, (date) ->
+      return bail "could not get last mod date" unless date
+      modDate = date
+      combineData()
+
+    getManifest "#{path}/#{paths.manifestPath}", options, (man) ->
+      return bail "could not read manifest" unless man
+      manifest = man
+      combineData()
+
+parseWidgetDir = (dirTree, dirPath) ->
+  paths = {}
+
+  for entry in dirTree
+    if entry.path.indexOf('widget.json') > -1
+      paths.manifestPath = entry.path
+    else if entry.path.indexOf('screenshot') > -1
+      paths.screenshotPath = entry.path
+    else if entry.path.indexOf('.widget.zip') > -1
+      paths.zipPath  = entry.path
+
+  paths
+
+getManifest = (path, options, callback) ->
+  saveExec "git show master:#{path}", options, (contents) ->
+    callback JSON.parse(contents ? 'null')
+
+getModDate = (path, options, callback) ->
+  saveExec "git log -1 --format=\"%ad\" master -- #{path}", options, (stdout) ->
+    return callback() unless stdout
+    callback new Date(stdout).getTime()
+
+getUserRepo = (options, callback) ->
+  saveExec "git remote -v | tail -n 1", options, (stdout) ->
+    return callback() unless stdout
+
+    [junk, userAndRepo] = stdout.split(/\s/)[1].split('github.com:')
+    [user, repo]        = userAndRepo.split('/')
+    callback user, repo.replace(/\.git$/g, '')
+
+writeWidget = (file, widget, sep, callback) ->
+  file.write(sep+JSON.stringify(widget), callback)
+
+pullChanges = (callback) ->
+  cmd = "git checkout master && \
+         git pull --recurse-submodules && \
+         git submodule update --recursive && \
+         git checkout gh-pages"
+
+  exec cmd, (err, stdout, stderr) ->
+    if err
+      console.log 'ERROR:', err
+    else
+      console.log stdout or stderr
+      callback()
 
 getTree = (treeish, args...) ->
   if args.length == 1 or typeof args[0] == 'function'
@@ -27,97 +153,8 @@ getTree = (treeish, args...) ->
 
     callback entries
 
-getAndWriteWidgets = (file, tree, callback) ->
-  written = 0
-
-  doWrite = (w, cb) ->
-    writeWidget file, w, (if written > 0 then ',' else ''), ->
-      console.log "  * ", w.id
-      written++
-      cb()
-
-  parseEntry = (idx) ->
-    return callback() unless (entry = tree[idx])?
-
-    if entry.mask == '160000'
-      getWidget 'master', '.', cwd: entry.path, (w) ->
-        return parseEntry(idx+1) unless w
-        doWrite w, -> parseEntry(idx+1)
-    else if entry.type == 'tree'
-      getWidget entry.sha, entry.path, {}, (w) ->
-        return parseEntry(idx+1) unless w
-        doWrite w, -> parseEntry(idx+1)
-    else
-      parseEntry(idx+1)
-
-  parseEntry(0)
-
-getWidget = (sha, path, options, callback) ->
-  getTree sha, options, (tree) ->
-    return callback() unless tree
-    data = parseWidgetDir tree, path
-
-    getUserRepo options, (user, repo) ->
-      console.debug user, repo
-      getManifest data.manifest, options, (manifest) ->
-        return callback() unless manifest
-        getModDate path+'/'+data.zipPath, (date) ->
-          callback
-            id            : path
-            name          : manifest.name
-            author        : manifest.author
-            description   : manifest.description
-            screenshotUrl : data.screenshotUrl
-            downloadUrl   : data.downloadUrl
-            modifiedAt    : date
-
-
-parseWidgetDir = (dirTree, dirPath) ->
-  data = {}
-
-  for entry in dirTree
-    if entry.path.indexOf('widget.json') > -1
-      data.manifest = dirPath+'/'+entry.path
-    else if entry.path.indexOf('screenshot') > -1
-      data.screenshotUrl = gh.rawUrl dirPath+'/'+entry.path
-    else if entry.path.indexOf('.widget.zip') > -1
-      data.zipPath     = entry.path
-      data.downloadUrl = gh.rawUrl dirPath+'/'+entry.path
-
-  data
-
-getManifest = (path, options, callback) ->
-  saveExec "git show master:#{path}", options, (contents) ->
-    callback JSON.parse(contents ? 'null')
-
-getModDate = (path, callback) ->
-  saveExec "git log -1 --format=\"%ad\" master -- #{path}", {}, (stdout) ->
-    return callback() unless stdout
-    callback new Date(stdout).getTime()
-
-getUserRepo = (options, callback) ->
-  saveExec "git remote -v | tail -n 1", (stdout) ->
-    return callback() unless stdout
-
-    [junk, userAndRepo] = stdout.split('github.com:')
-    [user, repo]        = userAndRepo.split('/')
-    callback user, repo.replace(/\.git.*/, '')
-
-writeWidget = (file, widget, sep, callback) ->
-  file.write(sep+JSON.stringify(widget), callback)
-
-pullChanges = (callback) ->
-  cmd = "git checkout master && \
-         git pull --recurse-submodules && \
-         git submodule update --recursive && \
-         git checkout gh-pages"
-
-  exec cmd, (err, stdout, stderr) ->
-    if err
-      console.log 'ERROR:', err
-    else
-      console.log stdout or stderr
-      callback()
+ghRawUrl = (user, repo, path) ->
+  "https://raw.githubusercontent.com/#{user}/#{repo}/master/#{path}"
 
 saveExec = (cmd, options, callback) ->
   exec cmd, options, (err, output, stderr) ->
@@ -127,13 +164,4 @@ saveExec = (cmd, options, callback) ->
     else
       callback(output)
 
-
-console.log 'getting widgets'
-pullChanges ->
-  getTree 'master', (tree) ->
-    file = fs.createWriteStream('widgets.json')
-    file.write "{\"widgets\":["
-
-    getAndWriteWidgets file, tree, ->
-      file.end "]}"
-      console.log 'done'
+build()
