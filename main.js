@@ -207,7 +207,7 @@ exports.increment = function(id, callback) {
 
 
 },{"cookies-js":2}],4:[function(require,module,exports){
-var $, WidgetTemplate, allWidgets, downloads, fetchWidgets, init, installationEl, listEl, mainNav, registerEvents, renderWidget, showDownloadCount, sortWidgets;
+var $, WidgetTemplate, allWidgets, downloads, fetchWidgets, init, installationEl, listEl, mainNav, registerEvents, renderWidget, showDownloadCount, sortWidgets, switchSortBy;
 
 $ = require('../lib/jquery');
 
@@ -224,24 +224,30 @@ installationEl = $('#installation');
 allWidgets = {};
 
 init = function(widgets) {
-  var widget, _i, _len;
+  var widget, widgetEls, _i, _len;
+  widgetEls = [];
   for (_i = 0, _len = widgets.length; _i < _len; _i++) {
     widget = widgets[_i];
     if (widget) {
       (function(widget) {
+        var widgetEl;
         widget.numDownloads = 0;
         allWidgets[widget.id] = widget;
-        renderWidget(widget);
+        widgetEls.push(widgetEl = renderWidget(widget));
         return downloads.get(widget.id, function(count) {
           widget.numDownloads = count != null ? count : 0;
           return setTimeout(function() {
-            return showDownloadCount(widget);
+            return showDownloadCount(widget, widgetEl);
           });
         });
       })(widget);
     }
   }
-  return registerEvents();
+  listEl.append(widgetEls);
+  return setTimeout(function() {
+    registerEvents();
+    return switchSortBy('modifiedAt');
+  });
 };
 
 registerEvents = function() {
@@ -253,12 +259,8 @@ registerEvents = function() {
     });
   });
   mainNav.on('click', '.sort a', function(e) {
-    var link;
     e.preventDefault();
-    mainNav.find('.active').removeClass('active');
-    link = $(e.currentTarget);
-    link.addClass('active');
-    return sortWidgets(link.data('sort-by'));
+    return switchSortBy($(e.currentTarget).data('sort-by'));
   });
   $('[href=#installation]').on('click', function(e) {
     e.preventDefault();
@@ -271,7 +273,7 @@ registerEvents = function() {
 };
 
 renderWidget = function(widget) {
-  return listEl.append(WidgetTemplate(widget));
+  return $(WidgetTemplate(widget));
 };
 
 fetchWidgets = function(callback) {
@@ -284,11 +286,20 @@ fetchWidgets = function(callback) {
   });
 };
 
-showDownloadCount = function(widget) {
+showDownloadCount = function(widget, widgetEl) {
   if (!widget.numDownloads) {
     return;
   }
-  return $("#" + widget.id + ".widget").find('.download-count').html("<span class='icon'>⬇</span> " + widget.numDownloads + "︎");
+  if (widgetEl == null) {
+    widgetEl = $("#" + widget.id + ".widget");
+  }
+  return widgetEl.find('.download-count').html("<span class='icon'>⬇</span> " + widget.numDownloads + "︎");
+};
+
+switchSortBy = function(property) {
+  mainNav.find('.active').removeClass('active');
+  mainNav.find("[data-sort-by=" + property + "]").addClass('active');
+  return sortWidgets(property);
 };
 
 sortWidgets = function(property) {
@@ -326,7 +337,7 @@ fetchWidgets(init);
 
 },{"../lib/jquery":1,"./download-counts.coffee":3,"./widget-template.coffee":5}],5:[function(require,module,exports){
 module.exports = function(widget) {
-  return "<div id='" + widget.id + "' class='widget'>\n  <div class='screenshot'>\n    <div class='image'\n         style='background-image: url(" + widget.screenshotUrl + ")'>\n    </div>\n  </div>\n\n  <h1>" + widget.name + "</h1>\n  <p>" + widget.description + "</p>\n\n  <a class='download' data-id=\"" + widget.id + "\" href='" + widget.downloadUrl + "'>\n    download\n  </a>\n\n  <div class='author'>\n    by <em>" + widget.author + "</em>\n    <div class='download-count'></div>\n  </div>\n</div>";
+  return "<div id='" + widget.id + "' class='widget'>\n  <div class='screenshot'>\n    <div class='image'\n         style='background-image: url(" + widget.screenshotUrl + ")'>\n    </div>\n  </div>\n\n  <h1>" + widget.name + "</h1>\n  <p>" + widget.description + "</p>\n\n  <a class='download' data-id=\"" + widget.id + "\" href='" + widget.downloadUrl + "' title='download widget'>\n    download\n  </a>\n\n  <div class='author'>\n    by <em>" + widget.author + "</em>\n    <div class='download-count'></div>\n  </div>\n</div>";
 };
 
 

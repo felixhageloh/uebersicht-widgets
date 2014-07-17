@@ -9,7 +9,7 @@ module.exports = (widget) -> """
     <h1>#{widget.name}</h1>
     <p>#{widget.description}</p>
 
-    <a class='download' data-id="#{widget.id}" href='#{widget.downloadUrl}'>
+    <a class='download' data-id="#{widget.id}" href='#{widget.downloadUrl}' title='download widget'>
       download
     </a>
 

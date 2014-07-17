@@ -9,17 +9,23 @@ installationEl = $('#installation')
 allWidgets = {}
 
 init = (widgets) ->
+  widgetEls = []
+
   for widget in widgets when widget
     do (widget) ->
       widget.numDownloads = 0
       allWidgets[widget.id] = widget
 
-      renderWidget widget
+      widgetEls.push(widgetEl = renderWidget widget)
       downloads.get widget.id, (count) ->
         widget.numDownloads = count ? 0
-        setTimeout -> showDownloadCount(widget)
+        setTimeout -> showDownloadCount(widget, widgetEl)
 
-  registerEvents()
+  listEl.append(widgetEls)
+
+  setTimeout ->
+    registerEvents()
+    switchSortBy 'modifiedAt'
 
 registerEvents = ->
   listEl.on "click", '.download', (e) ->
@@ -28,10 +34,7 @@ registerEvents = ->
 
   mainNav.on 'click', '.sort a', (e) ->
     e.preventDefault()
-    mainNav.find('.active').removeClass('active')
-    link = $(e.currentTarget)
-    link.addClass('active')
-    sortWidgets link.data('sort-by')
+    switchSortBy $(e.currentTarget).data('sort-by')
 
   $('[href=#installation]').on 'click', (e) ->
     e.preventDefault()
@@ -41,19 +44,25 @@ registerEvents = ->
     e.preventDefault()
     installationEl.removeClass('visible')
 
-
 renderWidget = (widget) ->
-  listEl.append(WidgetTemplate(widget))
+  $(WidgetTemplate(widget))
 
 fetchWidgets = (callback) ->
   req = $.getJSON 'widgets.json', (data) ->
     callback(data.widgets)
   req.fail (req, _, err) -> console.log err.message
 
-showDownloadCount = (widget) ->
+showDownloadCount = (widget, widgetEl) ->
   return unless widget.numDownloads
-  $("##{widget.id}.widget").find('.download-count')
+  widgetEl ?= $("##{widget.id}.widget")
+
+  widgetEl.find('.download-count')
     .html "<span class='icon'>⬇</span> #{widget.numDownloads}︎"
+
+switchSortBy = (property) ->
+  mainNav.find('.active').removeClass 'active'
+  mainNav.find("[data-sort-by=#{property}]").addClass 'active'
+  sortWidgets property
 
 sortWidgets = (property) ->
   if property == 'name'
