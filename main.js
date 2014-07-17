@@ -336,8 +336,14 @@ fetchWidgets(init);
 
 
 },{"../lib/jquery":1,"./download-counts.coffee":3,"./widget-template.coffee":5}],5:[function(require,module,exports){
+var repoLink;
+
+repoLink = function(widget) {
+  return "<a class='repo' href='" + widget.repoUrl + "' title='view on github'>\n  view on github\n</a>";
+};
+
 module.exports = function(widget) {
-  return "<div id='" + widget.id + "' class='widget'>\n  <div class='screenshot'>\n    <div class='image'\n         style='background-image: url(" + widget.screenshotUrl + ")'>\n    </div>\n  </div>\n\n  <h1>" + widget.name + "</h1>\n  <p>" + widget.description + "</p>\n\n  <a class='download' data-id=\"" + widget.id + "\" href='" + widget.downloadUrl + "' title='download widget'>\n    download\n  </a>\n\n  <div class='author'>\n    by <em>" + widget.author + "</em>\n    <div class='download-count'></div>\n  </div>\n</div>";
+  return "<div id='" + widget.id + "' class='widget'>\n  <div class='screenshot'>\n    <div class='image'\n         style='background-image: url(" + widget.screenshotUrl + ")'>\n    </div>\n  </div>\n\n  <h1>" + widget.name + "</h1>\n  <p>" + widget.description + "</p>\n\n  " + (widget.repoUrl ? repoLink(widget) : '') + "\n\n  <a class='download' data-id=\"" + widget.id + "\" href='" + widget.downloadUrl + "' title='download widget'>\n    download\n  </a>\n\n  <div class='author'>\n    by <em>" + widget.author + "</em>\n    <div class='download-count'></div>\n  </div>\n</div>";
 };
 
 

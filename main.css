@@ -3,9 +3,12 @@
 .widget{border:1px solid #ddd;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;display:inline-block;font-size:14px;height:392px;padding-bottom:40px;margin-bottom:16px;padding:16px;position:relative;vertical-align:top;width:292px;word-spacing:normal;margin-right:8px;}
 .widget .screenshot{height:160px;position:relative;background:#fafafa;}
 .widget .screenshot .image{position:absolute;top:0;left:0;right:0;bottom:0;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;background-repeat:no-repeat;background-position:left center}
-.widget h1{font-size:18px;font-style:italic;margin:8px 0}
+.widget h1{font-size:18px;font-style:italic;margin:8px 0;text-align:left}
 .widget p{margin:8px 0}
-.widget a,.widget a:link,.widget a:visited{text-decoration:underline;position:absolute;bottom:48px;right:16px}
+.widget a,.widget a:link,.widget a:visited{text-decoration:underline}
+.widget a.download,.widget a.repo{position:absolute;bottom:48px}
+.widget a.repo{left:16px}
+.widget a.download{right:16px}
 .widget .author{background:#fafafa;border-top:1px solid #ddd;bottom:0;font-size:11px;left:0;line-height:36px;padding:0 16px;position:absolute;right:0;}
 .widget .author em{font-style:normal}
 .widget .download-count{position:absolute;right:16px;top:0;word-spacing:0;}
