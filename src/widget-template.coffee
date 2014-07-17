@@ -1,3 +1,9 @@
+repoLink = (widget) -> """
+  <a class='repo' href='#{widget.repoUrl}' title='view on github'>
+    view on github
+  </a>
+"""
+
 module.exports = (widget) -> """
   <div id='#{widget.id}' class='widget'>
     <div class='screenshot'>
@@ -9,6 +15,8 @@ module.exports = (widget) -> """
     <h1>#{widget.name}</h1>
     <p>#{widget.description}</p>
 
+    #{if widget.repoUrl then repoLink(widget) else ''}
+
     <a class='download' data-id="#{widget.id}" href='#{widget.downloadUrl}' title='download widget'>
       download
     </a>
@@ -19,3 +27,4 @@ module.exports = (widget) -> """
     </div>
   </div>
 """
+
