@@ -4,6 +4,8 @@ fs    = require 'fs'
 exec  = require('child_process').exec
 chalk = require('chalk')
 
+baseRepo = "https://github.com/felixhageloh/uebersicht-widgets"
+
 build = ->
   console.log 'getting widgets'
   pullChanges ->
@@ -61,6 +63,7 @@ buildWidget = (sha, path, options, callback) ->
       description   : manifest.description
       screenshotUrl : urls.screenshotUrl
       downloadUrl   : urls.downloadUrl
+      repoUrl       : if urls.repoUrl == baseRepo then null else urls.repoUrl
       modifiedAt    : modDate
 
   getTree sha, options, (widgetDir) ->
@@ -74,8 +77,9 @@ buildWidget = (sha, path, options, callback) ->
     getUserRepo options, (user, repo) ->
       return bail "could not retrieve repo info" unless user and repo
       urls =
-        downloadUrl:   ghRawUrl user, repo, "#{path}/#{paths.zipPath}"
+        downloadUrl  : ghRawUrl user, repo, "#{path}/#{paths.zipPath}"
         screenshotUrl: ghRawUrl user, repo, "#{path}/#{paths.screenshotPath}"
+        repoUrl      : ghUrl user, repo
       combineData()
 
     getModDate "#{path}/#{paths.zipPath}", options, (date) ->
@@ -155,6 +159,9 @@ getTree = (treeish, args...) ->
 
 ghRawUrl = (user, repo, path) ->
   "https://raw.githubusercontent.com/#{user}/#{repo}/master/#{path}"
+
+ghUrl = (user, repo) ->
+  "https://github.com/#{user}/#{repo}"
 
 saveExec = (cmd, options, callback) ->
   exec cmd, options, (err, output, stderr) ->
