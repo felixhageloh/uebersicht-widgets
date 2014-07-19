@@ -128,7 +128,7 @@ writeWidget = (file, widget, sep, callback) ->
 pullChanges = (callback) ->
   cmd = "git checkout master && \
          git pull --recurse-submodules && \
-         git submodule update --recursive && \
+         git submodule update --init --remote --merge && \
          git checkout gh-pages"
 
   exec cmd, (err, stdout, stderr) ->
