@@ -1,0 +1,3 @@
+[submodule "CPU-Usage-bar-Widget"]
+	path = CPU-Usage-bar-Widget
+	url = git@github.com:DaniBarca/CPU-Usage-bar-Widget.git
