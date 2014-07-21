@@ -1,18 +1,19 @@
 # Widgets for [Übersicht](http://tracesof.net/uebersicht/)
 
+> UPDATE: widgets now live in their own github repo. The old format is still supported, but will be phased out soon.
 
-Got a widget to share? Great, please issue a pull request and it will get picked up ASAP! Visit the [documentation](https://github.com/felixhageloh/uebersicht) for details on how to write your own widget.
+Got a widget to share? Great, create a **github repo** for it, then [open an issue here](https://github.com/felixhageloh/uebersicht-widgets/issues) and be sure to mention the url.
+It will get picked up ASAP!
 
 ## Widget format
 
-Your submitted widget should be a single folder, containing:
+Your repo should contain at least these three files:
 
 * `widget.json` a widget manifest
 * `<widget-name>.widget.zip` a zip archive containing your widget
 * `screenshot.png` an image showing your widget in action
 
-It is also advised that you include an unzipped version of your widget, so that people can view the code.
-
+It is also advised that you include an unzipped version of your widget, so that people can view the code and/or issue pull requests with improvements.
 
 ### widget.json
 
@@ -35,3 +36,5 @@ This is the actual widget, which is a zipped folder with the name of your widget
 An image file in any web format you like, showing a screen shot of your widget. Currently, screen shots are displayed at 258x160px. For best results you can provide a 516x320px image for retina resolution.
 
 #### Still have questions? You can start by checking existing widgets for examples.
+
+Also visit the [documentation](https://github.com/felixhageloh/uebersicht).
