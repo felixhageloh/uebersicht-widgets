@@ -4,3 +4,6 @@
 [submodule "CPU-Usage-bar-Widget"]
 	path = CPU-Usage-bar-Widget
 	url = git@github.com:DaniBarca/CPU-Usage-bar-Widget.git
+[submodule "memory-bar"]
+	path = memory-bar
+	url = git@github.com:cobyism/ubersicht-memory-bar.git
