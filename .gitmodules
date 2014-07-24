@@ -7,3 +7,6 @@
 [submodule "memory-bar"]
 	path = memory-bar
 	url = git@github.com:cobyism/ubersicht-memory-bar.git
+[submodule "simple-clock"]
+	path = simple-clock
+	url = git@github.com:soberstadt/simple-clock-widget.git
