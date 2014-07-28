@@ -119,8 +119,9 @@ getUserRepo = (options, callback) ->
     return callback() unless stdout
 
     [junk, userAndRepo] = stdout.split(/\s/)[1].split('github.com:')
-    [user, repo]        = userAndRepo.split('/')
-    callback user, repo.replace(/\.git$/g, '')
+    [user, repo]        = userAndRepo.split('/') if userAndRepo
+    repo = repo.replace(/\.git$/g, '') if repo
+    callback user, repo
 
 writeWidget = (file, widget, sep, callback) ->
   file.write(sep+JSON.stringify(widget), callback)
