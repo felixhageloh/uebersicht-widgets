@@ -1,15 +1,15 @@
-.button,.widget a.download,nav a,nav a:link,nav a:visited,#installation .close-button{padding:4px 16px;border:2px solid #86585a;font-size:12px;text-decoration:none;-webkit-border-radius:2px;border-radius:2px;display:block;}
-.button:hover,.widget a.download:hover,nav a:hover,nav a:link:hover,nav a:visited:hover,#installation .close-button:hover,.button.active,.widget a.download.active,nav a.active,nav a:link.active,nav a:visited.active,#installation .close-button.active{color:#fff;background:#86585a;text-decoration:none}
+.button,nav a,nav a:link,nav a:visited,#installation .close-button{padding:4px 16px;border:2px solid #86585a;font-size:12px;text-decoration:none;-webkit-border-radius:2px;border-radius:2px;display:block;}
+.button:hover,nav a:hover,nav a:link:hover,nav a:visited:hover,#installation .close-button:hover,.button.active,nav a.active,nav a:link.active,nav a:visited.active,#installation .close-button.active{color:#fff;background:#86585a;text-decoration:none}
 .widget{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;display:inline-block;font-size:14px;height:292px;padding-bottom:40px;padding:16px;position:relative;vertical-align:top;width:292px;word-spacing:normal;overflow:hidden;}
 .widget .screenshot{height:160px;position:relative;background:#fafafa;overflow:hidden;-webkit-box-shadow:0 0 0 1px rgba(0,0,0,0.25);box-shadow:0 0 0 1px rgba(0,0,0,0.25);-webkit-border-radius:1px;border-radius:1px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 .widget .screenshot .image{position:absolute;top:0;left:0;right:0;bottom:0;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;background-repeat:no-repeat;background-position:left center}
 .widget .screenshot .image-shadow{-webkit-filter:blur(10px);opacity:.4;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";filter:alpha(opacity=40);display:none}
-.widget h1{font-size:18px;font-style:italic;margin:8px 0;text-align:left}
+.widget h1{font-size:18px;font-style:italic;margin:8px 0;text-align:left;font-weight:500;opacity:.7;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";filter:alpha(opacity=70)}
 .widget p{margin:8px 0}
 .widget .details,.widget .details:link,.widget .details:visited{position:absolute;top:40px;left:16px;right:16px;height:160px;text-decoration:none;background:rgba(255,255,255,0.5);color:#152033;padding:2px 12px 16px 12px;opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);pointer-events:none;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 .widget .details:after,.widget .details:link:after,.widget .details:visited:after{content:attr(title);position:absolute;width:100%;text-align:center;bottom:2px;left:0;font-size:10px;color:#999}
 .widget .details p,.widget .details:link p,.widget .details:visited p{vertical-align:top}
-.widget a.download{text-align:center;font-size:11px;border-width:1px}
+.widget a.download{display:block;border-top:1px solid #ddd;font-size:12px;padding-top:6px;text-align:right}
 .widget .author{font-size:10px;line-height:24px;position:relative;}
 .widget .author em{font-style:normal}
 .widget .info{position:relative}
