@@ -245,12 +245,12 @@ init = function(widgets) {
   }
   listEl.append(widgetEls);
   return setTimeout(function() {
-    registerEvents();
+    registerEvents(widgetEls);
     return switchSortBy('modifiedAt');
   });
 };
 
-registerEvents = function() {
+registerEvents = function(widgetEls) {
   listEl.on("click", '.download', function(e) {
     var id;
     id = $(e.currentTarget).data('id');
@@ -339,11 +339,11 @@ fetchWidgets(init);
 var repoLink;
 
 repoLink = function(widget) {
-  return "<a class='repo' href='" + widget.repoUrl + "' title='view on github'>\n  view on github\n</a>";
+  return "href='" + widget.repoUrl + "' title='click for more details'";
 };
 
 module.exports = function(widget) {
-  return "<div id='" + widget.id + "' class='widget'>\n  <div class='screenshot'>\n    <div class='image'\n         style='background-image: url(" + widget.screenshotUrl + ")'>\n    </div>\n  </div>\n\n  <h1>" + widget.name + "</h1>\n  <p>" + widget.description + "</p>\n\n  " + (widget.repoUrl ? repoLink(widget) : '') + "\n\n  <a class='download' data-id=\"" + widget.id + "\" href='" + widget.downloadUrl + "' title='download widget'>\n    download\n  </a>\n\n  <div class='author'>\n    by <em>" + widget.author + "</em>\n    <div class='download-count'></div>\n  </div>\n</div>";
+  return "<div id='" + widget.id + "' class='widget'>\n  <div class='author'>" + widget.author + "</div>\n\n  <div class='screenshot'>\n    <div class='image'\n         style='background-image: url(" + widget.screenshotUrl + ")'>\n    </div>\n  </div>\n\n  <div class='info'>\n    <h1>" + widget.name + "</h1>\n    <div class='download-count'></div>\n  </div>\n\n  <a class='download' data-id=\"" + widget.id + "\" href='" + widget.downloadUrl + "' title='download widget'>\n    download\n  </a>\n\n  <a class='details' " + (widget.repoUrl ? repoLink(widget) : '') + ">\n    <p>" + widget.description + "</p>\n  </a>\n</div>";
 };
 
 

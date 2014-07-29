@@ -1,30 +1,29 @@
 repoLink = (widget) -> """
-  <a class='repo' href='#{widget.repoUrl}' title='view on github'>
-    view on github
-  </a>
+  href='#{widget.repoUrl}' title='click for more details'
 """
 
 module.exports = (widget) -> """
   <div id='#{widget.id}' class='widget'>
+    <div class='author'>#{widget.author}</div>
+
     <div class='screenshot'>
       <div class='image'
            style='background-image: url(#{widget.screenshotUrl})'>
       </div>
     </div>
 
-    <h1>#{widget.name}</h1>
-    <p>#{widget.description}</p>
-
-    #{if widget.repoUrl then repoLink(widget) else ''}
+    <div class='info'>
+      <h1>#{widget.name}</h1>
+      <div class='download-count'></div>
+    </div>
 
     <a class='download' data-id="#{widget.id}" href='#{widget.downloadUrl}' title='download widget'>
       download
     </a>
 
-    <div class='author'>
-      by <em>#{widget.author}</em>
-      <div class='download-count'></div>
-    </div>
+    <a class='details' #{if widget.repoUrl then repoLink(widget) else ''}>
+      <p>#{widget.description}</p>
+    </a>
   </div>
 """
 

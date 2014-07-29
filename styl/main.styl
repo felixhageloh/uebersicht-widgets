@@ -1,4 +1,5 @@
 @import 'nib'
+@import 'vars'
 @import 'button'
 @import 'widget'
 @import 'nav'
@@ -6,7 +7,6 @@
 global-reset()
 
 header-height = 146px
-text-color    =  #152033
 
 body, html
   background: #fff
@@ -17,6 +17,7 @@ body, html
   text-rendering: optimizeSpeed
   -webkit-font-smoothing: antialiased
   font-size: 16px
+  -webkit-text-size-adjust: none
 
 h1
   font-size: 28px
@@ -58,10 +59,9 @@ header
     margin: 0 8px
 
 .wrapper
-  width: 600px
+  width: 584px
   margin: 0 auto 0 auto
   position: relative
-
 
 #widget_list
   font-size: 0
@@ -74,6 +74,7 @@ header
   color: #666
   text-align: justify
   font-size: 13px
+  padding: 0 16px
 
   h1
     font-size: 1.2em
@@ -98,6 +99,10 @@ header
   transition: all 500ms
   transform: translate(0, -800px)
   visibility: hidden
+
+  .wrapper
+    padding: 0 16px
+    box-sizing: border-box
 
   &.visible
     transform: none
@@ -142,9 +147,9 @@ header
       text-shadow: 0 0 2px #aaa
 
 
-@media screen and (min-width: 920px)
+@media screen and (min-width: 900px)
   .wrapper
-    width: 900px
+    width: 876px
 
   #widget_list
     padding-top: 126px
@@ -158,7 +163,7 @@ header
   header nav
     margin-top: 0
 
-@media screen and (min-width: 1220px)
+@media screen and (min-width: 1200px)
   .wrapper
-    width: 1200px
+    width: 1168px
 

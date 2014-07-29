@@ -24,10 +24,10 @@ init = (widgets) ->
   listEl.append(widgetEls)
 
   setTimeout ->
-    registerEvents()
+    registerEvents(widgetEls)
     switchSortBy 'modifiedAt'
 
-registerEvents = ->
+registerEvents = (widgetEls) ->
   listEl.on "click", '.download', (e) ->
     id = $(e.currentTarget).data('id')
     downloads.increment id, -> showDownloadCount(allWidgets[id])
