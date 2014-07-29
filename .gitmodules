@@ -13,3 +13,6 @@
 [submodule "github-contributions"]
 	path = github-contributions
 	url = git@github.com:cobyism/ubersicht-github.git
+[submodule "circleci-widget"]
+	path = circleci-widget
+	url = git@github.com:andremedeiros/circleci-widget.git
