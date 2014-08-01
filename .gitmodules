@@ -16,3 +16,6 @@
 [submodule "circleci-widget"]
 	path = circleci-widget
 	url = git@github.com:andremedeiros/circleci-widget.git
+[submodule "roundClock"]
+	path = roundClock
+	url = https://github.com/phaseOne/roundClock.git
