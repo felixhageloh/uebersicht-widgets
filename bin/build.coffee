@@ -118,8 +118,9 @@ getUserRepo = (options, callback) ->
   saveExec "git remote -v | tail -n 1", options, (stdout) ->
     return callback() unless stdout
 
-    [junk, userAndRepo] = stdout.split(/\s/)[1].split('github.com:')
-    [user, repo]        = userAndRepo.split('/') if userAndRepo
+    [junk, userAndRepo] = stdout.split(/\s/)[1].split('github.com')
+    userAndRepo  = userAndRepo[1..]
+    [user, repo] = userAndRepo.split('/') if userAndRepo
     repo = repo.replace(/\.git$/g, '') if repo
     callback user, repo
 
