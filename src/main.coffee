@@ -26,6 +26,8 @@ init = (widgets) ->
   setTimeout ->
     registerEvents(widgetEls)
     switchSortBy 'modifiedAt'
+    setTimeout ->
+      scrollToWidget(window.location.hash) if window.location.hash
 
 registerEvents = (widgetEls) ->
   listEl.on "click", '.download', (e) ->
@@ -77,5 +79,9 @@ sortWidgets = (property) ->
   for widget, i in sorted
     widgetEl = document.getElementById(widget.id)
     listEl[0].insertBefore widgetEl, listEl.children()[i]
+
+scrollToWidget = (domId) ->
+  headerHeight = $('header').height()
+  window.scrollTo 0, $(domId).offset()?.top - headerHeight
 
 fetchWidgets init

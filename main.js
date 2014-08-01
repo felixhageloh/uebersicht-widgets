@@ -207,7 +207,7 @@ exports.increment = function(id, callback) {
 
 
 },{"cookies-js":2}],4:[function(require,module,exports){
-var $, WidgetTemplate, allWidgets, downloads, fetchWidgets, init, installationEl, listEl, mainNav, registerEvents, renderWidget, showDownloadCount, sortWidgets, switchSortBy;
+var $, WidgetTemplate, allWidgets, downloads, fetchWidgets, init, installationEl, listEl, mainNav, registerEvents, renderWidget, scrollToWidget, showDownloadCount, sortWidgets, switchSortBy;
 
 $ = require('../lib/jquery');
 
@@ -246,7 +246,12 @@ init = function(widgets) {
   listEl.append(widgetEls);
   return setTimeout(function() {
     registerEvents(widgetEls);
-    return switchSortBy('modifiedAt');
+    switchSortBy('modifiedAt');
+    return setTimeout(function() {
+      if (window.location.hash) {
+        return scrollToWidget(window.location.hash);
+      }
+    });
   });
 };
 
@@ -330,6 +335,12 @@ sortWidgets = function(property) {
     _results.push(listEl[0].insertBefore(widgetEl, listEl.children()[i]));
   }
   return _results;
+};
+
+scrollToWidget = function(domId) {
+  var headerHeight, _ref;
+  headerHeight = $('header').height();
+  return window.scrollTo(0, ((_ref = $(domId).offset()) != null ? _ref.top : void 0) - headerHeight);
 };
 
 fetchWidgets(init);
