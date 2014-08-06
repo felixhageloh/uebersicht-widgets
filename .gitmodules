@@ -19,3 +19,6 @@
 [submodule "roundClock"]
 	path = roundClock
 	url = https://github.com/phaseOne/roundClock.git
+[submodule "mailcount"]
+	path = mailcount
+	url = git@github.com:wfalkwallace/mailcount.git
