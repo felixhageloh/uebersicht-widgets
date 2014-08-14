@@ -11,20 +11,19 @@ to      : "EUR"
 refreshFrequency: 15 * 60 * 1000
 
 style: """
-  top: 260px
-  right: 40px
+  bottom: 60px
+  left: 10px
   color: #fff
-  text-align: right
+  text-align: left
 
   h3
-    font-size: 22px
-    padding-bottom: 5px
+    font-size: 24px
   span
     background: rgba(#000, 0.5)
     border: 1px solid white
-    padding: 10px 30px
+    padding: 5px 15px
     border-radius: 8px
-    font-size: 16px
+    font-size: 22px
 """
 
 render: (input) ->
