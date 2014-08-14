@@ -22,3 +22,6 @@
 [submodule "mailcount"]
 	path = mailcount
 	url = git@github.com:wfalkwallace/mailcount.git
+[submodule "currency-converter"]
+	path = currency-converter
+	url = https://github.com/kikorb/currency-conversor.git
