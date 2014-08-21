@@ -28,3 +28,6 @@
 [submodule "statuscake"]
 	path = statuscake
 	url = https://github.com/things/uebersicht-statuscake.git
+[submodule "tmstatus"]
+	path = tmstatus
+	url = https://github.com/rudders/tmstatus.git
