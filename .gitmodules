@@ -25,3 +25,6 @@
 [submodule "currency-converter"]
 	path = currency-converter
 	url = https://github.com/kikorb/currency-conversor.git
+[submodule "statuscake"]
+	path = statuscake
+	url = https://github.com/things/uebersicht-statuscake.git
