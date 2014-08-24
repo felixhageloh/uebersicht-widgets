@@ -34,3 +34,6 @@
 [submodule "batteryDetails.widget"]
 	path = batteryDetails.widget
 	url = https://github.com/bausi2k/batteryDetails.widget
+[submodule "only-this"]
+	path = only-this
+	url = https://github.com/bgartenmann/uebersicht-only-this-widget.git
