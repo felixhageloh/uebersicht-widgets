@@ -37,3 +37,6 @@
 [submodule "only-this"]
 	path = only-this
 	url = https://github.com/bgartenmann/uebersicht-only-this-widget.git
+[submodule "Rdio-Widget"]
+	path = Rdio-Widget
+	url = https://github.com/larkov/Rdio-Widget.git
