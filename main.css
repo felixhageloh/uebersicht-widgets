@@ -1,8 +1,8 @@
 .button,nav a,nav a:link,nav a:visited,#installation .close-button{padding:4px 16px;border:2px solid #86585a;font-size:12px;text-decoration:none;-webkit-border-radius:2px;border-radius:2px;display:block;}
 .button:hover,nav a:hover,nav a:link:hover,nav a:visited:hover,#installation .close-button:hover,.button.active,nav a.active,nav a:link.active,nav a:visited.active,#installation .close-button.active{color:#fff;background:#86585a;text-decoration:none}
 .widget{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;display:inline-block;font-size:14px;height:292px;padding-bottom:40px;padding:16px;position:relative;vertical-align:top;width:292px;word-spacing:normal;overflow:hidden;}
-.widget .screenshot{height:160px;position:relative;background:#fafafa;overflow:hidden;-webkit-box-shadow:0 0 0 1px rgba(0,0,0,0.25);box-shadow:0 0 0 1px rgba(0,0,0,0.25);-webkit-border-radius:1px;border-radius:1px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
-.widget .screenshot .image{position:absolute;top:0;left:0;right:0;bottom:0;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;background-repeat:no-repeat;background-position:left center}
+.widget .screenshot{height:160px;position:relative;background:#fafafa;overflow:hidden;-webkit-box-shadow:0 0 0 1px rgba(0,0,0,0.25);box-shadow:0 0 0 1px rgba(0,0,0,0.25);-webkit-border-radius:1px;border-radius:1px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0 1px;}
+.widget .screenshot .image{position:absolute;top:0;left:0;right:0;bottom:0;-webkit-background-size:258px 160px;-moz-background-size:258px 160px;background-size:258px 160px;background-repeat:no-repeat;background-position:left center}
 .widget .screenshot .image-shadow{-webkit-filter:blur(10px);opacity:.4;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";filter:alpha(opacity=40);display:none}
 .widget h1{font-size:18px;font-style:italic;margin:8px 0;text-align:left;font-weight:500;opacity:.7;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";filter:alpha(opacity=70)}
 .widget p{margin:8px 0}
