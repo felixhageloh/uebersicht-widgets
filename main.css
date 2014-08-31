@@ -56,6 +56,7 @@ header h1 a{font-style:italic;font-size:12px;word-spacing:normal;display:inline-
 #installation .close-button{display:inline-block;margin-top:4px}
 #installation .close-icon{color:#152033;position:absolute;right:4px;top:4px;}
 #installation .close-icon:hover{text-decoration:none;text-shadow:0 0 2px #aaa}
+#ff-blur-hack{height:0}
 @media screen and (min-width: 900px){.wrapper{width:876px}
 #widget_list{padding-top:126px}
 #installation{top:126px}
