@@ -40,3 +40,6 @@
 [submodule "Rdio-Widget"]
 	path = Rdio-Widget
 	url = https://github.com/larkov/Rdio-Widget.git
+[submodule "mbta-widget"]
+	path = mbta-widget
+	url = https://github.com/joshuaswilcox/mbta-widget
