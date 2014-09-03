@@ -43,3 +43,6 @@
 [submodule "mbta-widget"]
 	path = mbta-widget
 	url = https://github.com/joshuaswilcox/mbta-widget
+[submodule "Stock-quotes-Widget"]
+	path = Stock-quotes-Widget
+	url = https://github.com/edasque/Stock-quotes-Widget
