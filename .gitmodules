@@ -46,3 +46,6 @@
 [submodule "Stock-quotes-Widget"]
 	path = Stock-quotes-Widget
 	url = https://github.com/edasque/Stock-quotes-Widget
+[submodule "ScoreTicker"]
+	path = ScoreTicker
+	url = https://github.com/jckimmel/ScoreTicker
