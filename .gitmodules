@@ -49,3 +49,6 @@
 [submodule "ScoreTicker"]
 	path = ScoreTicker
 	url = https://github.com/jckimmel/ScoreTicker
+[submodule "CurrLocation"]
+	path = CurrLocation
+	url = https://github.com/jckimmel/CurrLocation
