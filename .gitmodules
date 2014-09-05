@@ -55,3 +55,6 @@
 [submodule "horizontal-calendar-widget"]
 	path = horizontal-calendar-widget
 	url = https://github.com/ashikahmad/horizontal-calendar-widget
+[submodule "prayer-time-widget"]
+	path = prayer-time-widget
+	url = https://github.com/ashikahmad/prayer-time-widget
