@@ -52,3 +52,6 @@
 [submodule "CurrLocation"]
 	path = CurrLocation
 	url = https://github.com/jckimmel/CurrLocation
+[submodule "horizontal-calendar-widget"]
+	path = horizontal-calendar-widget
+	url = https://github.com/ashikahmad/horizontal-calendar-widget
