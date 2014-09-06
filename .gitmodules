@@ -58,3 +58,6 @@
 [submodule "prayer-time-widget"]
 	path = prayer-time-widget
 	url = https://github.com/ashikahmad/prayer-time-widget
+[submodule "analog-clock-widget"]
+	path = analog-clock-widget
+	url = https://github.com/ashikahmad/analog-clock-widget
