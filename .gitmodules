@@ -61,3 +61,6 @@
 [submodule "analog-clock-widget"]
 	path = analog-clock-widget
 	url = https://github.com/ashikahmad/analog-clock-widget
+[submodule "SPS"]
+	path = SPS
+	url = https://github.com/wilsongis/uebersicht-SPS_Widget
