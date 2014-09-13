@@ -64,3 +64,6 @@
 [submodule "SPS"]
 	path = SPS
 	url = https://github.com/wilsongis/uebersicht-SPS_Widget
+[submodule "bart-widget"]
+	path = bart-widget
+	url = https://github.com/MatisseHack/bart-widget
