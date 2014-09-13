@@ -33,6 +33,8 @@ This is the actual widget, which is a zipped folder with the name of your widget
 
 ### screenshot
 
+> IMPORTANT: make sure your screen shot is 258x160px (516x320px for hi-res). Otherwise it will get scaled, squashed and/or squeezed in the widgets gallery.
+
 An image file in any web format you like, showing a screen shot of your widget. Currently, screen shots are displayed at 258x160px. For best results you can provide a 516x320px image for retina resolution.
 
 #### Still have questions? You can start by checking existing widgets for examples.
