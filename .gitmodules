@@ -67,3 +67,6 @@
 [submodule "bart-widget"]
 	path = bart-widget
 	url = https://github.com/MatisseHack/bart-widget
+[submodule "craigslist"]
+	path = craigslist
+	url = https://github.com/stursby/uebersicht-craigslist
