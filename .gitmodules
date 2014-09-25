@@ -19,3 +19,54 @@
 [submodule "roundClock"]
 	path = roundClock
 	url = https://github.com/phaseOne/roundClock.git
+[submodule "mailcount"]
+	path = mailcount
+	url = git@github.com:wfalkwallace/mailcount.git
+[submodule "currency-converter"]
+	path = currency-converter
+	url = https://github.com/kikorb/currency-conversor.git
+[submodule "statuscake"]
+	path = statuscake
+	url = https://github.com/things/uebersicht-statuscake.git
+[submodule "tmstatus"]
+	path = tmstatus
+	url = https://github.com/rudders/tmstatus.git
+[submodule "batteryDetails.widget"]
+	path = batteryDetails.widget
+	url = https://github.com/bausi2k/batteryDetails.widget
+[submodule "only-this"]
+	path = only-this
+	url = https://github.com/bgartenmann/uebersicht-only-this-widget.git
+[submodule "Rdio-Widget"]
+	path = Rdio-Widget
+	url = https://github.com/larkov/Rdio-Widget.git
+[submodule "mbta-widget"]
+	path = mbta-widget
+	url = https://github.com/joshuaswilcox/mbta-widget
+[submodule "Stock-quotes-Widget"]
+	path = Stock-quotes-Widget
+	url = https://github.com/edasque/Stock-quotes-Widget
+[submodule "ScoreTicker"]
+	path = ScoreTicker
+	url = https://github.com/jckimmel/ScoreTicker
+[submodule "CurrLocation"]
+	path = CurrLocation
+	url = https://github.com/jckimmel/CurrLocation
+[submodule "horizontal-calendar-widget"]
+	path = horizontal-calendar-widget
+	url = https://github.com/ashikahmad/horizontal-calendar-widget
+[submodule "prayer-time-widget"]
+	path = prayer-time-widget
+	url = https://github.com/ashikahmad/prayer-time-widget
+[submodule "analog-clock-widget"]
+	path = analog-clock-widget
+	url = https://github.com/ashikahmad/analog-clock-widget
+[submodule "SPS"]
+	path = SPS
+	url = https://github.com/wilsongis/uebersicht-SPS_Widget
+[submodule "bart-widget"]
+	path = bart-widget
+	url = https://github.com/MatisseHack/bart-widget
+[submodule "craigslist"]
+	path = craigslist
+	url = https://github.com/stursby/uebersicht-craigslist
