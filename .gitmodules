@@ -73,3 +73,6 @@
 [submodule "things.widget"]
 	path = things.widget
 	url = https://github.com/digitalbias/things.widget
+[submodule "cjdns"]
+	path = cjdns
+	url = https://github.com/lukevers/uber-cjdns.git
