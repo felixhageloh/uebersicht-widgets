@@ -76,3 +76,6 @@
 [submodule "cjdns"]
 	path = cjdns
 	url = https://github.com/lukevers/uber-cjdns.git
+[submodule "vertical-calendar"]
+	path = vertical-calendar
+	url = https://github.com/ziti/uebersicht-calendar-widget
