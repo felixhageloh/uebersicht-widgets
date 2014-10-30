@@ -79,3 +79,6 @@
 [submodule "vertical-calendar"]
 	path = vertical-calendar
 	url = https://github.com/ziti/uebersicht-calendar-widget
+[submodule "d3-clock"]
+	path = d3-clock
+	url = https://github.com/cmaurer/d3-clock-uebersicht-widget.git
