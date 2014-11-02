@@ -82,3 +82,6 @@
 [submodule "d3-clock"]
 	path = d3-clock
 	url = https://github.com/cmaurer/d3-clock-uebersicht-widget.git
+[submodule "weathernow"]
+	path = weathernow
+	url = https://github.com/briandconnelly/weathernow-widget
