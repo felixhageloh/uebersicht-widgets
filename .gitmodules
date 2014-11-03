@@ -85,3 +85,6 @@
 [submodule "weathernow"]
 	path = weathernow
 	url = https://github.com/briandconnelly/weathernow-widget
+[submodule "trello"]
+	path = trello
+	url = https://github.com/NickBusey/Ubersicht-Trello-Widget
