@@ -88,3 +88,6 @@
 [submodule "trello"]
 	path = trello
 	url = https://github.com/NickBusey/Ubersicht-Trello-Widget
+[submodule "muni.widget"]
+	path = muni.widget
+	url = https://github.com/dmaurath/muni.widget.git
