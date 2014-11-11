@@ -91,3 +91,6 @@
 [submodule "muni.widget"]
 	path = muni.widget
 	url = https://github.com/dmaurath/muni.widget.git
+[submodule "slideshow"]
+	path = slideshow
+	url = https://github.com/mpandrews2000/slideshow.git
