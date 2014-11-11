@@ -94,3 +94,6 @@
 [submodule "slideshow"]
 	path = slideshow
 	url = https://github.com/mpandrews2000/slideshow.git
+[submodule "git-log"]
+	path = git-log
+	url = https://github.com/DigitallyBorn/Ubersicht-Git-Log.git
