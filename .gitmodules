@@ -97,3 +97,6 @@
 [submodule "git-log"]
 	path = git-log
 	url = https://github.com/DigitallyBorn/Ubersicht-Git-Log.git
+[submodule "wunderlist-tasks"]
+	path = wunderlist-tasks
+	url = https://github.com/NikitaBazhenov/UbersichtWunderlistTasks
