@@ -100,3 +100,6 @@
 [submodule "wunderlist-tasks"]
 	path = wunderlist-tasks
 	url = https://github.com/NikitaBazhenov/UbersichtWunderlistTasks
+[submodule "Youtube-Channel"]
+	path = Youtube-Channel
+	url = https://github.com/atika/Ubersicht-Youtube
