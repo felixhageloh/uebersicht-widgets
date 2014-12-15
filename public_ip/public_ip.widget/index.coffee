@@ -1,4 +1,4 @@
-command: "curl -s icanhazip.com|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
+command: "curl -4fNs ip.appspot.com"
 
 refreshFrequency: 43200000
 
