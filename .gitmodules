@@ -103,3 +103,6 @@
 [submodule "Youtube-Channel"]
 	path = Youtube-Channel
 	url = https://github.com/atika/Ubersicht-Youtube
+[submodule "countdown"]
+	path = countdown
+	url = https://github.com/anuragbakshi/Countdown-Widget
