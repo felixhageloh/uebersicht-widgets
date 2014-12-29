@@ -109,3 +109,6 @@
 [submodule "fever-hotlinks"]
 	path = fever-hotlinks
 	url = https://github.com/telega/fever-widget.git
+[submodule "GitFinder"]
+	path = GitFinder
+	url = https://github.com/atika/Ubersicht-GitFinder
