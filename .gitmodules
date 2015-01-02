@@ -112,3 +112,6 @@
 [submodule "GitFinder"]
 	path = GitFinder
 	url = https://github.com/atika/Ubersicht-GitFinder
+[submodule "ical-widget"]
+	path = ical-widget
+	url = https://github.com/djbrooks111/ical-widget.git
