@@ -5,6 +5,9 @@
 Got a widget to share? Great, create a **github repo** for it, then [open an issue here](https://github.com/felixhageloh/uebersicht-widgets/issues) and be sure to mention the url.
 It will get picked up ASAP!
 
+Note:
+Since tweaking the look of a widget is fun and easy, the widget gallery is probably the most useful if it serves as starting point instead of being a comprehensive list of all possible widgets. For this reason we try to keep the widget gallery as focused as possible. This means, instead of adding new widgets that are very similar to an existing widget, we try to encourage people to make a pull requests with their improvements (these could be technical improvements or style/design improvements).
+
 ## Widget format
 
 Your repo should contain at least these three files:
