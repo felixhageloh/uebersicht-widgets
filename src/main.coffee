@@ -1,12 +1,14 @@
 $              = require '../lib/jquery'
 WidgetTemplate = require './widget-template.coffee'
 downloads      = require './download-counts.coffee'
+WidgetDetails  = require './widget-details.coffee'
 
 listEl         = $('#widget_list')
 mainNav        = $('header nav')
 installationEl = $('#installation')
 
-allWidgets = {}
+allWidgets    = {}
+widgetDetails = WidgetDetails($('#widget-details'))
 
 init = (widgets) ->
   widgetEls = []
@@ -30,9 +32,20 @@ init = (widgets) ->
       scrollToWidget(window.location.hash) if window.location.hash
 
 registerEvents = (widgetEls) ->
+  widgetDetails.onClose ->
+    $(document.body).css overflow: 'auto'
+
   listEl.on "click", '.download', (e) ->
     id = $(e.currentTarget).data('id')
     downloads.increment id, -> showDownloadCount(allWidgets[id])
+
+  listEl.on "click", '.details', (e) ->
+    e.preventDefault()
+    id = $(e.currentTarget).data('id')
+
+    $(document.body).css overflow: 'hidden'
+    widgetDetails.render(allWidgets[id])
+    widgetDetails.show()
 
   mainNav.on 'click', '.sort a', (e) ->
     e.preventDefault()

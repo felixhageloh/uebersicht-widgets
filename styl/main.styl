@@ -3,10 +3,11 @@
 @import 'button'
 @import 'widget'
 @import 'nav'
+@import 'widget-details'
 
 global-reset()
 
-header-height = 146px
+header-height = 126px
 
 body, html
   background: #fff
@@ -57,6 +58,21 @@ header
     word-spacing: normal
     display: inline-block
     margin: 0 8px
+
+#widget-details
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 200
+  display: none
+
+  &.active
+    display: block
+
+  .content
+    margin: 10% auto 0 auto
 
 .wrapper
   width: 584px

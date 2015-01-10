@@ -21,7 +21,7 @@ module.exports = (widget) -> """
       download
     </a>
 
-    <a class='details' #{if widget.repoUrl then repoLink(widget) else ''}>
+    <a class='details' data-id="#{widget.id}" #{if widget.repoUrl then repoLink(widget) else ''}>
       <p>#{widget.description}</p>
     </a>
   </div>
