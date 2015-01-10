@@ -1,2 +1,2 @@
 #!/bin/bash
-watchify -v -t coffeeify src/main.coffee -o main.js
+watchify src/main.coffee -o main.js -v

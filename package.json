@@ -1,0 +1,15 @@
+{
+  "name": "uebersicht-website",
+  "version": "1.0.0",
+  "author": "Felix Hageloh",
+  "scripts": {
+    "start": "bin/compile-js & bin/compile-css & nws"
+  },
+  "browserify": {
+    "transform": [ "coffeeify" ]
+  },
+  "devDependencies": {
+    "coffeeify": "^1.0.0",
+    "cookies-js": "^1.1.0"
+  }
+}
