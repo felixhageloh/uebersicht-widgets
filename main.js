@@ -401,12 +401,13 @@ $ = require('../lib/jquery');
 H = require('./widget-details-template.coffee');
 
 module.exports = function(domEl) {
-  var api, apiURL, callbacks, getReadme, init;
+  var absoluteImgUrl, api, apiURL, callbacks, fixLinks, getReadme, init, isAbsoluteUrl, nexFrame, _ref, _ref1;
   api = {};
   apiURL = "https://api.github.com";
   callbacks = {
     onClose: []
   };
+  nexFrame = (_ref = (_ref1 = typeof requestAnimationFrame !== "undefined" && requestAnimationFrame !== null ? requestAnimationFrame : webkitRequestAnimationFrame) != null ? _ref1 : mozRequestAnimationFrame) != null ? _ref : setTimeout;
   init = function() {
     domEl.on('click', function(e) {
       if (e.target === domEl[0]) {
@@ -420,22 +421,29 @@ module.exports = function(domEl) {
     domEl.html(H(widget));
     readmeEl = domEl.find('.readme');
     return getReadme(widget, function(err, html) {
+      var el;
       if (err) {
-        throw err;
+        return readmeEl.html("No README available.");
       }
-      return readmeEl.html(html);
+      el = $(html);
+      fixLinks(el, widget);
+      return nexFrame(function() {
+        return readmeEl.html(el);
+      });
     });
   };
   api.show = function() {
-    return domEl.addClass('active');
+    return nexFrame(function() {
+      return domEl.addClass('active');
+    });
   };
   api.hide = function() {
-    var cb, _i, _len, _ref, _results;
+    var cb, _i, _len, _ref2, _results;
     domEl.removeClass('active');
-    _ref = callbacks.onClose;
+    _ref2 = callbacks.onClose;
     _results = [];
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      cb = _ref[_i];
+    for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
+      cb = _ref2[_i];
       _results.push(cb());
     }
     return _results;
@@ -444,6 +452,9 @@ module.exports = function(domEl) {
     return callbacks.onClose.push(cb);
   };
   getReadme = function(widget, callback) {
+    if (widget.repo === "uebersicht-widgets") {
+      return callback("old widget");
+    }
     return $.ajax({
       url: "" + apiURL + "/repos/" + widget.user + "/" + widget.repo + "/readme",
       method: 'GET',
@@ -452,8 +463,40 @@ module.exports = function(domEl) {
       },
       success: function(html) {
         return callback(null, html);
+      },
+      error: function(_, err) {
+        return callback(err);
       }
     });
+  };
+  fixLinks = function(el, widget) {
+    var a, img, url, _i, _j, _len, _len1, _ref2, _ref3, _results;
+    _ref2 = el.find('img');
+    for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
+      img = _ref2[_i];
+      url = img.getAttribute('src');
+      if (isAbsoluteUrl(url)) {
+        continue;
+      }
+      img.src = absoluteImgUrl(widget, url);
+    }
+    _ref3 = el.find('a');
+    _results = [];
+    for (_j = 0, _len1 = _ref3.length; _j < _len1; _j++) {
+      a = _ref3[_j];
+      url = a.getAttribute('href');
+      if (isAbsoluteUrl(url)) {
+        continue;
+      }
+      _results.push(a.href = absoluteImgUrl(widget, url));
+    }
+    return _results;
+  };
+  isAbsoluteUrl = function(url) {
+    return /^http/.test(url) || /^\/\//.test(url);
+  };
+  absoluteImgUrl = function(widget, url) {
+    return "https://raw.githubusercontent.com/" + widget.user + "/" + widget.repo + "/master/" + url;
   };
   return init();
 };
@@ -468,7 +511,7 @@ repoLink = function(widget) {
 };
 
 module.exports = function(widget) {
-  return "<div id='" + widget.id + "' class='widget'>\n  <div class='author'>" + widget.author + "</div>\n\n  <div class='screenshot'>\n    <div class='image'\n         style='background-image: url(" + widget.screenshotUrl + ")'>\n    </div>\n  </div>\n\n  <div class='info'>\n    <h1>" + widget.name + "</h1>\n    <div class='download-count'></div>\n  </div>\n\n  <a class='download' data-id=\"" + widget.id + "\" href='" + widget.downloadUrl + "' title='download widget'>\n    download\n  </a>\n\n  <a class='details' data-id=\"" + widget.id + "\" " + (widget.repoUrl ? repoLink(widget) : '') + ">\n    <p>" + widget.description + "</p>\n  </a>\n</div>";
+  return "<div id='" + widget.id + "' class='widget'>\n  <div class='author'>" + widget.author + "</div>\n\n  <div class='screenshot'>\n    <div class='image'\n         style='background-image: url(" + widget.screenshotUrl + ")'>\n    </div>\n  </div>\n\n  <div class='info'>\n    <h1>" + widget.name + "</h1>\n    <div class='download-count'></div>\n  </div>\n\n  <a class='download' data-id=\"" + widget.id + "\" href='" + widget.downloadUrl + "' title='download widget'>\n    download\n  </a>\n\n  <a class='details' data-id=\"" + widget.id + "\" " + (widget.repoUrl ? repoLink(widget) : '') + ">\n  </a>\n</div>";
 };
 
 

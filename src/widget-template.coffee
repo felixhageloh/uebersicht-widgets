@@ -22,7 +22,6 @@ module.exports = (widget) -> """
     </a>
 
     <a class='details' data-id="#{widget.id}" #{if widget.repoUrl then repoLink(widget) else ''}>
-      <p>#{widget.description}</p>
     </a>
   </div>
 """
