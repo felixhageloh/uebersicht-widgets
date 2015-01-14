@@ -17,6 +17,9 @@ module.exports = (domEl) ->
     domEl.on 'click', (e) ->
       api.hide() if e.target == domEl[0]
 
+    domEl.on 'click', 'a.close', (e) ->
+      api.hide()
+
     api
 
   api.render = (widget) ->
@@ -30,10 +33,13 @@ module.exports = (domEl) ->
       nexFrame -> readmeEl.html el
 
   api.show = ->
+    domEl.show()
     nexFrame -> domEl.addClass 'active'
 
   api.hide = ->
-    domEl.removeClass 'active'
+    domEl
+      .removeClass 'active'
+      .hide()
     cb() for cb in callbacks.onClose
 
   api.onClose = (cb) ->

@@ -1,14 +1,19 @@
-#widget-details
+@import 'github-readme'
+
+#widget_details
   background: #fff
 
   blurRadius = 30px
+
   .back-cover
     position: absolute
     top: -(blurRadius)
     left: -(blurRadius)
     bottom: -(blurRadius)
     right: -(blurRadius)
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'blur\'><feGaussianBlur stdDeviation=\'30\'/></filter></svg>#blur");
     -webkit-filter: blur(blurRadius)
+
     pointer-events: none
     opacity: 0.2
     transform: translate3d(0, 0, 0)
@@ -19,47 +24,62 @@
 
   .content
     position: relative
-    width: 80%
-    min-width: 540px
-    max-width: 1000px
-    height: 534px
     border-radius: 2px
-    box-shadow: 0 0 1px rgba(#000, 0.7)
+    box-shadow: 0 0 1px 1px rgba(#000, 0.15)
 
     h1
       margin-top: 0
+      font-size: 24px
 
     .details
       position: absolute
       top: 0
       bottom: 0
       right: 0
-      width: 300px
       padding: 20px
       background: rgba(#fff, 0.2)
 
       p
         font-size: 14px
 
-      nav
-        a
-          @extend .button
-          text-align: center
-          margin: 10px 0 20px 0
-          line-height: 24px
-          font-size: 16px
+      a.download
+        @extend .button
+        text-align: center
+        margin: 10px 0 20px 0
+        line-height: 24px
+        font-size: 16px
+
+      a.close
+        position: absolute
+        height: 24px
+        width: 24px
+        top: 0
+        right: 0
+        color: #777
+        font-size: 18px
+        line-height: 30px
+        text-decoration: none
+        cursor: pointer
+        font-weight: 100
+
+        &:hover
+          color: #525252
 
       img
         width: 100%
-        max-height: 260px
+        max-height: 220px
         box-sizing: border-box
         margin: 20px 0
         box-shadow: 0 0 20px rgba(#000, 0.2)
         border-radius: 2px
 
+    a.github
+      position: absolute
+      left: 20px
+      bottom: 20px
+
     .readme-wrapper
       position: absolute
-      right: 340px
       top: 0
       left: 0
       bottom: 0
@@ -68,193 +88,15 @@
       padding: 20px 0
       box-shadow: 1px 0 1px -1px rgba(#000, 0.7)
 
-
     .readme
       overflow: scroll
       height: 100%
       box-sizing: border-box
       padding: 0 48px
 
-      /* headings */
-
-      h1, h2
-        text-align: left
-
-      h1
-        margin: 20px 0
-
-      h1:first-child
-        margin-top:0
-
-      h2
-        font-size: 1.2em
-        font-weight: 400
-        margin: 20px 0 8px
-
-      h3, h4, h5, h6
-        margin-top:12px
-        margin-bottom:0
-        font-weight: 400
-
-      h5, h6
-        font-size:0.9em
-        line-height:1.0em
-
-      /* end of headings */
-      p
-        margin:0 0 16px 0
-
-      p:last-child
-          margin:0
-
-      #wrapper hr
-        width: 100%
-        margin: 3em auto
-        border: 0
-        color: #eee
-        background-color: #ccc
-        height: 1px
-        -webkit-box-shadow:0px 1px 0px rgba(255, 255, 255, 0.75)
-
-      /* lists */
-      ol
-          list-style: outside decimal
-
-      ul
-          list-style: outside disc
-
-      ol, ul
-          padding-left:0
-          margin-bottom:20px
-
-      ol li
-          margin-left:28px
-
-      ul li
-          margin-bottom:8px
-          margin-left:16px
-
-      ol:last-child, ul:last-child
-          margin:0
-
-      li > ol, li > ul
-          padding-left:12px
-
-      dl
-          margin-bottom:20px
-
-      dl dt
-          font-weight:bold
-          margin-bottom:8px
-
-      dl dd
-          margin-left:0
-          margin-bottom:12px
-
-      dl dd:last-child, dl:last-child
-          margin-bottom:0
-
-      /* end of lists */
-      pre
-        white-space: pre-wrap
-        width: 96%
-        margin-bottom: 20px
-        overflow: hidden
-        padding: 3px 10px
-        background-color: #eee
-
-      code
-        font-family: Ubuntu Mono, mono
-        white-space: nowrap
-        padding: 2px
-        background-color: #eee
-
-      pre code
-        white-space: pre-wrap
-        border: none
-        padding: 0
-        background-color: transparent
-        -webkit-border-radius: 0
-
-      blockquote
-        margin-left: 0
-        margin-right: 0
-        width: 96%
-        padding: 0 10px
-        border-left: 3px solid #ddd
-        color: #777
-
-      table
-        margin-left: auto
-        margin-right: auto
-        margin-bottom: 24px
-        border-bottom: 1px solid #ddd
-        border-right: 1px solid #ddd
-        border-spacing: 0
-
-      table th
-        padding: 3px 10px
-        background-color: #eee
-        border-top: 1px solid #ddd
-        border-left: 1px solid #ddd
-
-      table tr
-
-      table td
-        padding: 3px 10px
-        border-top: 1px solid #ddd
-        border-left: 1px solid #ddd
-
-      caption
-          font-size: 1.2em
-          font-weight: bold
-          margin-bottom: 5px
-
-      figure
-          display: block
-          text-align: center
-
-      #wrapper img
-          border: none
-          display: block
-          margin: 1em auto
-          max-width: 100%
-
-      figcaption
-          font-size: 0.8em
-          font-style: italic
-
-      mark
-          background: #fefec0
-          padding:1px 3px
+      @extend .github-readme
 
 
-
-      /* classes */
-
-      .markdowncitation
-
-      .footnote
-          font-size: 0.8em
-          vertical-align: super
-
-      .footnotes ol
-          font-weight: bold
-
-      .footnotes ol li p
-          font-weight: normal
-
-
-      /* custom formatting classes */
-
-      .shadow
-          -webkit-box-shadow: 0 2px 4px #999
-
-      .source
-          text-align: center
-          font-size: 0.8em
-          color: #777
-          margin: -40px
 
 
 

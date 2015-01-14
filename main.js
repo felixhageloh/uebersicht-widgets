@@ -239,7 +239,7 @@ installationEl = $('#installation');
 
 allWidgets = {};
 
-widgetDetails = WidgetDetails($('#widget-details'));
+widgetDetails = WidgetDetails($('#widget_details'));
 
 init = function(widgets) {
   var widget, widgetEls, _i, _len;
@@ -275,11 +275,14 @@ init = function(widgets) {
 
 registerEvents = function(widgetEls) {
   widgetDetails.onClose(function() {
-    return $(document.body).css({
+    $(document.body).css({
       overflow: 'auto'
     });
+    return $('header').css({
+      background: ''
+    });
   });
-  listEl.on("click", '.download', function(e) {
+  $(document).on("click", '.download', function(e) {
     var id;
     id = $(e.currentTarget).data('id');
     return downloads.increment(id, function() {
@@ -293,16 +296,24 @@ registerEvents = function(widgetEls) {
     $(document.body).css({
       overflow: 'hidden'
     });
+    $('header').css({
+      background: '#fff'
+    });
     widgetDetails.render(allWidgets[id]);
     return widgetDetails.show();
   });
   mainNav.on('click', '.sort a', function(e) {
     e.preventDefault();
+    widgetDetails.hide();
     return switchSortBy($(e.currentTarget).data('sort-by'));
   });
   $('[href=#installation]').on('click', function(e) {
     e.preventDefault();
+    widgetDetails.hide();
     return installationEl.addClass('visible');
+  });
+  $('[href=#disclaimer]').on('click', function(e) {
+    return widgetDetails.hide();
   });
   return installationEl.on('click', '[data-action=close]', function(e) {
     e.preventDefault();
@@ -388,7 +399,7 @@ repoLink = function(widget) {
 };
 
 module.exports = function(widget) {
-  return "<div class='back-cover'>\n  <img src=\"" + widget.screenshotUrl + "\"/>\n</div>\n\n<div class='content'>\n  <div class='details'>\n    <h1>" + widget.name + "</h1>\n\n    <nav>\n      <a class='download' data-id=\"" + widget.id + "\" href='" + widget.downloadUrl + "' title='download widget'>\n        download\n      </a>\n    </nav>\n\n    <p class='description'>" + widget.description + "</p>\n    <img src=\"" + widget.screenshotUrl + "\"/>\n    <a data-id=\"" + widget.id + "\" " + (widget.repoUrl ? repoLink(widget) : '') + ">\n      View on GitHub.\n    </a>\n  </div>\n\n  <div class='readme-wrapper'>\n    <div class='readme'></div>\n  </div>\n</div>";
+  return "<div class='back-cover'>\n  <img src=\"" + widget.screenshotUrl + "\"/>\n</div>\n\n<div class='content'>\n  <div class='details'>\n    <h1>" + widget.name + "</h1>\n\n    <nav>\n      <a class='download' data-id=\"" + widget.id + "\" href='" + widget.downloadUrl + "' title='download widget'>\n        download\n      </a>\n\n      <a class='close' title='close'>✕</a>\n    </nav>\n\n    <p class='description'>" + widget.description + "</p>\n    <img src=\"" + widget.screenshotUrl + "\"/>\n\n    <p>by <em>" + widget.author + "</em></p>\n\n    <a class='github' " + (widget.repoUrl ? repoLink(widget) : '') + ">\n      View on GitHub.\n    </a>\n  </div>\n\n  <div class='readme-wrapper'>\n    <div class='readme'></div>\n  </div>\n</div>";
 };
 
 
@@ -414,6 +425,9 @@ module.exports = function(domEl) {
         return api.hide();
       }
     });
+    domEl.on('click', 'a.close', function(e) {
+      return api.hide();
+    });
     return api;
   };
   api.render = function(widget) {
@@ -433,13 +447,14 @@ module.exports = function(domEl) {
     });
   };
   api.show = function() {
+    domEl.show();
     return nexFrame(function() {
       return domEl.addClass('active');
     });
   };
   api.hide = function() {
     var cb, _i, _len, _ref2, _results;
-    domEl.removeClass('active');
+    domEl.removeClass('active').hide();
     _ref2 = callbacks.onClose;
     _results = [];
     for (_i = 0, _len = _ref2.length; _i < _len; _i++) {

@@ -15,11 +15,16 @@ module.exports = (widget) -> """
         <a class='download' data-id="#{widget.id}" href='#{widget.downloadUrl}' title='download widget'>
           download
         </a>
+
+        <a class='close' title='close'>✕</a>
       </nav>
 
       <p class='description'>#{widget.description}</p>
       <img src="#{widget.screenshotUrl}"/>
-      <a data-id="#{widget.id}" #{if widget.repoUrl then repoLink(widget) else ''}>
+
+      <p>by <em>#{widget.author}</em></p>
+
+      <a class='github' #{if widget.repoUrl then repoLink(widget) else ''}>
         View on GitHub.
       </a>
     </div>

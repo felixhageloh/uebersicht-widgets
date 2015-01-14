@@ -8,7 +8,7 @@ mainNav        = $('header nav')
 installationEl = $('#installation')
 
 allWidgets    = {}
-widgetDetails = WidgetDetails($('#widget-details'))
+widgetDetails = WidgetDetails($('#widget_details'))
 
 init = (widgets) ->
   widgetEls = []
@@ -34,8 +34,9 @@ init = (widgets) ->
 registerEvents = (widgetEls) ->
   widgetDetails.onClose ->
     $(document.body).css overflow: 'auto'
+    $('header').css background: ''
 
-  listEl.on "click", '.download', (e) ->
+  $(document).on "click", '.download', (e) ->
     id = $(e.currentTarget).data('id')
     downloads.increment id, -> showDownloadCount(allWidgets[id])
 
@@ -44,16 +45,22 @@ registerEvents = (widgetEls) ->
     id = $(e.currentTarget).data('id')
 
     $(document.body).css overflow: 'hidden'
+    $('header').css background: '#fff'
     widgetDetails.render(allWidgets[id])
     widgetDetails.show()
 
   mainNav.on 'click', '.sort a', (e) ->
     e.preventDefault()
+    widgetDetails.hide()
     switchSortBy $(e.currentTarget).data('sort-by')
 
   $('[href=#installation]').on 'click', (e) ->
     e.preventDefault()
+    widgetDetails.hide()
     installationEl.addClass('visible')
+
+  $('[href=#disclaimer]').on 'click', (e) ->
+    widgetDetails.hide()
 
   installationEl.on 'click',  '[data-action=close]', (e) ->
     e.preventDefault()
