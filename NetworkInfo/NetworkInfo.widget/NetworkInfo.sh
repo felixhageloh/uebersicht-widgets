@@ -27,6 +27,10 @@ startJSON
 # Output the Ethernet information.
 ip=$(networksetup -getinfo ethernet | grep -Ei '(^IP address:)' | awk '{print $3}')
 mac=$(networksetup -getinfo ethernet | grep -Ei '(^Ethernet address:)' | awk '{print $3}')
+if [ "$ip" = "" ];then 
+	ip=$(networksetup -getinfo thunderbolt\ ethernet | grep -Ei '(^IP address:)' | awk '{print $3}')
+	mac=$(networksetup -getinfo thunderbolt\ ethernet | grep -Ei '(^Ethernet address:)' | awk '{print $3}')
+fi
 exportService "ethernet"
 
 # Place a comma between services.
