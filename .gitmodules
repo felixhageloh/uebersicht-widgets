@@ -121,3 +121,6 @@
 [submodule "Set-networking"]
 	path = Set-networking
 	url = https://github.com/brookesdjb/Set-networking.widget
+[submodule "github-notifications"]
+	path = github-notifications
+	url = https://github.com/mtscout6/uebersicht-github-notifications.git
