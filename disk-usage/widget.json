@@ -1,6 +1,6 @@
 {
   "name": "Disk Usage",
-  "description": "Shows disk usage for mounted disks, with the option to exclude specific disks. Update: now with new style in two variants!",
+  "description": "Shows disk usage for mounted disks, with the option to exclude specific disks. Update: New option for showing disk sizes.",
   "author": "Adam Courtemanche",
   "email": "adam.courtemanche@gmail.com"
 }
