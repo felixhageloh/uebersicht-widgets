@@ -5,6 +5,7 @@ module.exports = (domEl) ->
   api = {}
 
   apiURL    = "https://api.github.com"
+  current   = null
   callbacks =
     onClose: []
 
@@ -23,6 +24,7 @@ module.exports = (domEl) ->
     api
 
   api.render = (widget) ->
+    current = widget
     domEl.html H(widget)
 
     readmeEl = domEl.find '.readme'
@@ -32,15 +34,17 @@ module.exports = (domEl) ->
       fixLinks(el, widget)
       nexFrame -> readmeEl.html el
 
-  api.show = ->
+  api.show = (cb) ->
     domEl.show()
-    nexFrame -> domEl.addClass 'active'
+    nexFrame ->
+      domEl.addClass 'active'
+      cb()
 
   api.hide = ->
     domEl
       .removeClass 'active'
       .hide()
-    cb() for cb in callbacks.onClose
+    cb(current) for cb in callbacks.onClose
 
   api.onClose = (cb) ->
     callbacks.onClose.push cb

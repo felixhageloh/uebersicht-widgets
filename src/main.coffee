@@ -2,16 +2,21 @@ $              = require '../lib/jquery'
 WidgetTemplate = require './widget-template.coffee'
 downloads      = require './download-counts.coffee'
 WidgetDetails  = require './widget-details.coffee'
+Router         = require './router.coffee'
 
 listEl         = $('#widget_list')
 mainNav        = $('header nav')
 installationEl = $('#installation')
+router         = null
+lastScroll     = null
 
 allWidgets    = {}
 widgetDetails = WidgetDetails($('#widget_details'))
 
 init = (widgets) ->
   widgetEls = []
+
+  router = Router goToState
 
   for widget in widgets when widget
     do (widget) ->
@@ -28,13 +33,12 @@ init = (widgets) ->
   setTimeout ->
     registerEvents(widgetEls)
     switchSortBy 'modifiedAt'
-    setTimeout ->
-      scrollToWidget(window.location.hash) if window.location.hash
+    setTimeout router.activate
+
 
 registerEvents = (widgetEls) ->
-  widgetDetails.onClose ->
-    $(document.body).css overflow: 'auto'
-    $('header').css background: ''
+
+  widgetDetails.onClose -> router.navigate()
 
   $(document).on "click", '.download', (e) ->
     id = $(e.currentTarget).data('id')
@@ -43,11 +47,7 @@ registerEvents = (widgetEls) ->
   listEl.on "click", '.details', (e) ->
     e.preventDefault()
     id = $(e.currentTarget).data('id')
-
-    $(document.body).css overflow: 'hidden'
-    $('header').css background: '#fff'
-    widgetDetails.render(allWidgets[id])
-    widgetDetails.show()
+    router.navigate allWidgets[id]
 
   mainNav.on 'click', '.sort a', (e) ->
     e.preventDefault()
@@ -65,6 +65,24 @@ registerEvents = (widgetEls) ->
   installationEl.on 'click',  '[data-action=close]', (e) ->
     e.preventDefault()
     installationEl.removeClass('visible')
+
+goToState = (id, initial = false) ->
+  widget = allWidgets[id]
+  scrollToWidget widget if initial and widget
+  showWidget widget
+
+showWidget = (widget) ->
+  if widget
+    lastScroll = document.body.scrollTop
+    widgetDetails.render(widget)
+    widgetDetails.show ->
+      $(document.body).css overflow: 'hidden'
+      $('header').css background: '#fff'
+  else
+    $(document.body).css overflow: 'auto'
+    $('header').css background: ''
+    setTimeout ->
+      document.body.scrollTop = lastScroll if lastScroll
 
 renderWidget = (widget) ->
   $(WidgetTemplate(widget))
@@ -100,8 +118,8 @@ sortWidgets = (property) ->
     widgetEl = document.getElementById(widget.id)
     listEl[0].insertBefore widgetEl, listEl.children()[i]
 
-scrollToWidget = (domId) ->
+scrollToWidget = (widget) ->
   headerHeight = $('header').height()
-  window.scrollTo 0, $(domId).offset()?.top - headerHeight
+  window.scrollTo 0, $('#'+widget.id).offset()?.top - headerHeight
 
 fetchWidgets init

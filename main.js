@@ -221,7 +221,7 @@ exports.increment = function(id, callback) {
 
 
 },{"cookies-js":"/Users/felix/Workspace/Uebersicht/widget-gallery/website/node_modules/cookies-js/src/cookies.js"}],"/Users/felix/Workspace/Uebersicht/widget-gallery/website/src/main.coffee":[function(require,module,exports){
-var $, WidgetDetails, WidgetTemplate, allWidgets, downloads, fetchWidgets, init, installationEl, listEl, mainNav, registerEvents, renderWidget, scrollToWidget, showDownloadCount, sortWidgets, switchSortBy, widgetDetails;
+var $, Router, WidgetDetails, WidgetTemplate, allWidgets, downloads, fetchWidgets, goToState, init, installationEl, lastScroll, listEl, mainNav, registerEvents, renderWidget, router, scrollToWidget, showDownloadCount, showWidget, sortWidgets, switchSortBy, widgetDetails;
 
 $ = require('../lib/jquery');
 
@@ -231,11 +231,17 @@ downloads = require('./download-counts.coffee');
 
 WidgetDetails = require('./widget-details.coffee');
 
+Router = require('./router.coffee');
+
 listEl = $('#widget_list');
 
 mainNav = $('header nav');
 
 installationEl = $('#installation');
+
+router = null;
+
+lastScroll = null;
 
 allWidgets = {};
 
@@ -244,6 +250,7 @@ widgetDetails = WidgetDetails($('#widget_details'));
 init = function(widgets) {
   var widget, widgetEls, _i, _len;
   widgetEls = [];
+  router = Router(goToState);
   for (_i = 0, _len = widgets.length; _i < _len; _i++) {
     widget = widgets[_i];
     if (widget) {
@@ -265,22 +272,13 @@ init = function(widgets) {
   return setTimeout(function() {
     registerEvents(widgetEls);
     switchSortBy('modifiedAt');
-    return setTimeout(function() {
-      if (window.location.hash) {
-        return scrollToWidget(window.location.hash);
-      }
-    });
+    return setTimeout(router.activate);
   });
 };
 
 registerEvents = function(widgetEls) {
   widgetDetails.onClose(function() {
-    $(document.body).css({
-      overflow: 'auto'
-    });
-    return $('header').css({
-      background: ''
-    });
+    return router.navigate();
   });
   $(document).on("click", '.download', function(e) {
     var id;
@@ -293,14 +291,7 @@ registerEvents = function(widgetEls) {
     var id;
     e.preventDefault();
     id = $(e.currentTarget).data('id');
-    $(document.body).css({
-      overflow: 'hidden'
-    });
-    $('header').css({
-      background: '#fff'
-    });
-    widgetDetails.render(allWidgets[id]);
-    return widgetDetails.show();
+    return router.navigate(allWidgets[id]);
   });
   mainNav.on('click', '.sort a', function(e) {
     e.preventDefault();
@@ -319,6 +310,45 @@ registerEvents = function(widgetEls) {
     e.preventDefault();
     return installationEl.removeClass('visible');
   });
+};
+
+goToState = function(id, initial) {
+  var widget;
+  if (initial == null) {
+    initial = false;
+  }
+  widget = allWidgets[id];
+  if (initial && widget) {
+    scrollToWidget(widget);
+  }
+  return showWidget(widget);
+};
+
+showWidget = function(widget) {
+  if (widget) {
+    lastScroll = document.body.scrollTop;
+    widgetDetails.render(widget);
+    return widgetDetails.show(function() {
+      $(document.body).css({
+        overflow: 'hidden'
+      });
+      return $('header').css({
+        background: '#fff'
+      });
+    });
+  } else {
+    $(document.body).css({
+      overflow: 'auto'
+    });
+    $('header').css({
+      background: ''
+    });
+    return setTimeout(function() {
+      if (lastScroll) {
+        return document.body.scrollTop = lastScroll;
+      }
+    });
+  }
 };
 
 renderWidget = function(widget) {
@@ -381,17 +411,65 @@ sortWidgets = function(property) {
   return _results;
 };
 
-scrollToWidget = function(domId) {
+scrollToWidget = function(widget) {
   var headerHeight, _ref;
   headerHeight = $('header').height();
-  return window.scrollTo(0, ((_ref = $(domId).offset()) != null ? _ref.top : void 0) - headerHeight);
+  return window.scrollTo(0, ((_ref = $('#' + widget.id).offset()) != null ? _ref.top : void 0) - headerHeight);
 };
 
 fetchWidgets(init);
 
 
 
-},{"../lib/jquery":"/Users/felix/Workspace/Uebersicht/widget-gallery/website/lib/jquery.js","./download-counts.coffee":"/Users/felix/Workspace/Uebersicht/widget-gallery/website/src/download-counts.coffee","./widget-details.coffee":"/Users/felix/Workspace/Uebersicht/widget-gallery/website/src/widget-details.coffee","./widget-template.coffee":"/Users/felix/Workspace/Uebersicht/widget-gallery/website/src/widget-template.coffee"}],"/Users/felix/Workspace/Uebersicht/widget-gallery/website/src/widget-details-template.coffee":[function(require,module,exports){
+},{"../lib/jquery":"/Users/felix/Workspace/Uebersicht/widget-gallery/website/lib/jquery.js","./download-counts.coffee":"/Users/felix/Workspace/Uebersicht/widget-gallery/website/src/download-counts.coffee","./router.coffee":"/Users/felix/Workspace/Uebersicht/widget-gallery/website/src/router.coffee","./widget-details.coffee":"/Users/felix/Workspace/Uebersicht/widget-gallery/website/src/widget-details.coffee","./widget-template.coffee":"/Users/felix/Workspace/Uebersicht/widget-gallery/website/src/widget-template.coffee"}],"/Users/felix/Workspace/Uebersicht/widget-gallery/website/src/router.coffee":[function(require,module,exports){
+module.exports = function(onStateChange) {
+  var api, baseUrl, changeState, currentState, generateHash, init, initialPath;
+  api = {};
+  baseUrl = null;
+  init = function() {
+    baseUrl = window.location.href.replace(initialPath(), '');
+    window.addEventListener('hashchange', function(e) {
+      return onStateChange(currentState());
+    });
+    return api;
+  };
+  api.navigate = function(widget) {
+    return changeState(widget);
+  };
+  api.activate = function() {
+    return onStateChange(currentState(), true);
+  };
+  initialPath = function() {
+    if (window.location.hash) {
+      return window.location.hash;
+    }
+  };
+  changeState = function(widget) {
+    var hash;
+    hash = generateHash(widget) || baseUrl;
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, hash);
+      return onStateChange(widget != null ? widget.id : void 0);
+    } else {
+      return window.location.hash = hash;
+    }
+  };
+  generateHash = function(widget) {
+    if (widget) {
+      return "#" + widget.id;
+    } else {
+      return '';
+    }
+  };
+  currentState = function() {
+    return window.location.hash.replace('#', '');
+  };
+  return init();
+};
+
+
+
+},{}],"/Users/felix/Workspace/Uebersicht/widget-gallery/website/src/widget-details-template.coffee":[function(require,module,exports){
 var repoLink;
 
 repoLink = function(widget) {
@@ -412,9 +490,10 @@ $ = require('../lib/jquery');
 H = require('./widget-details-template.coffee');
 
 module.exports = function(domEl) {
-  var absoluteImgUrl, api, apiURL, callbacks, fixLinks, getReadme, init, isAbsoluteUrl, nexFrame, _ref, _ref1;
+  var absoluteImgUrl, api, apiURL, callbacks, current, fixLinks, getReadme, init, isAbsoluteUrl, nexFrame, _ref, _ref1;
   api = {};
   apiURL = "https://api.github.com";
+  current = null;
   callbacks = {
     onClose: []
   };
@@ -432,6 +511,7 @@ module.exports = function(domEl) {
   };
   api.render = function(widget) {
     var readmeEl;
+    current = widget;
     domEl.html(H(widget));
     readmeEl = domEl.find('.readme');
     return getReadme(widget, function(err, html) {
@@ -446,10 +526,11 @@ module.exports = function(domEl) {
       });
     });
   };
-  api.show = function() {
+  api.show = function(cb) {
     domEl.show();
     return nexFrame(function() {
-      return domEl.addClass('active');
+      domEl.addClass('active');
+      return cb();
     });
   };
   api.hide = function() {
@@ -459,7 +540,7 @@ module.exports = function(domEl) {
     _results = [];
     for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
       cb = _ref2[_i];
-      _results.push(cb());
+      _results.push(cb(current));
     }
     return _results;
   };
