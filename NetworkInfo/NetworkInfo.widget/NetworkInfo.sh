@@ -28,8 +28,14 @@ startJSON
 ip=$(networksetup -getinfo ethernet | grep -Ei '(^IP address:)' | awk '{print $3}')
 mac=$(networksetup -getinfo ethernet | grep -Ei '(^Ethernet address:)' | awk '{print $3}')
 if [ "$ip" = "" ];then 
-	ip=$(networksetup -getinfo thunderbolt\ ethernet | grep -Ei '(^IP address:)' | awk '{print $3}')
-	mac=$(networksetup -getinfo thunderbolt\ ethernet | grep -Ei '(^Ethernet address:)' | awk '{print $3}')
+    if networksetup -listallnetworkservices | grep -qEi '^Display Ethernet'; then
+        service="Display Ethernet"
+    else
+        service="Thunderbolt Ethernet"
+    fi
+
+    ip=$(networksetup -getinfo "$service" | grep -Ei '(^IP address:)' | awk '{print $3}')
+    mac=$(networksetup -getinfo "$service" | grep -Ei '(^Ethernet address:)' | awk '{print $3}')
 fi
 exportService "ethernet"
 
