@@ -124,3 +124,6 @@
 [submodule "github-notifications"]
 	path = github-notifications
 	url = https://github.com/mtscout6/uebersicht-github-notifications.git
+[submodule "gcal-widget"]
+	path = gcal-widget
+	url = https://github.com/mattk410/gcal-widget
