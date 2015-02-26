@@ -127,3 +127,6 @@
 [submodule "gcal-widget"]
 	path = gcal-widget
 	url = https://github.com/mattk410/gcal-widget
+[submodule "authentic-weather"]
+	path = authentic-weather
+	url = https://github.com/reduxd/authentic-ubersicht.git
