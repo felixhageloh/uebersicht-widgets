@@ -133,3 +133,6 @@
 [submodule "pretty-weather"]
 	path = pretty-weather
 	url = https://github.com/felixhageloh/pretty-weather.git
+[submodule "omnifocus-widget"]
+	path = omnifocus-widget
+	url = https://github.com/fitzagard/omnifocus-widget.git
