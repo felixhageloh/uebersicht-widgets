@@ -136,3 +136,6 @@
 [submodule "omnifocus-widget"]
 	path = omnifocus-widget
 	url = https://github.com/fitzagard/omnifocus-widget.git
+[submodule "ping-history"]
+	path = ping-history
+	url = https://github.com/bonus-tm/uebersicht-ping-history.widget.git
