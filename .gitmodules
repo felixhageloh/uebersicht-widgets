@@ -139,3 +139,6 @@
 [submodule "ping-history"]
 	path = ping-history
 	url = https://github.com/bonus-tm/uebersicht-ping-history.widget.git
+[submodule "cpu-bar"]
+	path = cpu-bar
+	url = https://github.com/PerishableDave/ubersicht-cpu-bar.git
