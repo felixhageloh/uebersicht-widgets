@@ -145,3 +145,6 @@
 [submodule "anydo"]
 	path = anydo
 	url = https://github.com/mislavcimpersak/anydo-widget
+[submodule "CoverArt"]
+	path = CoverArt
+	url = https://github.com/slowburn/CoverArt
