@@ -148,3 +148,6 @@
 [submodule "CoverArt"]
 	path = CoverArt
 	url = https://github.com/slowburn/CoverArt
+[submodule "grid-launcher"]
+	path = grid-launcher
+	url = https://github.com/ddgond/uebersicht-grid-launcher
