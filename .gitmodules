@@ -142,3 +142,6 @@
 [submodule "cpu-bar"]
 	path = cpu-bar
 	url = https://github.com/PerishableDave/ubersicht-cpu-bar.git
+[submodule "anydo"]
+	path = anydo
+	url = https://github.com/mislavcimpersak/anydo-widget
