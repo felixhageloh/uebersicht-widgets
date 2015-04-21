@@ -157,3 +157,6 @@
 [submodule "battery-charge"]
 	path = battery-charge
 	url = https://github.com/bcseda/BatteryCharge.git
+[submodule "uberist"]
+	path = uberist
+	url = https://github.com/chagel/uberist.git
