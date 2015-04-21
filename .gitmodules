@@ -154,3 +154,6 @@
 [submodule "trash-size"]
 	path = trash-size
 	url = https://github.com/MrKireko/trash-size.git
+[submodule "battery-charge"]
+	path = battery-charge
+	url = https://github.com/bcseda/BatteryCharge.git
