@@ -151,3 +151,6 @@
 [submodule "grid-launcher"]
 	path = grid-launcher
 	url = https://github.com/ddgond/uebersicht-grid-launcher
+[submodule "trash-size"]
+	path = trash-size
+	url = https://github.com/MrKireko/trash-size.git
