@@ -169,3 +169,6 @@
 [submodule "morning"]
 	path = morning
 	url = git@github.com:imRohan/ubersicht-morning.widget.git
+[submodule "macports"]
+	path = macports
+	url = git@github.com:Maggick-/macports.git
