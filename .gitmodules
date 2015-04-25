@@ -166,3 +166,6 @@
 [submodule "markdown_cheat_sheet"]
 	path = markdown_cheat_sheet
 	url = https://github.com/jacksonfylle/Ubersicht
+[submodule "morning"]
+	path = morning
+	url = git@github.com:imRohan/ubersicht-morning.widget.git
