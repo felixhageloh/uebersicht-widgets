@@ -160,3 +160,6 @@
 [submodule "uberist"]
 	path = uberist
 	url = https://github.com/chagel/uberist.git
+[submodule "earth_view"]
+	path = earth_view
+	url = https://github.com/Maggick-/earth_view
