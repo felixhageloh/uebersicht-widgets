@@ -163,3 +163,6 @@
 [submodule "earth_view"]
 	path = earth_view
 	url = https://github.com/Maggick-/earth_view
+[submodule "markdown_cheat_sheet"]
+	path = markdown_cheat_sheet
+	url = https://github.com/jacksonfylle/Ubersicht
