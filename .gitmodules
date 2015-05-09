@@ -172,3 +172,6 @@
 [submodule "macports"]
 	path = macports
 	url = git@github.com:Maggick-/macports.git
+[submodule "jenkins"]
+	path = jenkins
+	url = https://github.com/piresbruno/uebersicht-jenkins
