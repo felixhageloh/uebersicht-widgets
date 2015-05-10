@@ -175,3 +175,6 @@
 [submodule "jenkins"]
 	path = jenkins
 	url = https://github.com/piresbruno/uebersicht-jenkins
+[submodule "google-cal"]
+	path = google-cal
+	url = https://github.com/dimitri-koenig/uebersicht-widget-for-google-cal
