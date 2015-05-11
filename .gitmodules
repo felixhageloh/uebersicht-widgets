@@ -178,3 +178,6 @@
 [submodule "google-cal"]
 	path = google-cal
 	url = https://github.com/dimitri-koenig/uebersicht-widget-for-google-cal
+[submodule "swiss-sbb-connections"]
+	path = swiss-sbb-connections
+	url = git@github.com:dimitri-koenig/uebersicht-widget-for-swiss-transport-data.git
