@@ -16,14 +16,14 @@ style: """
   table
     border-collapse: collapse
     table-layout: fixed
-  
+
     &:after
       content: 'simple stocks'
       position: absolute
       left: 0
       top: -14px
       font-size: 10px
-  
+
   td
     border: 1px solid #fff
     font-size: 24px
@@ -33,7 +33,7 @@ style: """
     overflow: hidden
     text-shadow: 0 0 1px rgba(#000, 0.5)
     background: rgba(#000, 0.3)
-  
+
   .wrapper
     padding: 4px 6px 4px 6px
     position: relative
@@ -65,7 +65,7 @@ update: (output, domEl) ->
   table.html ""
 
   renderStock = (label, val, change, changepct) ->
-    direction = if (change.charAt(0) == '+') then 'up' else 'down'
+    direction = if (changepct.charAt(0) == '+') then 'up' else 'down'
     """
     <td>
       <div class='wrapper'>
