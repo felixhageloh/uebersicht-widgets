@@ -181,3 +181,6 @@
 [submodule "swiss-sbb-connections"]
 	path = swiss-sbb-connections
 	url = git@github.com:dimitri-koenig/uebersicht-widget-for-swiss-transport-data.git
+[submodule "Time-in-Words"]
+	path = Time-in-Words
+	url = https://github.com/behoernchen/Time-in-Words.git
