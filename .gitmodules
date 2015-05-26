@@ -184,3 +184,6 @@
 [submodule "Time-in-Words"]
 	path = Time-in-Words
 	url = https://github.com/behoernchen/Time-in-Words.git
+[submodule "outdated-brew-formulae"]
+	path = outdated-brew-formulae
+	url = https://github.com/gregmajor/ubersicht-outdated-brew-formulae-widget
