@@ -187,3 +187,6 @@
 [submodule "outdated-brew-formulae"]
 	path = outdated-brew-formulae
 	url = https://github.com/gregmajor/ubersicht-outdated-brew-formulae-widget
+[submodule "sys-monitor"]
+	path = sys-monitor
+	url = https://github.com/kporten/uebersicht-sys-monitor.git
