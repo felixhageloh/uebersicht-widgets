@@ -193,3 +193,6 @@
 [submodule "multiple-locations-weather"]
 	path = multiple-locations-weather
 	url = https://github.com/rabad/uebersicht-multiple-locations-weather
+[submodule "lol-stats"]
+	path = lol-stats
+	url = git@github.com:Xcrucifier/lol-stats-widget.git
