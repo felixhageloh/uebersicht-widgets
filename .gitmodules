@@ -190,3 +190,6 @@
 [submodule "sys-monitor"]
 	path = sys-monitor
 	url = https://github.com/kporten/uebersicht-sys-monitor.git
+[submodule "multiple-locations-weather"]
+	path = multiple-locations-weather
+	url = https://github.com/rabad/uebersicht-multiple-locations-weather
