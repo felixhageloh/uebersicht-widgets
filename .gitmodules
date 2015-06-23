@@ -196,3 +196,6 @@
 [submodule "lol-stats"]
 	path = lol-stats
 	url = git@github.com:Xcrucifier/lol-stats-widget.git
+[submodule "lol-current-game"]
+	path = lol-current-game
+	url = git@github.com:Baxter900/lol-current-game.git
