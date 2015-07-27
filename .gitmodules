@@ -205,3 +205,6 @@
 [submodule "blur-widget"]
 	path = blur-widget
 	url = https://github.com/atika/Ubersicht-Blur
+[submodule "time-of-angels"]
+	path = time-of-angels
+	url = https://github.com/cytec/uebersicht-time-of-angels
