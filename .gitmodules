@@ -208,3 +208,6 @@
 [submodule "time-of-angels"]
 	path = time-of-angels
 	url = https://github.com/cytec/uebersicht-time-of-angels
+[submodule "Nightshades"]
+	path = Nightshades
+	url = git@github.com:Porco-Rosso/Ubersicht-Nightshades.git
