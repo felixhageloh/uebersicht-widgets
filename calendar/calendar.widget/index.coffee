@@ -1,11 +1,4 @@
-sundayFirstCalendar = 'cal && date'
-
-mondayFirstCalendar =  'cal | awk \'{ print " "$0; getline; print "Mo Tu We Th Fr Sa Su"; \
-getline; if (substr($0,1,2) == " 1") print "                    1 "; \
-do { prevline=$0; if (getline == 0) exit; print " " \
-substr(prevline,4,17) " " substr($0,1,2) " "; } while (1) }\' && date'
-
-command: sundayFirstCalendar
+command: 'cal $(date -v -1m "+%m %Y") && cal && date'
 
 refreshFrequency: 3600000
 
@@ -35,30 +28,33 @@ style: """
       font-weight: 500
 
   tbody td
-    font-size: 12px
+    font-size: 12px    
 
   .today
     font-weight: bold
     background: rgba(#fff, 0.2)
     border-radius: 50%
+
+  .grey
+    color: #C0C0C0
 """
 
 render: -> """
   <table>
     <thead>
+      <tbody>
+      </tbody>
     </thead>
-    <tbody>
-    </tbody>
   </table>
 """
 
-updateHeader: (rows, table) ->
+updateHeader: (rows,table) ->
   thead = table.find("thead")
   thead.empty()
 
-  thead.append "<tr><td colspan='7'>#{rows[0]}</td></tr>"
+  thead.append "<tr><td colspan='7'>#{rows[8]}</td></tr>"
   tableRow = $("<tr></tr>").appendTo(thead)
-  daysOfWeek = rows[1].split(/\s+/)
+  daysOfWeek = rows[9].split(/\s+/)
 
   for dayOfWeek in daysOfWeek
     tableRow.append "<td>#{dayOfWeek}</td>"
@@ -66,22 +62,41 @@ updateHeader: (rows, table) ->
 updateBody: (rows, table) ->
   tbody = table.find("tbody")
   tbody.empty()
-
-  rows.splice 0, 2
+  
   rows.pop()
   today = rows.pop().split(/\s+/)[2]
+  rows.splice 0,6
+
+  tableRow = $("<tr></tr>").appendTo(tbody)
+
+  for i in [0,1]
+    days = rows[i].split(/\s+/).filter (day) -> day.length > 0
+
+    if days.length != 7
+      for day in days
+        cell = $("<td>#{day}</td>").appendTo(tableRow)
+        cell.addClass("grey")
+
+  rows.splice 0,4
+
+  days = rows[0].split(/\s+/).filter (day) -> day.length > 0   
+  for day in days
+    cell = $("<td>#{day}</td>").appendTo(tableRow) 
+
+  rows.splice 0,1
 
   for week, i in rows
-    days = week.split(/\s+/).filter (day) -> day.length > 0
     tableRow = $("<tr></tr>").appendTo(tbody)
-
-    if i == 0 and days.length < 7
-      for j in [days.length...7]
-        tableRow.append "<td></td>"
-
+  
+    days = week.split(/\s+/).filter (day) -> day.length > 0
     for day in days
       cell = $("<td>#{day}</td>").appendTo(tableRow)
       cell.addClass("today") if day == today
+  
+    if i != 0 and 0 < days.length < 7
+      for j in [1..7-days.length]
+        cell = $("<td>#{j}</td>").appendTo(tableRow)
+        cell.addClass("grey")
 
 update: (output, domEl) ->
   rows = output.split("\n")
@@ -89,3 +104,4 @@ update: (output, domEl) ->
 
   @updateHeader rows, table
   @updateBody rows, table
+
