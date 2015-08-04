@@ -7,6 +7,9 @@ substr(prevline,4,17) " " substr($0,1,2) " "; } while (1) }\' && date "+%-m %-d 
 
 command: sundayFirstCalendar
 
+#Set this to true to enable previous and next month dates, or false to disable
+otherMonths: true
+
 refreshFrequency: 3600000
 
 style: """
@@ -92,7 +95,7 @@ updateBody: (rows, table) ->
 
     if i == 0 and days.length < 7
       for j in [days.length...7]
-        if PrevAndNext == 1
+        if @otherMonths == true
           k = 6 - j
           cell = $("<td>#{lengths[month-1]-k}</td>").appendTo(tableRow)
           cell.addClass("grey")
@@ -103,7 +106,7 @@ updateBody: (rows, table) ->
       cell = $("<td>#{day}</td>").appendTo(tableRow)
       cell.addClass("today") if day == date
 
-    if i != 0 and 0 < days.length < 7 and PrevAndNext == 1
+    if i != 0 and 0 < days.length < 7 and @otherMonths == true
       for j in [1..7-days.length]
         cell = $("<td>#{j}</td>").appendTo(tableRow)
         cell.addClass("grey")
