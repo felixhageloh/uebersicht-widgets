@@ -211,3 +211,9 @@
 [submodule "Nightshades"]
 	path = Nightshades
 	url = git@github.com:Porco-Rosso/Ubersicht-Nightshades.git
+[submodule "Circular-CPU"]
+	path = Circular-CPU
+	url = https://github.com/zanderp/Mac-CPU-Widget
+[submodule "circular-liquid-battery-widget"]
+	path = circular-liquid-battery-widget
+	url = https://github.com/zanderp/circular-liquid-battery-widget
