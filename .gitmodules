@@ -220,3 +220,6 @@
 [submodule "Circular-RAM"]
 	path = Circular-RAM
 	url = git@github.com:zanderp/circular-ram-widget.git
+[submodule "Unread-Messages.widget"]
+	path = Unread-Messages.widget
+	url = https://github.com/travtrigs/Unread-Messages.widget
