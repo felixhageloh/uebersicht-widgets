@@ -226,3 +226,6 @@
 [submodule "Mandarin-Chinese-Word-Of-The-Day-widget"]
 	path = Mandarin-Chinese-Word-Of-The-Day-widget
 	url = git@github.com:himynameisbeni/Mandarin-Chinese-Word-Of-The-Day-widget.git
+[submodule "app-launcher"]
+	path = app-launcher
+	url = https://github.com/travtrigs/app-launcher.widget
