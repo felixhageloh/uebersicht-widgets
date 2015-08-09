@@ -229,3 +229,6 @@
 [submodule "app-launcher"]
 	path = app-launcher
 	url = https://github.com/travtrigs/app-launcher.widget
+[submodule "folder-launcher"]
+	path = folder-launcher
+	url = git@github.com:travtrigs/folder-launcher.widget.git
