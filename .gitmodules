@@ -232,3 +232,6 @@
 [submodule "folder-launcher"]
 	path = folder-launcher
 	url = git@github.com:travtrigs/folder-launcher.widget.git
+[submodule "sticky-notes-ubersicht"]
+	path = sticky-notes-ubersicht
+	url = git@github.com:zanderp/sticky-notes-ubersicht.git
