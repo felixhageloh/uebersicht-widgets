@@ -235,3 +235,6 @@
 [submodule "sticky-notes-ubersicht"]
 	path = sticky-notes-ubersicht
 	url = git@github.com:zanderp/sticky-notes-ubersicht.git
+[submodule "Yr4u"]
+	path = Yr4u
+	url = git@github.com:larkov/Yr4Ubersicht.git
