@@ -223,3 +223,6 @@
 [submodule "Unread-Messages.widget"]
 	path = Unread-Messages.widget
 	url = https://github.com/travtrigs/Unread-Messages.widget
+[submodule "Mandarin-Chinese-Word-Of-The-Day-widget"]
+	path = Mandarin-Chinese-Word-Of-The-Day-widget
+	url = git@github.com:himynameisbeni/Mandarin-Chinese-Word-Of-The-Day-widget.git
