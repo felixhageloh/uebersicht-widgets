@@ -238,3 +238,6 @@
 [submodule "Yr4u"]
 	path = Yr4u
 	url = git@github.com:larkov/Yr4Ubersicht.git
+[submodule "solar-system.widget"]
+	path = solar-system.widget
+	url = git@github.com:travtrigs/solar-system.widget.git
