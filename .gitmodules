@@ -221,7 +221,7 @@
 	path = Circular-RAM
 	url = git@github.com:zanderp/circular-ram-widget.git
 [submodule "Unread-Messages.widget"]
-	path = Unread-Messages.widget
+	path = mail-and-messages.widget
 	url = https://github.com/travtrigs/Unread-Messages.widget
 [submodule "Mandarin-Chinese-Word-Of-The-Day-widget"]
 	path = Mandarin-Chinese-Word-Of-The-Day-widget
