@@ -241,3 +241,6 @@
 [submodule "solar-system.widget"]
 	path = solar-system.widget
 	url = git@github.com:travtrigs/solar-system.widget.git
+[submodule "Evangelion"]
+	path = Evangelion
+	url = https://github.com/jeticg/Evangelion-Uebersicht-Widget
