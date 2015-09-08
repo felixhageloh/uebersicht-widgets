@@ -244,3 +244,6 @@
 [submodule "Evangelion"]
 	path = Evangelion
 	url = https://github.com/jeticg/Evangelion-Uebersicht-Widget
+[submodule "DiskUsage-Bar"]
+	path = DiskUsage-Bar
+	url = https://github.com/dinever/DiskUsage-Bar-Widget
