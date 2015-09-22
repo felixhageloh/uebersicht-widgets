@@ -247,3 +247,6 @@
 [submodule "DiskUsage-Bar"]
 	path = DiskUsage-Bar
 	url = https://github.com/dinever/DiskUsage-Bar-Widget
+[submodule "bluetooth-battery-bar"]
+	path = bluetooth-battery-bar
+	url = git@github.com:gschrader/ubersicht-bluetooth-battery-bar.git
