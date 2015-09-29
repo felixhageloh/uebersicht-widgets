@@ -250,3 +250,6 @@
 [submodule "bluetooth-battery-bar"]
 	path = bluetooth-battery-bar
 	url = git@github.com:gschrader/ubersicht-bluetooth-battery-bar.git
+[submodule "DailyBibleVerse"]
+	path = DailyBibleVerse
+	url = git@github.com:justiceamoh/DailyBibleVerse.git
