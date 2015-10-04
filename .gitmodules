@@ -253,3 +253,6 @@
 [submodule "DailyBibleVerse"]
 	path = DailyBibleVerse
 	url = git@github.com:justiceamoh/DailyBibleVerse.git
+[submodule "Xkcd-now"]
+	path = Xkcd-now
+	url = https://github.com/AlataMors/Ubersicht-Xkcd-now
