@@ -259,3 +259,6 @@
 [submodule "iTunesMiniPlayer.widget"]
 	path = iTunesMiniPlayer.widget
 	url = git@github.com:jscampos/iTunesMiniPlayer.widget.git
+[submodule "words-worldclock"]
+	path = words-worldclock
+	url = git@github.com:wrutkowski/ubericht-wordclock.git
