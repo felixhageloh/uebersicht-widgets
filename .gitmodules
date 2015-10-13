@@ -256,3 +256,6 @@
 [submodule "Xkcd-now"]
 	path = Xkcd-now
 	url = https://github.com/AlataMors/Ubersicht-Xkcd-now
+[submodule "iTunesMiniPlayer.widget"]
+	path = iTunesMiniPlayer.widget
+	url = git@github.com:jscampos/iTunesMiniPlayer.widget.git
