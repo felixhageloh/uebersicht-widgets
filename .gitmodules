@@ -262,3 +262,6 @@
 [submodule "words-worldclock"]
 	path = words-worldclock
 	url = git@github.com:wrutkowski/ubericht-wordclock.git
+[submodule "kindle-random-quote"]
+	path = kindle-random-quote
+	url = git@github.com:apletnev/ubersicht-kindle-random-quote.git
