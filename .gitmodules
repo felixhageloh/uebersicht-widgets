@@ -265,3 +265,6 @@
 [submodule "kindle-random-quote"]
 	path = kindle-random-quote
 	url = git@github.com:apletnev/ubersicht-kindle-random-quote.git
+[submodule "xkcd-random"]
+	path = xkcd-random
+	url = git@github.com:PapyPev/xkcd-random.widget.git
