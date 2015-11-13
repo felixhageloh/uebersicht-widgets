@@ -268,3 +268,6 @@
 [submodule "xkcd-random"]
 	path = xkcd-random
 	url = git@github.com:PapyPev/xkcd-random.widget.git
+[submodule "lastfm"]
+	path = lastfm
+	url = git@github.com:patrickhpan/lastfm-ubersicht.git
