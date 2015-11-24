@@ -277,3 +277,6 @@
 [submodule "istats.widget"]
 	path = istats.widget
 	url = git@github.com:roele/istats.widget.git
+[submodule "stackexchange.widget"]
+	path = stackexchange.widget
+	url = git@github.com:d4rkd3v1l/uebersicht-stackexchange.widget.git
