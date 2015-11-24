@@ -274,3 +274,6 @@
 [submodule "video-widget"]
 	path = video-widget
 	url = https://github.com/paulbhartzog/ubersicht-video-widget
+[submodule "istats.widget"]
+	path = istats.widget
+	url = git@github.com:roele/istats.widget.git
