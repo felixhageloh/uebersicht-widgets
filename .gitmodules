@@ -280,3 +280,6 @@
 [submodule "stackexchange.widget"]
 	path = stackexchange.widget
 	url = git@github.com:d4rkd3v1l/uebersicht-stackexchange.widget.git
+[submodule "git-stats.widget"]
+	path = git-stats.widget
+	url = git@github.com:d4rkd3v1l/uebersicht-git-stats.widget.git
