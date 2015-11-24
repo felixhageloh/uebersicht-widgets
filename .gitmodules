@@ -271,3 +271,6 @@
 [submodule "lastfm"]
 	path = lastfm
 	url = git@github.com:patrickhpan/lastfm-ubersicht.git
+[submodule "video-widget"]
+	path = video-widget
+	url = https://github.com/paulbhartzog/ubersicht-video-widget
