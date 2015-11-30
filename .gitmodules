@@ -283,3 +283,6 @@
 [submodule "git-stats.widget"]
 	path = git-stats.widget
 	url = git@github.com:d4rkd3v1l/uebersicht-git-stats.widget.git
+[submodule "FancyDateTime"]
+	path = FancyDateTime
+	url = git@github.com:codeFareith/uebersicht-FancyDateTime.git
