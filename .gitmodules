@@ -286,3 +286,6 @@
 [submodule "FancyDateTime"]
 	path = FancyDateTime
 	url = git@github.com:codeFareith/uebersicht-FancyDateTime.git
+[submodule "SolTunes.widget"]
+	path = SolTunes.widget
+	url = git@github.com:yohnnyjoe/SolTunes.widget.git
