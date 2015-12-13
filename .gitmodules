@@ -292,3 +292,6 @@
 [submodule "apod-view"]
 	path = apod-view
 	url = https://github.com/KiwiSkunk/apod-view.widget
+[submodule "youtube-video"]
+	path = youtube-video
+	url = https://github.com/paulbhartzog/ubersicht-youtube-video-widget
