@@ -32,7 +32,7 @@ A small manifest file that describes your widget. It should have the following f
 
 ### widget-name.widget.zip
 
-This is the actual widget, which is a zipped folder with the name of your widget and a .widget extension. The contents of the folder are usually just the .js or .coffee file with your widget code (you can call it anything you like, but index.js/.coffee seems like a good choice). If your widget needs any other assets such as images, fonts or even binaries, you can include them here.
+This is the actual widget, which is a zipped folder with the name of your widget and a .widget extension. The contents of the folder are usually just the .js or .coffee file with your widget code (you can call it anything you like, but using the name your widget seems like a good choice). If your widget needs any other assets such as images, fonts or even binaries, you can include them here.
 
 
 ### screenshot
