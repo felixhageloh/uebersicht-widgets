@@ -289,3 +289,6 @@
 [submodule "SolTunes.widget"]
 	path = SolTunes.widget
 	url = git@github.com:yohnnyjoe/SolTunes.widget.git
+[submodule "apod-view"]
+	path = apod-view
+	url = https://github.com/KiwiSkunk/apod-view.widget
