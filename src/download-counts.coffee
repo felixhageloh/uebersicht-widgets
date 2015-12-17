@@ -13,7 +13,9 @@ query.get('tMDLiJERSc').then (counts) ->
   callbacks.length = 0
 
 convertId = (id) ->
-  String(id).replace(/-/g, '_')
+  String(id)
+    .replace(/-/g, '_')
+    .replace(/\./g, '_')
 
 exports.get = (id, callback) ->
   id = convertId(id)
