@@ -29,10 +29,9 @@ exports.increment = (id, callback) ->
 
   doIncrement = ->
     downloadCounts.increment(id)
-    downloadCounts.save().then(callback, callback)
-    # should set that only when save succeeds, but it fails always
-    # on safari, because of Github links
-    cookie.set(id, true)
+    downloadCounts.save().then ->
+      cookie.set(id, true)
+      callback?(downloadCounts.get(id))
 
   if downloadCounts
     doIncrement()

@@ -21,6 +21,7 @@ init = (widgets) ->
   for widget in widgets when widget
     do (widget) ->
       widget.numDownloads = 0
+      widget.id = widget.id.replace(/\./g, '_')
       allWidgets[widget.id] = widget
 
       widgetEls.push(widgetEl = renderWidget widget)
@@ -40,9 +41,12 @@ registerEvents = (widgetEls) ->
 
   widgetDetails.onClose -> router.navigate()
 
-  $(document).on "click", '.download', (e) ->
+  $(document).on "click", '.download', (e) -> setTimeout ->
     id = $(e.currentTarget).data('id')
-    downloads.increment id, -> showDownloadCount(allWidgets[id])
+    downloads.increment id, (newCount) ->
+      widget = allWidgets[id]
+      widget.numDownloads = newCount
+      showDownloadCount(widget)
 
   listEl.on "click", '.details', (e) ->
     e.preventDefault()
