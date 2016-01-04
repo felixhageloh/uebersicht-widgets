@@ -295,3 +295,6 @@
 [submodule "youtube-video"]
 	path = youtube-video
 	url = https://github.com/paulbhartzog/ubersicht-youtube-video-widget
+[submodule "Hangu-Word-Clock"]
+	path = Hangu-Word-Clock
+	url = https://github.com/openmaya/Uebersicht-Hangul-Word-Clock.git
