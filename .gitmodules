@@ -298,3 +298,6 @@
 [submodule "Hangu-Word-Clock"]
 	path = Hangu-Word-Clock
 	url = https://github.com/openmaya/Uebersicht-Hangul-Word-Clock.git
+[submodule "lightroom-latest"]
+	path = lightroom-latest
+	url = https://github.com/evanfuture/lightroom-latest.widget.git
