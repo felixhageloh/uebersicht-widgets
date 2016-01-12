@@ -301,3 +301,6 @@
 [submodule "lightroom-latest"]
 	path = lightroom-latest
 	url = https://github.com/evanfuture/lightroom-latest.widget.git
+[submodule "bar"]
+	path = bar
+	url = https://github.com/callahanrts/bar.git
