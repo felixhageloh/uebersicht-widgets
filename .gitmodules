@@ -304,3 +304,6 @@
 [submodule "bar"]
 	path = bar
 	url = https://github.com/callahanrts/bar.git
+[submodule "zendesk"]
+	path = zendesk
+	url = https://github.com/unglud/ubersicht-zendesk
