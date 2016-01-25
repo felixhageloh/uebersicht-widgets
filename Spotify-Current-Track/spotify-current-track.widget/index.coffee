@@ -7,7 +7,12 @@ IFS='|' read -r theArtist theName <<<"$(osascript <<<'tell application "Spotify"
         set theName to name of theTrack
         return theArtist & "|" & theName
     end tell')" &&
-echo "$theArtist - $theName" || echo "Not Connected To Spotify"
+if [ -z "$theArtist" ]
+then
+    echo ""
+else
+    echo "$theArtist - $theName" || echo "Not Connected To Spotify"
+fi
 """
 
 refreshFrequency: 2000
