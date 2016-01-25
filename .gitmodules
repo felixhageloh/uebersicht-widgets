@@ -307,3 +307,6 @@
 [submodule "zendesk"]
 	path = zendesk
 	url = https://github.com/unglud/ubersicht-zendesk
+[submodule "welcomewidget"]
+	path = welcomewidget
+	url = https://github.com/roach0123/welcomewidget
