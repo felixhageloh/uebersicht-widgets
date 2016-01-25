@@ -310,3 +310,6 @@
 [submodule "welcomewidget"]
 	path = welcomewidget
 	url = https://github.com/roach0123/welcomewidget
+[submodule "fuzzytime"]
+	path = fuzzytime
+	url = https://github.com/plan8studios/fuzzytime
