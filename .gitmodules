@@ -313,3 +313,6 @@
 [submodule "fuzzytime"]
 	path = fuzzytime
 	url = https://github.com/plan8studios/fuzzytime
+[submodule "usefulinfo"]
+	path = usefulinfo
+	url = https://github.com/justinellingson/usefulinfowidget
