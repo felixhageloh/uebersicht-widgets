@@ -316,3 +316,6 @@
 [submodule "usefulinfo"]
 	path = usefulinfo
 	url = https://github.com/justinellingson/usefulinfowidget
+[submodule "backgroundwidget"]
+	path = backgroundwidget
+	url = https://github.com/roach0123/backgroundwidget
