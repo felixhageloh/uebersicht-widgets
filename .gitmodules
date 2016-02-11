@@ -325,3 +325,6 @@
 [submodule "binari-clock"]
 	path = binari-clock
 	url = https://github.com/jeisner93/ubersicht-binary-clock
+[submodule "now-playing"]
+	path = now-playing
+	url = https://github.com/levifig/now-playing.widget
