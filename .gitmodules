@@ -319,3 +319,6 @@
 [submodule "backgroundwidget"]
 	path = backgroundwidget
 	url = https://github.com/roach0123/backgroundwidget
+[submodule "forecast"]
+	path = forecast
+	url = https://github.com/uPaymeiFixit/forecast-widget
