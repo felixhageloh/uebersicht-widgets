@@ -322,3 +322,6 @@
 [submodule "forecast"]
 	path = forecast
 	url = https://github.com/uPaymeiFixit/forecast-widget
+[submodule "binari-clock"]
+	path = binari-clock
+	url = https://github.com/jeisner93/ubersicht-binary-clock
