@@ -328,3 +328,6 @@
 [submodule "now-playing"]
 	path = now-playing
 	url = https://github.com/levifig/now-playing.widget
+[submodule "TaskwarriorWidget"]
+	path = TaskwarriorWidget
+	url = git@github.com:KevinBockelandt/TaskwarriorWidget.git
