@@ -328,3 +328,9 @@
 [submodule "TaskwarriorWidget"]
 	path = TaskwarriorWidget
 	url = git@github.com:KevinBockelandt/TaskwarriorWidget.git
+[submodule "Sidebar"]
+	path = Sidebar
+	url = https://github.com/Pe8er/Sidebar.Widget
+[submodule "Playbox"]
+	path = Playbox
+	url = https://github.com/Pe8er/Playbox.Widget
