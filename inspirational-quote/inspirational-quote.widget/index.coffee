@@ -30,16 +30,16 @@ render: (output) -> """
   </div>
 """
 
-update: (output, domEl) -> 
+update: (output, domEl) ->
   # Define constants, and extract the juicy html.
   dom = $(domEl)
-  xml = jQuery.parseXML(output)
+  xml = $.parseXML(output)
   $xml = $(xml)
-  description = jQuery.parseHTML($xml.find('description').eq(1).text())
+  description = $.parseHTML($xml.find('description').eq(1).text())
   $description = $(description)
 
  # Find the info we need, and inject it into the DOM.
   dom.find('.quote').html $xml.find('description').eq(2)
   dom.find('.author').html $xml.find('title').eq(2)
 
- 
+
