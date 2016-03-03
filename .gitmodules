@@ -334,3 +334,6 @@
 [submodule "Playbox"]
 	path = Playbox
 	url = https://github.com/Pe8er/Playbox.Widget
+[submodule "coding-net-notifications.widget"]
+	path = coding-net-notifications.widget
+	url = https://github.com/IUsual/coding-net-notifications.widget
