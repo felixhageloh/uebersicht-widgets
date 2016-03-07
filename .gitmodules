@@ -337,3 +337,6 @@
 [submodule "coding-net-notifications.widget"]
 	path = coding-net-notifications.widget
 	url = https://github.com/IUsual/coding-net-notifications.widget
+[submodule "minimal-forecast-widget"]
+	path = minimal-forecast-widget
+	url = https://github.com/cpmsmith/minimal-forecast-widget.git
