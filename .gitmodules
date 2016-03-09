@@ -340,3 +340,6 @@
 [submodule "minimal-forecast-widget"]
 	path = minimal-forecast-widget
 	url = https://github.com/cpmsmith/minimal-forecast-widget.git
+[submodule "RemindersWidget"]
+	path = RemindersWidget
+	url = https://github.com/davidlday/RemindersWidget
