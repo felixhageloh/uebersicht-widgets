@@ -343,3 +343,6 @@
 [submodule "RemindersWidget"]
 	path = RemindersWidget
 	url = https://github.com/davidlday/RemindersWidget
+[submodule "ubersicht-network-throughput"]
+	path = ubersicht-network-throughput
+	url = git@github.com:dionmunk/ubersicht-network-throughput.git
