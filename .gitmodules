@@ -346,3 +346,6 @@
 [submodule "ubersicht-network-throughput"]
 	path = ubersicht-network-throughput
 	url = git@github.com:dionmunk/ubersicht-network-throughput.git
+[submodule "Strava.widget"]
+	path = Strava.widget
+	url = git@github.com:Pe8er/Strava.widget.git
