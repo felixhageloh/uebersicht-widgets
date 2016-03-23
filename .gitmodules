@@ -349,3 +349,6 @@
 [submodule "Strava.widget"]
 	path = Strava.widget
 	url = git@github.com:Pe8er/Strava.widget.git
+[submodule "Docker-Uber-Stats"]
+	path = Docker-Uber-Stats
+	url = git@github.com:Paradiddley/Docker-Uber-Stats.git
