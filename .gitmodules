@@ -355,3 +355,6 @@
 [submodule "Simple-Uber-System-Status"]
 	path = Simple-Uber-System-Status
 	url = git@github.com:Paradiddley/Simple-Uber-System-Status.git
+[submodule "Simple-Uber-Device-Status"]
+	path = Simple-Uber-Device-Status
+	url = git@github.com:Paradiddley/Simple-Uber-Device-Status.git
