@@ -358,3 +358,6 @@
 [submodule "Simple-Uber-Device-Status"]
 	path = Simple-Uber-Device-Status
 	url = git@github.com:Paradiddley/Simple-Uber-Device-Status.git
+[submodule "Simple-Uber-Disk-Usage"]
+	path = Simple-Uber-Disk-Usage
+	url = git@github.com:Paradiddley/Simple-Uber-Disk-Usage.git
