@@ -352,3 +352,6 @@
 [submodule "Docker-Uber-Stats"]
 	path = Docker-Uber-Stats
 	url = git@github.com:Paradiddley/Docker-Uber-Stats.git
+[submodule "Simple-Uber-System-Status"]
+	path = Simple-Uber-System-Status
+	url = git@github.com:Paradiddley/Simple-Uber-System-Status.git
