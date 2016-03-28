@@ -364,3 +364,6 @@
 [submodule "mail-count-read.widget"]
 	path = mail-count-read.widget
 	url = https://github.com/roadglide03/mail-count-read.widget.git
+[submodule "vms.widget"]
+	path = vms.widget
+	url = https://github.com/roadglide03/vms.widget.git
