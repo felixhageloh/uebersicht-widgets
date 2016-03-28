@@ -361,3 +361,6 @@
 [submodule "Simple-Uber-Disk-Usage"]
 	path = Simple-Uber-Disk-Usage
 	url = git@github.com:Paradiddley/Simple-Uber-Disk-Usage.git
+[submodule "mail-count-read.widget"]
+	path = mail-count-read.widget
+	url = https://github.com/roadglide03/mail-count-read.widget.git
