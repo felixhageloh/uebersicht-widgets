@@ -367,3 +367,6 @@
 [submodule "vms.widget"]
 	path = vms.widget
 	url = https://github.com/roadglide03/vms.widget.git
+[submodule "justthedate"]
+	path = justthedate
+	url = https://github.com/ruurd/justthedate
