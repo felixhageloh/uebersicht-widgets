@@ -373,3 +373,6 @@
 [submodule "XiamiFM"]
 	path = XiamiFM
 	url = https://github.com/ProfFan/Ubersicht-XiamiFM
+[submodule "iTunesLyrics.widget"]
+	path = iTunesLyrics.widget
+	url = git@github.com:Pe8er/iTunesLyrics.widget.git
