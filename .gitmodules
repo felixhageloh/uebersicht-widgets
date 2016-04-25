@@ -379,3 +379,6 @@
 [submodule "moon-phase"]
 	path = moon-phase
 	url = git@github.com:joecreighton/moon-phase.git
+[submodule "ubersicht-putio"]
+	path = ubersicht-putio
+	url = https://github.com/gitzerai/ubersicht-putio
