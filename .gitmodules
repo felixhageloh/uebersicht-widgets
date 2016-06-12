@@ -10,9 +10,6 @@
 [submodule "simple-clock"]
 	path = simple-clock
 	url = git@github.com:soberstadt/simple-clock-widget.git
-[submodule "github-contributions"]
-	path = github-contributions
-	url = git@github.com:cobyism/ubersicht-github.git
 [submodule "circleci-widget"]
 	path = circleci-widget
 	url = git@github.com:andremedeiros/circleci-widget.git
@@ -382,3 +379,6 @@
 [submodule "ubersicht-putio"]
 	path = ubersicht-putio
 	url = https://github.com/gitzerai/ubersicht-putio
+[submodule "minimal-github-widgit"]
+	path = minimal-github-widgit
+	url = https://github.com/eanplatter/minimal-github-widgit
