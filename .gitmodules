@@ -385,3 +385,6 @@
 [submodule "aoede"]
 	path = aoede
 	url = https://github.com/pyraxo/aoede
+[submodule "air-quality.widget"]
+	path = air-quality.widget
+	url = https://github.com/FanZhen2002/air-quality.widget
