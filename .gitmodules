@@ -382,3 +382,6 @@
 [submodule "minimal-github-widgit"]
 	path = minimal-github-widgit
 	url = https://github.com/eanplatter/minimal-github-widgit
+[submodule "aoede"]
+	path = aoede
+	url = https://github.com/pyraxo/aoede
