@@ -388,3 +388,6 @@
 [submodule "air-quality.widget"]
 	path = air-quality.widget
 	url = https://github.com/FanZhen2002/air-quality.widget
+[submodule "time_since"]
+	path = time_since
+	url = https://github.com/johnmathews/time_since
