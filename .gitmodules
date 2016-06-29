@@ -391,3 +391,6 @@
 [submodule "time_since"]
 	path = time_since
 	url = https://github.com/johnmathews/time_since
+[submodule "doviz-ticker"]
+	path = doviz-ticker
+	url = https://github.com/xcolor/doviz-ticker
