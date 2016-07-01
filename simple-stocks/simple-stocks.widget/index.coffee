@@ -2,7 +2,7 @@
 symbols = "AAPL+FB+ORCL+GOOG+MSFT"
 
 # See http://www.jarloo.com/yahoo_finance/ for Yahoo Finance options
-command: "curl -s 'http://download.finance.yahoo.com/d/quotes.csv?s=#{symbols}&f=sl1c6p2' | sed 's/\"//g'"
+command: "curl -s 'http://download.finance.yahoo.com/d/quotes.csv?s=#{symbols}&f=sl1c1p2' | sed 's/\"//g'"
 
 # Refresh every 5 minutes
 refreshFrequency: 300000
