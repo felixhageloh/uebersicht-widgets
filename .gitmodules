@@ -394,3 +394,6 @@
 [submodule "doviz-ticker"]
 	path = doviz-ticker
 	url = https://github.com/xcolor/doviz-ticker
+[submodule "time_until"]
+	path = time_until
+	url = https://github.com/johnmathews/time_until
