@@ -397,3 +397,6 @@
 [submodule "time_until"]
 	path = time_until
 	url = https://github.com/johnmathews/time_until
+[submodule "UpcomingEvents"]
+	path = UpcomingEvents
+	url = https://github.com/cbeardsmore/UpcomingEvents
