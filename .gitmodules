@@ -400,3 +400,6 @@
 [submodule "UpcomingEvents"]
 	path = UpcomingEvents
 	url = https://github.com/cbeardsmore/UpcomingEvents
+[submodule "WiFi-Tx-Speed"]
+	path = WiFi-Tx-Speed
+	url = https://github.com/mactexan/WiFi-Tx-Speed
