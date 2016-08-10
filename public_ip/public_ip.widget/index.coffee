@@ -1,4 +1,4 @@
-command: "curl -4fNs 'https://api.ipify.org'"
+command: "curl -4fNs 'https://ip.appspot.com' || curl -4fNs 'https://api.ipify.org'"
 
 refreshFrequency: 43200000
 
