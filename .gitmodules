@@ -406,3 +406,6 @@
 [submodule "kaspersky-threats"]
 	path = kaspersky-threats
 	url = https://github.com/mactexan/kaspersky-threats
+[submodule "longviewer-widget"]
+	path = longviewer-widget
+	url = https://github.com/telega/longviewer-widget
