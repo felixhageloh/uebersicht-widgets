@@ -409,3 +409,6 @@
 [submodule "longviewer-widget"]
 	path = longviewer-widget
 	url = https://github.com/telega/longviewer-widget
+[submodule "Daily-Random-Kanji"]
+	path = Daily-Random-Kanji
+	url = https://github.com/cbeardsmore/Daily-Random-Kanji
