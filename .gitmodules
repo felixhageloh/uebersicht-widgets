@@ -412,3 +412,6 @@
 [submodule "Daily-Random-Kanji"]
 	path = Daily-Random-Kanji
 	url = https://github.com/cbeardsmore/Daily-Random-Kanji
+[submodule "ubersichtGitInfo"]
+	path = ubersichtGitInfo
+	url = https://github.com/synle/ubersichtGitInfo
