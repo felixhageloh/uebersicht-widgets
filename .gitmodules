@@ -415,3 +415,6 @@
 [submodule "ubersichtGitInfo"]
 	path = ubersichtGitInfo
 	url = https://github.com/synle/ubersichtGitInfo
+[submodule "JapaneseCalendar-widget"]
+	path = JapaneseCalendar-widget
+	url = https://github.com/Gr3yR0n1n/JapaneseCalendar-widget
