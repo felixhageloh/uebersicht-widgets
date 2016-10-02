@@ -418,3 +418,6 @@
 [submodule "JapaneseCalendar-widget"]
 	path = JapaneseCalendar-widget
 	url = https://github.com/Gr3yR0n1n/JapaneseCalendar-widget
+[submodule "ubersicht-currentKeymap"]
+	path = ubersicht-currentKeymap
+	url = https://github.com/KryDos/ubersicht-currentKeymap
