@@ -421,3 +421,6 @@
 [submodule "ubersicht-currentKeymap"]
 	path = ubersicht-currentKeymap
 	url = https://github.com/KryDos/ubersicht-currentKeymap
+[submodule "minimal_weather"]
+	path = minimal_weather
+	url = https://github.com/sungjp/minimal_weather
