@@ -424,3 +424,6 @@
 [submodule "minimal_weather"]
 	path = minimal_weather
 	url = https://github.com/sungjp/minimal_weather
+[submodule "netspeeds-widget"]
+	path = netspeeds-widget
+	url = https://github.com/cschoenfeld/netspeeds-widget
