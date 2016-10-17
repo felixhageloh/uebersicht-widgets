@@ -427,3 +427,6 @@
 [submodule "netspeeds-widget"]
 	path = netspeeds-widget
 	url = https://github.com/cschoenfeld/netspeeds-widget
+[submodule "ubersicht-astronauts"]
+	path = ubersicht-astronauts
+	url = https://github.com/LePhil/ubersicht-astronauts
