@@ -433,3 +433,6 @@
 [submodule "uebersicht-sensu"]
 	path = uebersicht-sensu
 	url = https://github.com/GhostLyrics/uebersicht-sensu
+[submodule "word-of-the.widget"]
+	path = word-of-the.widget
+	url = https://github.com/evanfuture/word-of-the.widget
