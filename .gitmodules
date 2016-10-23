@@ -430,3 +430,6 @@
 [submodule "ubersicht-astronauts"]
 	path = ubersicht-astronauts
 	url = https://github.com/LePhil/ubersicht-astronauts
+[submodule "uebersicht-sensu"]
+	path = uebersicht-sensu
+	url = https://github.com/GhostLyrics/uebersicht-sensu
