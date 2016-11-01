@@ -439,3 +439,6 @@
 [submodule "ubersicht-now-playing"]
 	path = ubersicht-now-playing
 	url = https://github.com/dionmunk/ubersicht-now-playing
+[submodule "tsushin"]
+	path = tsushin
+	url = https://github.com/louixs/tsushin
