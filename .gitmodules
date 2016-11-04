@@ -442,3 +442,6 @@
 [submodule "tsushin"]
 	path = tsushin
 	url = https://github.com/louixs/tsushin
+[submodule "WiFi-SSID-Widget"]
+	path = WiFi-SSID-Widget
+	url = https://github.com/mactexan/WiFi-SSID-Widget
