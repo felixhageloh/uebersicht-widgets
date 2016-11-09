@@ -445,3 +445,6 @@
 [submodule "WiFi-SSID-Widget"]
 	path = WiFi-SSID-Widget
 	url = https://github.com/mactexan/WiFi-SSID-Widget
+[submodule "Plexpy-Ubersicht-Widget"]
+	path = Plexpy-Ubersicht-Widget
+	url = https://github.com/yoyostile/Plexpy-Ubersicht-Widget
