@@ -448,3 +448,6 @@
 [submodule "Plexpy-Ubersicht-Widget"]
 	path = Plexpy-Ubersicht-Widget
 	url = https://github.com/yoyostile/Plexpy-Ubersicht-Widget
+[submodule "Black-Bar-Widget"]
+	path = Black-Bar-Widget
+	url = https://github.com/jrb12364/Black-Bar-Widget
