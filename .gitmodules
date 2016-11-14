@@ -451,3 +451,6 @@
 [submodule "Black-Bar-Widget"]
 	path = Black-Bar-Widget
 	url = https://github.com/jrb12364/Black-Bar-Widget
+[submodule "commandment-11"]
+	path = commandment-11
+	url = https://github.com/cscharff/commandment-11
