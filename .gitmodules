@@ -454,3 +454,6 @@
 [submodule "commandment-11"]
 	path = commandment-11
 	url = https://github.com/cscharff/commandment-11
+[submodule "SmoothAnalogClock.widget"]
+	path = SmoothAnalogClock.widget
+	url = https://github.com/N00bySumairu/SmoothAnalogClock.widget
