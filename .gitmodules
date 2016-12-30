@@ -457,3 +457,6 @@
 [submodule "SmoothAnalogClock.widget"]
 	path = SmoothAnalogClock.widget
 	url = https://github.com/N00bySumairu/SmoothAnalogClock.widget
+[submodule "uebersicht-wiki-holidays.widget"]
+	path = uebersicht-wiki-holidays.widget
+	url = https://github.com/DiSiqueira/uebersicht-wiki-holidays.widget
