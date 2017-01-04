@@ -460,3 +460,6 @@
 [submodule "uebersicht-wiki-holidays.widget"]
 	path = uebersicht-wiki-holidays.widget
 	url = https://github.com/DiSiqueira/uebersicht-wiki-holidays.widget
+[submodule "sunradar"]
+	path = sunradar
+	url = https://github.com/lakiryt/sunradar/
