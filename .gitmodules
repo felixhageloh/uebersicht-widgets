@@ -466,3 +466,6 @@
 [submodule "ubersicht_gmail"]
 	path = ubersicht_gmail
 	url = https://github.com/louixs/ubersicht_gmail
+[submodule "ubersicht_google_calendar"]
+	path = ubersicht_google_calendar
+	url = https://github.com/louixs/ubersicht_google_calendar
