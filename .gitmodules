@@ -463,3 +463,6 @@
 [submodule "sunradar"]
 	path = sunradar
 	url = https://github.com/lakiryt/sunradar/
+[submodule "ubersicht_gmail"]
+	path = ubersicht_gmail
+	url = https://github.com/louixs/ubersicht_gmail
