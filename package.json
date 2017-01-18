@@ -6,10 +6,14 @@
     "start": "bin/compile-js & bin/compile-css & nws"
   },
   "browserify": {
-    "transform": [ "coffeeify" ]
+    "transform": [
+      "coffeeify"
+    ]
   },
   "devDependencies": {
+    "browserify": "^13.3.0",
     "coffeeify": "^1.0.0",
-    "cookies-js": "^1.1.0"
+    "cookies-js": "^1.1.0",
+    "uglify-js": "^2.7.5"
   }
 }
