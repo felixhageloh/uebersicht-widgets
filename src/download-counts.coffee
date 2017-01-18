@@ -1,40 +1,41 @@
-Parse.initialize("uq3bFa7SvdMb3ZKWxjvU4TJmoRkUS7UY65FqybPc", "QzLq0jdERP4Y3VNadon7qYbhRjEkZbnlPBknzVH4")
+cookie = require 'cookies-js'
+config =
+  apiKey: "AIzaSyCRnz4xSIDk4pyAZ6oSE74a3Jk0V7-AmnE"
+  authDomain: "eighth-keyword-620.firebaseapp.com"
+  databaseURL: "https://eighth-keyword-620.firebaseio.com"
+  storageBucket: "eighth-keyword-620.appspot.com"
+  messagingSenderId: "877022320055"
+firebase.initializeApp(config)
+db = firebase.database()
+widgetDownloadsRef = firebase.database().ref('widgetDownloads/')
 
-DownloadCounts = Parse.Object.extend("DownloadCounts")
-query          = new Parse.Query(DownloadCounts)
 downloadCounts = null
-cookie         = require 'cookies-js'
-
 callbacks = []
 
-query.get('tMDLiJERSc').then (counts) ->
-  downloadCounts = counts
-  cb() for cb in callbacks
-  callbacks.length = 0
+widgetDownloadsRef.once('value')
+  .then (counts) ->
+    downloadCounts = counts.val()
+    cb() for cb in callbacks
+    callbacks.length = 0
+  .catch (err) -> console.warn err
 
 convertId = (id) ->
   String(id)
     .replace(/-/g, '_')
     .replace(/\./g, '_')
 
-exports.get = (id, callback) ->
+exports.get = get = (id, callback) ->
   id = convertId(id)
-  return callback(downloadCounts.get(id)) if downloadCounts
+  return callback(downloadCounts[id]) if downloadCounts
   callbacks.push ->
-    callback(downloadCounts.get(id))
+    callback(downloadCounts[id])
 
 exports.increment = (id, callback) ->
   id = convertId(id)
   return if cookie.get(id)
-
-  doIncrement = ->
-    downloadCounts.increment(id)
-    downloadCounts.save().then ->
-      cookie.set(id, true)
-      callback?(downloadCounts.get(id))
-
-  if downloadCounts
-    doIncrement()
-  else
-    callbacks.push doIncrement
-
+  debounce = null
+  widgetDownloadsRef.child(id).transaction (count) ->
+    newCount = (count || 0) + 1
+    cookie.set(id, true)
+    callback?(newCount) if count or !downloadCounts[id]
+    return newCount
