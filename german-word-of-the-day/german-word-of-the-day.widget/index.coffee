@@ -1,4 +1,4 @@
-command: 'curl -s "http://feeds.feedblitz.com/german-word-of-the-day"'
+command: 'curl -s "http://feeds.feedblitz.com/german-word-of-the-day&x=1"'
 
 refreshFrequency: 3600000
 
