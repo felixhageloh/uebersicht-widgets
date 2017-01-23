@@ -472,3 +472,6 @@
 [submodule "stravasicht"]
 	path = stravasicht
 	url = https://github.com/draganmarjanovic/stravasicht
+[submodule "reddit-karma.widget"]
+	path = reddit-karma.widget
+	url = https://github.com/z3t0/reddit-karma.widget
