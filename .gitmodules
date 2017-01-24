@@ -475,3 +475,6 @@
 [submodule "reddit-karma.widget"]
 	path = reddit-karma.widget
 	url = https://github.com/z3t0/reddit-karma.widget
+[submodule "ubersicht_tasks"]
+	path = ubersicht_tasks
+	url = https://github.com/louixs/ubersicht_tasks
