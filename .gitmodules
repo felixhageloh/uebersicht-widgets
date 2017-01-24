@@ -478,3 +478,6 @@
 [submodule "ubersicht_tasks"]
 	path = ubersicht_tasks
 	url = https://github.com/louixs/ubersicht_tasks
+[submodule "pic-display.widget"]
+	path = pic-display.widget
+	url = https://github.com/Trapper777/pic-display.widget
