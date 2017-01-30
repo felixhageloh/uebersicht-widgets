@@ -472,3 +472,6 @@
 [submodule "stravasicht"]
 	path = stravasicht
 	url = https://github.com/draganmarjanovic/stravasicht
+[submodule "daily-xkcd"]
+	path = daily-xkcd
+	url = https://github.com/dalemanthei/daily-xkcd-uebersicht-widget.git
