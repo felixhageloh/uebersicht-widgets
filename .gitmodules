@@ -481,3 +481,6 @@
 [submodule "pic-display.widget"]
 	path = pic-display.widget
 	url = https://github.com/Trapper777/pic-display.widget
+[submodule "daily-xkcd-uebersicht-widget"]
+	path = daily-xkcd-uebersicht-widget
+	url = https://github.com/dalemanthei/daily-xkcd-uebersicht-widget
