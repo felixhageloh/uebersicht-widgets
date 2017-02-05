@@ -490,3 +490,6 @@
 [submodule "wttr-moon-uebersicht"]
 	path = wttr-moon-uebersicht
 	url = https://github.com/matthias-vogt/wttr-moon-uebersicht
+[submodule "wttr-uebersicht"]
+	path = wttr-uebersicht
+	url = https://github.com/matthias-vogt/wttr-uebersicht
