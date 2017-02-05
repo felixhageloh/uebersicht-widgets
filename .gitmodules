@@ -487,3 +487,6 @@
 [submodule "simple-itunes.widget"]
 	path = simple-itunes.widget
 	url = https://github.com/pauloruberto/simple-itunes.widget
+[submodule "wttr-moon-uebersicht"]
+	path = wttr-moon-uebersicht
+	url = https://github.com/matthias-vogt/wttr-moon-uebersicht
