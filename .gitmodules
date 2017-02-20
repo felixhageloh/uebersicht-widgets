@@ -502,3 +502,6 @@
 [submodule "Ubersicht-Matrix"]
 	path = Ubersicht-Matrix
 	url = https://github.com/Porco-Rosso/Ubersicht-Matrix
+[submodule "ubersicht-docker-containers"]
+	path = ubersicht-docker-containers
+	url = https://github.com/pauloamgomes/ubersicht-docker-containers
