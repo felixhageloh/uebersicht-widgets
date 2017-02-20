@@ -499,3 +499,6 @@
 [submodule "ToDo"]
 	path = ToDo
 	url = https://github.com/illuminati945/ToDo
+[submodule "Ubersicht-Matrix"]
+	path = Ubersicht-Matrix
+	url = https://github.com/Porco-Rosso/Ubersicht-Matrix
