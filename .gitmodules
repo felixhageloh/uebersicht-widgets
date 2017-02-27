@@ -505,3 +505,6 @@
 [submodule "ubersicht-docker-containers"]
 	path = ubersicht-docker-containers
 	url = https://github.com/pauloamgomes/ubersicht-docker-containers
+[submodule "Ubersicht_zendesk_jg"]
+	path = Ubersicht_zendesk_jg
+	url = https://github.com/jagalbraith/Ubersicht_zendesk_jg
