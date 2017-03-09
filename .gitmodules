@@ -508,3 +508,6 @@
 [submodule "Ubersicht_zendesk_jg"]
 	path = Ubersicht_zendesk_jg
 	url = https://github.com/jagalbraith/Ubersicht_zendesk_jg
+[submodule "uebersicht-taskpaper"]
+	path = uebersicht-taskpaper
+	url = https://github.com/flow7/uebersicht-taskpaper
