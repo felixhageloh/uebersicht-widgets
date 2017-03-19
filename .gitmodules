@@ -514,3 +514,6 @@
 [submodule "sonarr-widget"]
 	path = sonarr-widget
 	url = https://github.com/claylevering/sonarr-widget
+[submodule "todolist-widget"]
+	path = todolist-widget
+	url = https://github.com/Langhaarzombie/todolist-widget
