@@ -66,6 +66,9 @@ registerEvents = (widgetEls) ->
   $('[href=#disclaimer]').on 'click', (e) ->
     widgetDetails.hide()
 
+  document.addEventListener 'keydown', (e) ->
+    widgetDetails.hide() if e.which == 27
+
   installationEl.on 'click',  '[data-action=close]', (e) ->
     e.preventDefault()
     installationEl.removeClass('visible')
