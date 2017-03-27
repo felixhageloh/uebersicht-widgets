@@ -517,3 +517,6 @@
 [submodule "todolist-widget"]
 	path = todolist-widget
 	url = https://github.com/Langhaarzombie/todolist-widget
+[submodule "RSSs_Ubersicht_Widget"]
+	path = RSSs_Ubersicht_Widget
+	url = https://github.com/edasque/RSSs_Ubersicht_Widget
