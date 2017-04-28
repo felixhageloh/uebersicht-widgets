@@ -1,0 +1,5 @@
+{
+  "name": "Total Mem",
+  "description": "Displays memory usage stats: Free, Active, Inactive, Wired",
+  "author": "George Irwin"
+}
