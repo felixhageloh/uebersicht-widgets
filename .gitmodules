@@ -523,3 +523,6 @@
 [submodule "valerian-time"]
 	path = valerian-time
 	url = https://github.com/arminrosu/valerian-time
+[submodule "bingwall"]
+	path = bingwall
+	url = https://github.com/alebertacco/bingwall
