@@ -529,3 +529,6 @@
 [submodule "vsts.widget"]
 	path = vsts.widget
 	url = https://github.com/GregaVrbancic/vsts.widget
+[submodule "led-clock"]
+	path = led-clock
+	url = https://github.com/imranzahid01/led-clock
