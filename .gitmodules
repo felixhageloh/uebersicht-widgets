@@ -526,3 +526,6 @@
 [submodule "bingwall"]
 	path = bingwall
 	url = https://github.com/alebertacco/bingwall
+[submodule "vsts.widget"]
+	path = vsts.widget
+	url = https://github.com/GregaVrbancic/vsts.widget
