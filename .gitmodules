@@ -532,3 +532,6 @@
 [submodule "led-clock"]
 	path = led-clock
 	url = https://github.com/imranzahid01/led-clock
+[submodule "uebersicht-ethereum-usd-price"]
+	path = uebersicht-ethereum-usd-price
+	url = https://github.com/AdrienKuhn/uebersicht-ethereum-usd-price
