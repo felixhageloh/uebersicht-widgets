@@ -538,3 +538,6 @@
 [submodule "Ubersicht-DiskUsage-bar"]
 	path = Ubersicht-DiskUsage-bar
 	url = https://github.com/onishy/Ubersicht-DiskUsage-bar
+[submodule "conky-for-mac"]
+	path = conky-for-mac
+	url = https://github.com/dumbo25/conky-for-mac
