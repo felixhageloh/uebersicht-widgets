@@ -535,3 +535,6 @@
 [submodule "uebersicht-ethereum-usd-price"]
 	path = uebersicht-ethereum-usd-price
 	url = https://github.com/AdrienKuhn/uebersicht-ethereum-usd-price
+[submodule "Ubersicht-DiskUsage-bar"]
+	path = Ubersicht-DiskUsage-bar
+	url = https://github.com/onishy/Ubersicht-DiskUsage-bar
