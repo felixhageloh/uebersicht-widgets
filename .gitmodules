@@ -547,3 +547,6 @@
 [submodule "todo.txt-widget"]
 	path = todo.txt-widget
 	url = https://github.com/16kRAMpack/todo.txt-widget
+[submodule "commands-feed.widget"]
+	path = commands-feed.widget
+	url = https://github.com/smartameer/commands-feed.widget
