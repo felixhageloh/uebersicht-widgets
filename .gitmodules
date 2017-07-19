@@ -544,3 +544,6 @@
 [submodule "cryptowidget"]
 	path = cryptowidget
 	url = https://github.com/avocadomaster/cryptowidget
+[submodule "uebersicht-central-logo-widget"]
+	path = uebersicht-central-logo-widget
+	url = https://github.com/aykot/uebersicht-central-logo-widget
