@@ -541,3 +541,6 @@
 [submodule "conky-for-mac"]
 	path = conky-for-mac
 	url = https://github.com/dumbo25/conky-for-mac
+[submodule "cryptowidget"]
+	path = cryptowidget
+	url = https://github.com/avocadomaster/cryptowidget
