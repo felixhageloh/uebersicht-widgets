@@ -547,3 +547,6 @@
 [submodule "uebersicht-central-logo-widget"]
 	path = uebersicht-central-logo-widget
 	url = https://github.com/aykot/uebersicht-central-logo-widget
+[submodule "todo.txt-widget"]
+	path = todo.txt-widget
+	url = https://github.com/16kRAMpack/todo.txt-widget
