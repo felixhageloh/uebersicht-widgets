@@ -550,3 +550,6 @@
 [submodule "commands-feed.widget"]
 	path = commands-feed.widget
 	url = https://github.com/smartameer/commands-feed.widget
+[submodule "mini-system-charts.widget"]
+	path = mini-system-charts.widget
+	url = https://github.com/aprowe/mini-system-charts.widget
