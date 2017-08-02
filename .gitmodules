@@ -553,3 +553,6 @@
 [submodule "mini-system-charts.widget"]
 	path = mini-system-charts.widget
 	url = https://github.com/aprowe/mini-system-charts.widget
+[submodule "scrolling-cpu-meter"]
+	path = scrolling-cpu-meter
+	url = https://github.com/FunkyQChicken/scrolling-cpu-meter
