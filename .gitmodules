@@ -559,3 +559,6 @@
 [submodule "uebersicht_ch_meteo_widget"]
 	path = uebersicht_ch_meteo_widget
 	url = https://github.com/gbuendia/uebersicht_ch_meteo_widget
+[submodule "uebersicht_polizeiticker_widget"]
+	path = uebersicht_polizeiticker_widget
+	url = https://github.com/gbuendia/uebersicht_polizeiticker_widget
