@@ -556,3 +556,6 @@
 [submodule "scrolling-cpu-meter"]
 	path = scrolling-cpu-meter
 	url = https://github.com/FunkyQChicken/scrolling-cpu-meter
+[submodule "uebersicht_ch_meteo_widget"]
+	path = uebersicht_ch_meteo_widget
+	url = https://github.com/gbuendia/uebersicht_ch_meteo_widget
