@@ -112,9 +112,6 @@
 [submodule "ical-widget"]
 	path = ical-widget
 	url = https://github.com/djbrooks111/ical-widget.git
-[submodule "spaceAPI"]
-	path = spaceAPI
-	url = https://github.com/Kaweechelchen/spaceAPI-widget.git
 [submodule "Set-networking"]
 	path = Set-networking
 	url = https://github.com/brookesdjb/Set-networking.widget
