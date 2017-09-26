@@ -562,3 +562,6 @@
 [submodule "trellocard"]
 	path = trellocard
 	url = https://github.com/guxsousa/trellocard
+[submodule "ubersicht-wanikani"]
+	path = ubersicht-wanikani
+	url = https://github.com/jakeoid/ubersicht-wanikani
