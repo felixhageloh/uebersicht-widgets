@@ -44,7 +44,7 @@ style: """
     font-weight: bold
     background: rgba(#fff, 0.2)
     border-radius: 50%
-    
+
   .grey
     color: rgba(#C0C0C0, .7)
 """
@@ -82,7 +82,7 @@ updateBody: (rows, table) ->
 
   today = rows.pop().split(/\s+/)
   month = today[0]
-  date = today[1]
+  date = today[1].replace(/\D/g, '')
   year = today[2]
 
   lengths = [31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30]
@@ -90,7 +90,7 @@ updateBody: (rows, table) ->
     lengths[2] = 29
 
   for week, i in rows
-    days = week.split(/\s+/).filter (day) -> day.length > 0
+    days = week.split(/\s+/).filter((day) -> day.length > 0)
     tableRow = $("<tr></tr>").appendTo(tbody)
 
     if i == 0 and days.length < 7
@@ -103,6 +103,7 @@ updateBody: (rows, table) ->
           cell = $("<td></td>").appendTo(tableRow)
 
     for day in days
+      day = day.replace(/\D/g, '')
       cell = $("<td>#{day}</td>").appendTo(tableRow)
       cell.addClass("today") if day == date
 
