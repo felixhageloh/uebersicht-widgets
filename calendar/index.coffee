@@ -90,7 +90,7 @@ updateBody: (rows, table) ->
     lengths[2] = 29
 
   for week, i in rows
-    days = week.split(/\s+/).filter((day) -> day.length > 0)
+    days = week.split(/\s+/).filter((day) -> day.replace(/\D/g, '').length > 0)
     tableRow = $("<tr></tr>").appendTo(tbody)
 
     if i == 0 and days.length < 7
