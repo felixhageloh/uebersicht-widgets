@@ -565,3 +565,6 @@
 [submodule "uebersicht-widget-public_ip"]
 	path = uebersicht-widget-public_ip
 	url = https://github.com/i07/uebersicht-widget-public_ip
+[submodule "uebersicht-binary-clock.widget"]
+	path = uebersicht-binary-clock.widget
+	url = https://github.com/Dellos7/uebersicht-binary-clock.widget/
