@@ -562,3 +562,6 @@
 [submodule "ubersicht-wanikani"]
 	path = ubersicht-wanikani
 	url = https://github.com/jakeoid/ubersicht-wanikani
+[submodule "uebersicht-widget-public_ip"]
+	path = uebersicht-widget-public_ip
+	url = https://github.com/i07/uebersicht-widget-public_ip
