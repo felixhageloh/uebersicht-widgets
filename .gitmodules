@@ -568,3 +568,6 @@
 [submodule "uebersicht-binary-clock.widget"]
 	path = uebersicht-binary-clock.widget
 	url = https://github.com/Dellos7/uebersicht-binary-clock.widget/
+[submodule "wttr"]
+	path = wttr
+	url = https://github.com/bkroggel/wttr
