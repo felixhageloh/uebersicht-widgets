@@ -571,3 +571,6 @@
 [submodule "wttr"]
 	path = wttr
 	url = https://github.com/bkroggel/wttr
+[submodule "uebersicht-spotify-adsilencer.widget"]
+	path = uebersicht-spotify-adsilencer.widget
+	url = https://github.com/Dellos7/uebersicht-spotify-adsilencer.widget
