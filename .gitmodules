@@ -580,3 +580,6 @@
 [submodule "WunderlistTasksWidget"]
 	path = WunderlistTasksWidget
 	url = https://github.com/Makiah/WunderlistTasksWidget
+[submodule "reddit-overview.widget"]
+	path = reddit-overview.widget
+	url = https://github.com/diceroll123/reddit-overview.widget
