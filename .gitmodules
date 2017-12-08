@@ -577,3 +577,6 @@
 [submodule "cuteical.widget"]
 	path = cuteical.widget
 	url = https://github.com/ctakemoto/cuteical.widget
+[submodule "WunderlistTasksWidget"]
+	path = WunderlistTasksWidget
+	url = https://github.com/Makiah/WunderlistTasksWidget
