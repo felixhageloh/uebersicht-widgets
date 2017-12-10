@@ -1,12 +1,20 @@
+@import 'vars';
+
 .button
   padding: 4px 16px
-  border: 2px solid #86585a
-  font-size: 12px
+  border: 2px solid cta-color
+  default-text()
+  font-size: 14px
   text-decoration: none
   border-radius: 2px
-  display: block
+  appearance: none
+  background: transparent
+  font-weight: 400
+  color: cta-color
+  line-height: inherit
+  cursor: pointer
 
   &:hover, &.active
     color: #fff
-    background: #86585a
+    background: cta-color
     text-decoration: none

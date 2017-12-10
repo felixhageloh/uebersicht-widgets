@@ -1,0 +1,61 @@
+@import 'vars'
+@import 'button'
+
+.drawer
+  header-bg()
+  position: fixed
+  top: header-height
+  left: 0
+  right: 0
+  bottom: 0
+  padding-bottom: 20px
+  text-align: left
+  transition: all 500ms
+  transform: translate(0, -800px)
+  visibility: hidden
+
+  &.visible
+    transform: none
+    visibility: visible
+
+  .wrapper
+    padding: 0 16px
+    box-sizing: border-box
+
+  h1
+    font-size: 16px
+    font-style: italic
+    text-align: left
+
+    &:before
+      content: '»'
+      margin-right: 8px
+      font-size: 20px
+      font-weight: bold
+      color: #999
+
+  h2
+    font-size: 14px
+    font-weight: 500
+
+  p
+    font-size: 14px
+    margin: 4px 8px 16px 0;
+    padding-left: 16px
+    border-left: 6px solid #eee
+    max-width: 920px
+
+  .close-button
+    @extend .button
+    display: inline-block
+    margin-top: 4px
+
+  .close-icon
+    color: text-color
+    position: absolute
+    right: 4px
+    top: 4px
+
+    &:hover
+      text-decoration: none
+      text-shadow: 0 0 2px #aaa

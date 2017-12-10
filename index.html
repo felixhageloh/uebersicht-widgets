@@ -73,18 +73,29 @@
 
   <div id='submit' class='drawer'>
     <div class='wrapper'>
-      <h1>Yay.</h1>
-      <a href='http://github.com/felixhageloh/uebersicht-widgets#readme'>
-        Check the README on details how to build your own widget.
-      </a>
+      <h1>Got a widget to share? Great!. Please follow these steps to submit it to the gallery:</h1>
+
+      <h2>1. Create a GitHub repo for your widget.</h2>
+      <p>
+        Each widget lives in its own GitHub repo. Please check the <a href='http://github.com/felixhageloh/uebersicht-widgets#readme'>README</a> on the format of the repo.
+      </p>
+
+      <h2>2. Verify your widget</h2>
+      <p>
+        To verify your widget repo contains all the required information, please enter your repo url
+      <p>
       <form id='submit-form' target='#'>
-        <label>
-          Repo Url:
-          <input type="text" name="repo-url">
-        </label>
-        <button type='submit'>Submit Widget</button>
+        <label for="repo-url">URL:</label>
+        <input type="text" id="repo-url" name="repo-url" placeholder="https://github.com/user-name/repo-name" />
+        <input type='submit' value='Verify Widget' />
       </form>
-      <div id='submit-result'></div>
+      <div id='submit-result'>
+        <ul id='checks'>
+          <li class='pending'>Repo found</li>
+          <li class='pending'>Validated repo structure</li>
+          <li class='pending'>Parsed widget manifest</li>
+        </ul>
+      </div>
       <a href="#" data-action='close' class='close-icon' title='close'>✕</a>
     </div>
   </div>

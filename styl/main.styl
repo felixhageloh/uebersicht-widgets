@@ -3,22 +3,17 @@
 @import 'button'
 @import 'widget'
 @import 'nav'
+@import 'drawer'
 @import 'widget-details'
 
 global-reset()
 
-header-height = 126px
-
-header-bg()
-  background: rgba(#fff, 0.98)
-  -webkit-backdrop-filter: blur(10px)
-
 body, html
   background: #fff
+  default-text()
   color: text-color
-  font-family: Ubuntu, Helvetica Neue, Arial, Sans
-  font-weight: 200
   line-height: 1.5
+  font-weight: 200
   text-rendering: optimizeSpeed
   -webkit-font-smoothing: antialiased
   font-size: 16px
@@ -33,13 +28,33 @@ cite
   font-style: italic
 
 a, a:link, a:visited
-  color:#86585a
+  color: cta-color
   text-decoration: none
   font-weight: normal
 
   &:hover
     color:#852a2f
     text-decoration: underline
+
+input[type=text]
+  font-size: 14px
+  border-radius: 2px
+  border: 2px solid #666
+  padding: 4px 8px
+  line-height: inherit
+  color: text-color
+  default-text()
+  appearance: none
+
+input[type=text]:hover
+  border-color: text-color
+
+input[type=text]:focus
+  border-color: cta-color
+  outline: none
+
+input[type=submit]
+  @extend .button
 
 header
   display: block
@@ -126,64 +141,23 @@ header
   h2
     font-size: 1em
 
-.drawer
-  header-bg()
-  position: fixed
-  top: header-height
-  left: 0
-  right: 0
-  border-bottom: 1px solid #ddd
-  padding-bottom: 20px
-  text-align: left
-  transition: all 500ms
-  transform: translate(0, -800px)
-  visibility: hidden
+#submit
+  label
+    font-size: 12px
+    display: block
 
-  &.visible
-    transform: none
-    visibility: visible
+  input[name=repo-url]
+    width: 440px;
 
-  .wrapper
-    padding: 0 16px
-    box-sizing: border-box
+  #checks
+    margin: 16px 0
 
-  h1
-    font-size: 16px
-    font-style: italic
-    text-align: left
-
-    &:before
-      content: '»'
-      margin-right: 8px
-      font-size: 20px
-      font-weight: bold
-      color: #999
-
-  h2
-    font-size: 14px
-    font-weight: 500
-
-  p
-    font-size: 14px
-    margin: 4px 8px 16px 0;
-    padding-left: 16px
-    border-left: 6px solid #eee
-    max-width: 920px
-
-  .close-button
-    @extend .button
-    display: inline-block
-    margin-top: 4px
-
-  .close-icon
-    color: text-color
-    position: absolute
-    right: 4px
-    top: 4px
-
-    &:hover
-      text-decoration: none
-      text-shadow: 0 0 2px #aaa
+  li.pending
+    color: #999
+  li.success
+    color: #7ed049
+  li.error
+    color: #e1004c
 
 @media screen and (min-width: 900px)
   .wrapper

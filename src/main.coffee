@@ -81,13 +81,7 @@ registerEvents = (widgetEls) ->
     e.preventDefault()
     $('.drawer').removeClass('visible')
 
-$('#submit-form').on 'submit', (e) ->
-  e.preventDefault()
-  getWidget(e.target.elements['repo-url'].value)
-    .then (widgetData) ->
-      console.log widgetData
-      $('#submit-result').html(JSON.stringify(widgetData))
-
+$('#submit-form').on 'submit', submitWidget
 
 goToState = (id, initial = false) ->
   widget = allWidgets[id]
@@ -144,5 +138,16 @@ sortWidgets = (property) ->
 scrollToWidget = (widget) ->
   headerHeight = $('header').height()
   window.scrollTo 0, $('#'+widget.id).offset()?.top - headerHeight
+
+submitWidget = (e) ->
+  e.preventDefault()
+  form = e.target
+  form.elements['submit'].setProperty('disabled', true)
+  getWidget(form.elements['repo-url'].value)
+    .then (widgetData) ->
+      form.elements['submit'].setProperty('disabled', false)
+      $('#submit-result').html(JSON.stringify(widgetData))
+    .catch (e) ->
+      form.elements['submit'].setProperty('disabled', true)
 
 fetchWidgets init
