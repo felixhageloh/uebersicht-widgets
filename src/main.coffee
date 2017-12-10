@@ -81,7 +81,7 @@ registerEvents = (widgetEls) ->
     e.preventDefault()
     $('.drawer').removeClass('visible')
 
-$('#submit-form').on 'submit', submitWidget
+  $('#submit_form').on 'submit', submitWidget
 
 goToState = (id, initial = false) ->
   widget = allWidgets[id]
@@ -142,12 +142,25 @@ scrollToWidget = (widget) ->
 submitWidget = (e) ->
   e.preventDefault()
   form = e.target
-  form.elements['submit'].setProperty('disabled', true)
-  getWidget(form.elements['repo-url'].value)
+  form.elements['submit'].disabled = true
+  handleSubmitProgress({})
+  $('#submit_result').show()
+  $('#open_request').hide()
+  getWidget(form.elements['repo-url'].value, handleSubmitProgress)
     .then (widgetData) ->
-      form.elements['submit'].setProperty('disabled', false)
-      $('#submit-result').html(JSON.stringify(widgetData))
+      form.elements['submit'].disabled = false
+      $('#open_request a').html("Request '#{widgetData.name}' to be added")
+      $('#open_request a')[0].search =
+        "title=New widget: #{encodeURIComponent(widgetData.name)}" +
+        '&body=Please add this widget to the gallery: ' +
+        encodeURIComponent(widgetData.repoUrl)
+      $('#open_request').show()
     .catch (e) ->
-      form.elements['submit'].setProperty('disabled', true)
+      form.elements['submit'].disabled = false
+
+handleSubmitProgress = (progress) ->
+  $('#checks #repo_found').toggleClass('success', !!progress.repoFound)
+  $('#checks #repo_valid').toggleClass('success', !!progress.repoValid)
+  $('#checks #manifest').toggleClass('success', !!progress.manifest)
 
 fetchWidgets init

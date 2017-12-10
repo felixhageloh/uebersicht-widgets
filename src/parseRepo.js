@@ -1,4 +1,3 @@
-var api = require('./GitHubApi.js');
 var validateRepo = require('./validateRepo.js');
 
 function parseWidgetDir(dirTree) {
@@ -20,13 +19,8 @@ function parseWidgetDir(dirTree) {
 
 module.exports = function parseRepo(repoData) {
   return new Promise(function(resolve, reject) {
-    api.getJSON(
-      ['repos', repoData.user, repoData.repo, 'git/trees/master'].join('/'),
-      function handleRepoResponse(repoRes) {
-        var paths = parseWidgetDir(repoRes.tree);
-        var errors = validateRepo(paths);
-        errors.length > 0 ? reject(errors) : resolve(paths);
-      }
-    );
+    var paths = parseWidgetDir(repoData.tree);
+    var errors = validateRepo(paths);
+    errors.length > 0 ? reject(errors) : resolve(paths);
   });
 };

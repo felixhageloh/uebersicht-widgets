@@ -84,17 +84,24 @@
       <p>
         To verify your widget repo contains all the required information, please enter your repo url
       <p>
-      <form id='submit-form' target='#'>
-        <label for="repo-url">URL:</label>
-        <input type="text" id="repo-url" name="repo-url" placeholder="https://github.com/user-name/repo-name" />
-        <input type='submit' value='Verify Widget' />
+      <form id='submit_form' target='#'>
+        <label for="repo_url">URL:</label>
+        <input type="text" id="repo_url" name="repo-url" placeholder="https://github.com/user-name/repo-name" />
+        <input type='submit' name='submit' value='Verify Widget' />
       </form>
-      <div id='submit-result'>
+      <div id='submit_result'>
         <ul id='checks'>
-          <li class='pending'>Repo found</li>
-          <li class='pending'>Validated repo structure</li>
-          <li class='pending'>Parsed widget manifest</li>
+          <li id='repo_found' class='pending'>Repo found</li>
+          <li id='repo_valid' class='pending'>Validated repo structure</li>
+          <li id='manifest' class='pending'>Parsed widget manifest</li>
         </ul>
+      </div>
+      <div id='open_request'>
+        <h2>3. All Good! Now open a request for your widget to be added</h2>
+        <p>
+          Clicking the link below will open a GitHub issue with a request to add your widget to the gallery. It will be reviewed and processed shortly.
+        <p>
+        <a href="https://github.com/felixhageloh/uebersicht-widgets/issues/new"></a>
       </div>
       <a href="#" data-action='close' class='close-icon' title='close'>✕</a>
     </div>

@@ -4,9 +4,13 @@ var busy = false;
 
 window.githubApiCallback = function githubApiCallback(json) {
   busy = false;
-  if (currentCallback) {
-    currentCallback(json.data);
+  if (!currentCallback) {
+    return;
   }
+  json.meta.status < 300
+    ? currentCallback(null, json.data)
+    : currentCallback(json.data)
+    ;
 };
 
 exports.getJSON = function getJSON(path, callback) {
