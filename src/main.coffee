@@ -149,18 +149,28 @@ submitWidget = (e) ->
   getWidget(form.elements['repo-url'].value, handleSubmitProgress)
     .then (widgetData) ->
       form.elements['submit'].disabled = false
-      $('#open_request a').html("Request '#{widgetData.name}' to be added")
-      $('#open_request a')[0].search =
-        "title=New widget: #{encodeURIComponent(widgetData.name)}" +
-        '&body=Please add this widget to the gallery: ' +
-        encodeURIComponent(widgetData.repoUrl)
-      $('#open_request').show()
-    .catch (e) ->
+      handleSubmitSuccess(widgetData)
+    .catch (err) ->
       form.elements['submit'].disabled = false
+      handleSubmitError(err)
 
 handleSubmitProgress = (progress) ->
   $('#checks #repo_found').toggleClass('success', !!progress.repoFound)
   $('#checks #repo_valid').toggleClass('success', !!progress.repoValid)
   $('#checks #manifest').toggleClass('success', !!progress.manifest)
+
+handleSubmitSuccess = (widgetData) ->
+  $('#open_request a').html("Request '#{widgetData.name}' to be added")
+  $('#open_request a')[0].search =
+    "title=New widget: #{encodeURIComponent(widgetData.name)}" +
+    '&body=Please add this widget to the gallery: ' +
+    encodeURIComponent(widgetData.repoUrl)
+  $('#open_request').show()
+
+handleSubmitError = (errors) ->
+  console.log errors
+  $('#checks #repo_found').toggleClass('error', !!errors.repoFound)
+  $('#checks #repo_valid').toggleClass('error', !!errors.repoValid)
+  $('#checks #manifest').toggleClass('error', !!errors.manifest)
 
 fetchWidgets init
