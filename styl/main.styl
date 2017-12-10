@@ -9,6 +9,10 @@ global-reset()
 
 header-height = 126px
 
+header-bg()
+  background: rgba(#fff, 0.98)
+  -webkit-backdrop-filter: blur(10px)
+
 body, html
   background: #fff
   color: text-color
@@ -38,14 +42,13 @@ a, a:link, a:visited
     text-decoration: underline
 
 header
-  background: rgba(#fff, 0.95)
   display: block
   position: fixed
   top: 0
   left: 0
   right: 0
   z-index: 100
-  -webkit-backdrop-filter: blur(10px)
+  header-bg()
 
   h1 p
     font-size: 12px
@@ -123,8 +126,8 @@ header
   h2
     font-size: 1em
 
-#installation
-  background: rgba(#fff, 0.95)
+.drawer
+  header-bg()
   position: fixed
   top: header-height
   left: 0
@@ -136,13 +139,13 @@ header
   transform: translate(0, -800px)
   visibility: hidden
 
-  .wrapper
-    padding: 0 16px
-    box-sizing: border-box
-
   &.visible
     transform: none
     visibility: visible
+
+  .wrapper
+    padding: 0 16px
+    box-sizing: border-box
 
   h1
     font-size: 16px

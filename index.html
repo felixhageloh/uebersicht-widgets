@@ -25,7 +25,7 @@
           <li><a href="#" data-sort-by='name' title='sort by name'>Name</a></li>
         </ul>
 
-        <a href='http://github.com/felixhageloh/uebersicht-widgets#readme' class='submit'>submit your own</a>
+        <a href='#submit' class='submit'>submit your own</a>
       </nav>
     </div>
   </header>
@@ -49,7 +49,7 @@
 
   <div id='widget_details'></div>
 
-  <div id='installation'>
+  <div id='installation' class='drawer'>
     <div class='wrapper'>
       <h1>Widgets are installed by placing them in your widgets folder.</h1>
 
@@ -67,6 +67,24 @@
       <p>Drag the widget from your Downloads folder to the widgets folder you opened in step 2.</p>
 
       <a href="#" data-action='close' class='close-button'>Ok, got it!</a>
+      <a href="#" data-action='close' class='close-icon' title='close'>✕</a>
+    </div>
+  </div>
+
+  <div id='submit' class='drawer'>
+    <div class='wrapper'>
+      <h1>Yay.</h1>
+      <a href='http://github.com/felixhageloh/uebersicht-widgets#readme'>
+        Check the README on details how to build your own widget.
+      </a>
+      <form id='submit-form' target='#'>
+        <label>
+          Repo Url:
+          <input type="text" name="repo-url">
+        </label>
+        <button type='submit'>Submit Widget</button>
+      </form>
+      <div id='submit-result'></div>
       <a href="#" data-action='close' class='close-icon' title='close'>✕</a>
     </div>
   </div>

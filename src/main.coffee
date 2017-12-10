@@ -1,14 +1,15 @@
-$              = require '../lib/jquery'
+$ = require '../lib/jquery'
 WidgetTemplate = require './widget-template.coffee'
-downloads      = require './download-counts.coffee'
-WidgetDetails  = require './widget-details.coffee'
-Router         = require './router.coffee'
+downloads = require './download-counts.coffee'
+WidgetDetails = require './widget-details.coffee'
+Router = require './router.coffee'
+getWidget = require './getWidget.js'
 
-listEl         = $('#widget_list')
-mainNav        = $('header nav')
+listEl = $('#widget_list')
+mainNav = $('header nav')
 installationEl = $('#installation')
-router         = null
-lastScroll     = null
+router = null
+lastScroll = null
 
 allWidgets    = {}
 widgetDetails = WidgetDetails($('#widget_details'))
@@ -61,7 +62,14 @@ registerEvents = (widgetEls) ->
   $('[href=#installation]').on 'click', (e) ->
     e.preventDefault()
     widgetDetails.hide()
+    $('.drawer').removeClass('visible')
     installationEl.addClass('visible')
+
+  $('[href=#submit]').on 'click', (e) ->
+    e.preventDefault()
+    widgetDetails.hide()
+    $('.drawer').removeClass('visible')
+    $('#submit').addClass('visible')
 
   $('[href=#disclaimer]').on 'click', (e) ->
     widgetDetails.hide()
@@ -69,9 +77,17 @@ registerEvents = (widgetEls) ->
   document.addEventListener 'keydown', (e) ->
     widgetDetails.hide() if e.which == 27
 
-  installationEl.on 'click',  '[data-action=close]', (e) ->
+  $('.drawer').on 'click',  '[data-action=close]', (e) ->
     e.preventDefault()
-    installationEl.removeClass('visible')
+    $('.drawer').removeClass('visible')
+
+$('#submit-form').on 'submit', (e) ->
+  e.preventDefault()
+  getWidget(e.target.elements['repo-url'].value)
+    .then (widgetData) ->
+      console.log widgetData
+      $('#submit-result').html(JSON.stringify(widgetData))
+
 
 goToState = (id, initial = false) ->
   widget = allWidgets[id]
