@@ -149,20 +149,37 @@ header
   input[name=repo-url]
     width: 440px;
 
-  #checks
-    margin: 16px 0
+#submit_form
+  margin-bottom: 16px
 
-  li.pending
-    color: #999
-  li.success
-    color: #7ed049
-  li.error
-    color: #e1004c
+  input[type=submit]:disabled
+    opacity: 0.2
 
-#submit_result
+#submit_progress
   display: none
+  #checks
+    margin: 0 0 16px 8px
 
-#open_request
+    li.pending
+      color: #999
+    li.success
+      color: #7ed049
+      &::after
+        margin-left: 4px
+        content: '✓'
+        color: #7ed049
+    li.error
+      color: error-color
+      &::after
+        margin-left: 4px
+        content: '✗'
+        color: error-color
+
+#submit_error
+  h2
+    color: error-color
+
+#submit_success
   display: none
 
 @media screen and (min-width: 900px)

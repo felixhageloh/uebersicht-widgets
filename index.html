@@ -89,14 +89,16 @@
         <input type="text" id="repo_url" name="repo-url" placeholder="https://github.com/user-name/repo-name" />
         <input type='submit' name='submit' value='Verify Widget' />
       </form>
-      <div id='submit_result'>
+      <div id='submit_progress'>
+        checking widget ...
         <ul id='checks'>
           <li id='repo_found' class='pending'>Repo found</li>
           <li id='repo_valid' class='pending'>Validated repo structure</li>
           <li id='manifest' class='pending'>Parsed widget manifest</li>
         </ul>
       </div>
-      <div id='open_request'>
+      <div id='submit_error'></div>
+      <div id='submit_success'>
         <h2>3. All Good! Now open a request for your widget to be added</h2>
         <p>
           Clicking the link below will open a GitHub issue with a request to add your widget to the gallery. It will be reviewed and processed shortly.
