@@ -21,6 +21,6 @@ module.exports = function parseRepo(repoData) {
   return new Promise(function(resolve, reject) {
     var paths = parseWidgetDir(repoData.tree);
     var errors = validateRepo(paths);
-    errors.length > 0 ? reject(errors) : resolve(paths);
+    errors ? reject(errors) : resolve(paths);
   });
 };

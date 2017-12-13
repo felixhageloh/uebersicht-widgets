@@ -1,9 +1,11 @@
 module.exports = function validateRepo(repoPaths) {
-  var errors = [];
+  var errors = {};
+  errors.screenshot = !repoPaths.screenshotPath;
+  errors.manifest = !repoPaths.manifestPath;
+  errors.zip = !repoPaths.zipPath;
 
-  repoPaths.screenshotPath || errors.push('screenshot');
-  repoPaths.manifestPath || errors.push('manifest');
-  repoPaths.zipPath || errors.push('zip');
-
-  return errors;
+  return Object.values(errors).filter(e => e).length > 0
+    ? errors
+    : undefined
+    ;
 };

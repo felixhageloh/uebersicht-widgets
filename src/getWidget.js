@@ -30,7 +30,7 @@ module.exports = function getWidget(repoUrl, progressCb) {
       return buildWidget(repoData, manifest);
     })
     .catch(function(err) {
-      var errObj = {err: err};
+      var errObj = {error: err};
       errObj[step] = true;
       throw errObj;
     });

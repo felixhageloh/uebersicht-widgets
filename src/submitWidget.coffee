@@ -52,6 +52,42 @@ renderRepoNotFoundExplanation = (error) ->
     <p>Please make sure you entered a valid repo URL</p>
   """
 
+renderInvalidRepoExplanation = (error) ->
+  $('#submit_error').html """
+    <h2>Please fix the follwing issues with your repo</h2>
+    <ul>
+    #{error.screenshot &&
+      "<li>
+        Missing screenshot.<br/>
+        Please add a screenshot named <code>screenshot.png</code>
+      </li>
+    "}
+    #{error.zip &&
+      "<li>
+        Missing zip file.<br/>
+        Please add a zip file named <code>&lt;widget-name&gt.widget.zip</code>,
+        containing your widget.
+      </li>
+    "}
+    #{error.manifest &&
+      "<li>
+        Missing manifest file.<br/>
+        Please add a JSON file named <code>widget.json</code> describing your
+        widget.
+      </li>
+    "}
+    </ul>
+  """
 
-
-
+renderInvalidManifestExplanation = (error) ->
+  $('#submit_error').html """
+    <h2>Invalid manifest file</h2>
+    <p>Error: #{error}</p>
+    <p>Please ensure your manifest file is valid JSON and has the following format:</p>
+    <pre><code>{
+      "name": "name of your widget",
+      "description": "a short(!) description",
+      "author": "your name",
+      "email": "your email address"
+    }</code></pre>
+  """
