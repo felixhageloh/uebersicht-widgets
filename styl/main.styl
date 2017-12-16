@@ -70,14 +70,14 @@ header
   header-bg()
 
   h1 p
-    font-size: 12px
+    font-size: 14px
     padding: 0
     margin: 0
     color: #999
 
   h1 a
     font-style: italic
-    font-size: 12px
+    font-size: 14px
     word-spacing: normal
     display: inline-block
     margin: 0 8px
@@ -151,7 +151,7 @@ header
     display: block
 
   input[name=repo-url]
-    width: 440px;
+    width: calc(100% - 152px)
 
 #submit_form
   margin-bottom: 16px
@@ -167,17 +167,33 @@ header
     li.pending
       color: #999
     li.success
-      color: #7ed049
+      color: success-color
       &::after
         margin-left: 4px
         content: '✓'
-        color: #7ed049
+        color: success-color
     li.error
       color: error-color
       &::after
         margin-left: 4px
         content: '✗'
         color: error-color
+
+#submit_success
+  margin-top: 20px
+  a
+    @extend .button
+    width: 100%
+    display: block
+    box-sizing: border-box
+    text-align: center
+    font-size: 16px
+    margin-top: 28px
+    border-color: success-color
+    color: success-color
+
+    &:hover:not(:disabled), &:active
+      background: success-color
 
 #submit_error
   h2
@@ -202,7 +218,7 @@ header
     width: 876px
 
   #widget_details
-    top: 126px
+    top: header-height
 
     .content
       width: 844px
@@ -214,10 +230,7 @@ header
         right: 320px
 
   #widget_list
-    padding-top: 126px
-
-  #installation
-    top: 126px
+    padding-top: header-height
 
   header h1
     margin-bottom: 0

@@ -61,15 +61,15 @@ registerEvents = (widgetEls) ->
 
   $('[href=#installation]').on 'click', (e) ->
     e.preventDefault()
-    widgetDetails.hide()
     $('.drawer').removeClass('visible')
     installationEl.addClass('visible')
+    $(document.body).css overflow: 'hidden'
 
   $('[href=#submit]').on 'click', (e) ->
     e.preventDefault()
-    widgetDetails.hide()
     $('.drawer').removeClass('visible')
     $('#submit').addClass('visible')
+    $(document.body).css overflow: 'hidden'
 
   $('[href=#disclaimer]').on 'click', (e) ->
     widgetDetails.hide()
@@ -79,9 +79,14 @@ registerEvents = (widgetEls) ->
 
   $('.drawer').on 'click',  '[data-action=close]', (e) ->
     e.preventDefault()
-    $('.drawer').removeClass('visible')
+    $('.drawer').removeClass('visible', 'active')
+    $(document.body).css overflow: 'auto'
+
+  $('.drawer').on 'transitionend', ->
+    $('.drawer').toggleClass('active', $('.drawer').is('.visible'))
 
   $('#submit_form').on 'submit', submitWidget
+
 
 goToState = (id, initial = false) ->
   widget = allWidgets[id]

@@ -2,30 +2,37 @@
 @import 'button'
 
 .drawer
-  header-bg()
+  background: #fff
   position: fixed
-  top: header-height
+  top: 0
   left: 0
   right: 0
   bottom: 0
   padding-bottom: 20px
   text-align: left
   transition: all 500ms
-  transform: translate(0, -800px)
+  transform: translate(0, -100%)
   visibility: hidden
+  z-index: 200
 
   &.visible
     transform: none
     visibility: visible
 
+  &.active
+    header-bg()
+
   .wrapper
     padding: 0 16px
+    width: 600px
+    margin: 0 auto
     box-sizing: border-box
 
-  h1
+  h3
     font-size: 16px
     font-style: italic
     text-align: left
+    margin-bottom: 20px
 
     &:before
       content: '»'
@@ -35,11 +42,10 @@
       color: #999
 
   h2
-    font-size: 14px
+    font-size: 16px
     font-weight: 500
 
   p
-    font-size: 14px
     margin: 4px 8px 16px 0;
     padding-left: 16px
     border-left: 6px solid #eee
@@ -53,9 +59,9 @@
   .close-icon
     color: text-color
     position: absolute
-    right: 4px
-    top: 4px
+    font-size: 24px
+    right: 8px
+    top: 8px
 
     &:hover
       text-decoration: none
-      text-shadow: 0 0 2px #aaa

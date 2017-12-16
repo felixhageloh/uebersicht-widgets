@@ -21,7 +21,7 @@ handleSubmitProgress = (progress) ->
 
 handleSubmitSuccess = (widgetData) -> new Promise (resolve) ->
   setTimeout ->
-    $('#submit_success a').html("Request '#{widgetData.name}' to be added")
+    $('#submit_success a').html("Submit '#{widgetData.name}' for review")
     $('#submit_success a')[0].search =
       "title=New widget: #{encodeURIComponent(widgetData.name)}" +
       '&body=Please add this widget to the gallery: ' +
