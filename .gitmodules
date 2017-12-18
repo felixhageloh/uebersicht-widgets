@@ -583,3 +583,6 @@
 [submodule "reddit-overview.widget"]
 	path = reddit-overview.widget
 	url = https://github.com/diceroll123/reddit-overview.widget
+[submodule "byrthdays.widget"]
+	path = byrthdays.widget
+	url = https://github.com/olfuerniss/byrthdays.widget
