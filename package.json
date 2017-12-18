@@ -11,9 +11,10 @@
     ]
   },
   "devDependencies": {
-    "browserify": "^13.3.0",
+    "browserify": "^14.5.0",
     "coffeeify": "^1.0.0",
     "cookies-js": "^1.1.0",
-    "uglify-js": "^2.7.5"
+    "uglify-es": "github:mishoo/UglifyJS2#harmony",
+    "watchify": "^3.9.0"
   }
 }
