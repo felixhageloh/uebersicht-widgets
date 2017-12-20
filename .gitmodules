@@ -586,3 +586,6 @@
 [submodule "byrthdays.widget"]
 	path = byrthdays.widget
 	url = https://github.com/olfuerniss/byrthdays.widget
+[submodule "litecoin-widget"]
+	path = litecoin-widget
+	url = https://github.com/plan8studios/litecoin-widget
