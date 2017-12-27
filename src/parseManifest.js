@@ -1,5 +1,9 @@
 var api = require('./GitHubApi.js');
 
+var base64ToString = typeof window === 'undefined'
+  ? (s) => Buffer.from(s, 'base64').toString()
+  : (s) => window.atob(s);
+
 module.exports = function parseManifest(repoData, manifestPath) {
   return new Promise(function(resolve, reject) {
     api.getJSON(
@@ -9,7 +13,7 @@ module.exports = function parseManifest(repoData, manifestPath) {
           return reject(err);
         }
         try {
-          var manifest = JSON.parse(window.atob(res.content));
+          var manifest = JSON.parse(base64ToString(res.content));
         } catch (e) {
           return reject(e);
         }
