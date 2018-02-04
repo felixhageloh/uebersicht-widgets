@@ -34,7 +34,7 @@ render: -> """
 
 update: (output, domEl) ->
   bytesToSize = (bytes) ->
-    return "0 Byte"  if bytes is 0
+    return "0 Byte"  if parseInt(bytes) is 0
     k = 1024
     sizes = [
       "b/s"
@@ -52,5 +52,3 @@ update: (output, domEl) ->
   values = output.split(' ')
   $(domEl).find('#in').text(bytesToSize(values[0]))
   $(domEl).find('#out').text(bytesToSize(values[1]))
-
-
