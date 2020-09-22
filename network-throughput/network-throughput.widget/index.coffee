@@ -2,11 +2,11 @@ network_interface = 'en0'
 
 # Sample for one second, one time
 # The command actually takes longer than 1 second to execute
-command: "sar -n DEV 1 1 | grep #{network_interface} | tail -n1 | awk '{print $4,$6}'"
+command: "sar -n DEV 1 1 2> /dev/null | awk '/#{network_interface}/{x++}x==2 {print $4,$6;exit}'"
 
 # Even though the command takes longer than 1 second to execute, 1000ms
 # seems to work best (widget output updates approx every 3 seconds)
-refreshFrequency: 1000
+refreshFrequency: 3000
 
 style: """
   top: 20px
