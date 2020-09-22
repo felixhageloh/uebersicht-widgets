@@ -86,7 +86,7 @@ updateBody: (rows, table) ->
   year = today[2]
 
   lengths = [31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30]
-  if year%4 == 0
+  if year%4 == 0 and (year%100 != 0 or year%400 == 0)
     lengths[2] = 29
 
   for week, i in rows
