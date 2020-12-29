@@ -19,6 +19,14 @@ init = (widgets) ->
 
   router = Router goToState
 
+  handleIntersection = (entries, observer) -> requestAnimationFrame ->
+    entries.forEach (entry) ->
+      return unless entry.isIntersecting
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target)
+
+  observer = new IntersectionObserver(handleIntersection);
+
   for widget in widgets when widget
     do (widget) ->
       widget.numDownloads = 0
@@ -26,6 +34,7 @@ init = (widgets) ->
       allWidgets[widget.id] = widget
 
       widgetEls.push(widgetEl = renderWidget widget)
+      observer.observe(widgetEl[0])
       downloads.get widget.id, (count) ->
         widget.numDownloads = count ? 0
         setTimeout -> showDownloadCount(widget, widgetEl)

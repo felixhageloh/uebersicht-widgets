@@ -30,6 +30,7 @@
       background-size: 258px 160px
       background-repeat: no-repeat
       background-position: left center
+      display: none
 
     .image-shadow
       -webkit-filter: blur(10px)
@@ -121,3 +122,5 @@
       .image
         opacity: 0.9
 
+  &.visible .screenshot .image
+    display: block
