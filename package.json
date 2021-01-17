@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "author": "Felix Hageloh",
   "scripts": {
-    "start": "bin/compile-js & bin/compile-css & nws"
+    "start": "bin/compile-js & bin/compile-css & nws",
+    "build": "browserify src/main.coffee | uglifyjs > main.js"
   },
   "browserify": {
     "transform": [
