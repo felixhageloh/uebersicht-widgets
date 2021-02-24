@@ -589,3 +589,6 @@
 [submodule "litecoin-widget"]
 	path = litecoin-widget
 	url = https://github.com/plan8studios/litecoin-widget
+[submodule "ultralist-ubersicht-widget"]
+	path = ultralist-ubersicht-widget
+	url = https://github.com/leejongyoung/ultralist-ubersicht-widget.git
