@@ -15,11 +15,11 @@
     "browserify": "^14.5.0",
     "coffeeify": "^1.0.0",
     "cookies-js": "^1.1.0",
+    "nws": "^1.1.1",
     "uglify-es": "github:mishoo/UglifyJS2#harmony",
     "watchify": "^3.9.0"
   },
   "dependencies": {
-    "save-dev": "^2.0.0",
     "stylus": "^0.54.5"
   }
 }
