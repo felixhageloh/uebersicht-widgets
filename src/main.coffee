@@ -1,6 +1,5 @@
 $ = require '../lib/jquery'
 WidgetTemplate = require './widget-template.coffee'
-downloads = require './download-counts.coffee'
 WidgetDetails = require './widget-details.coffee'
 Router = require './router.coffee'
 submitWidget = require './submitWidget.coffee'
@@ -35,9 +34,6 @@ init = (widgets) ->
 
       widgetEls.push(widgetEl = renderWidget widget)
       observer.observe(widgetEl[0])
-      downloads.get widget.id, (count) ->
-        widget.numDownloads = count ? 0
-        setTimeout -> showDownloadCount(widget, widgetEl)
 
   listEl.append(widgetEls)
 
@@ -50,13 +46,6 @@ init = (widgets) ->
 registerEvents = (widgetEls) ->
 
   widgetDetails.onClose -> router.navigate()
-
-  $(document).on "click", '.download', (e) -> setTimeout ->
-    id = $(e.currentTarget).data('id')
-    downloads.increment id, (newCount) ->
-      widget = allWidgets[id]
-      widget.numDownloads = newCount
-      showDownloadCount(widget)
 
   listEl.on "click", '.details', (e) ->
     e.preventDefault()
@@ -122,14 +111,6 @@ fetchWidgets = (callback) ->
   req = $.getJSON 'widgets.json', (data) ->
     callback(data.widgets)
   req.fail (req, _, err) -> console.log err.message
-
-showDownloadCount = (widget, widgetEl) ->
-  return
-  return unless widget.numDownloads
-  widgetEl ?= $("##{widget.id}.widget")
-
-  widgetEl.find('.download-count')
-    .html "<span class='icon'>⬇</span> #{widget.numDownloads}︎"
 
 switchSortBy = (property) ->
   mainNav.find('.active').removeClass 'active'
