@@ -124,6 +124,7 @@ fetchWidgets = (callback) ->
   req.fail (req, _, err) -> console.log err.message
 
 showDownloadCount = (widget, widgetEl) ->
+  return
   return unless widget.numDownloads
   widgetEl ?= $("##{widget.id}.widget")
 
